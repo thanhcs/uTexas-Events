@@ -17,5 +17,4 @@ extension Category {
     @NSManaged var name: String?
     @NSManaged var events: NSSet?
     
-
 }

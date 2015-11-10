@@ -12,7 +12,6 @@ import CoreData
 
 class Host: NSManagedObject {
 
-// Insert code here to add functionality to your managed object subclass
     func addEvent(value: Event) {
         let items = self.mutableSetValueForKey("events")
         items.addObject(value)
