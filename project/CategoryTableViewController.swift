@@ -16,11 +16,8 @@ class CategoryTableViewController: UITableViewController, NSFetchedResultsContro
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+        navigationItem.title = "uTexas Events"
 
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
     override func didReceiveMemoryWarning() {
@@ -50,13 +47,6 @@ class CategoryTableViewController: UITableViewController, NSFetchedResultsContro
         let cat = self.fetchedResultsController.objectAtIndexPath(indexPath) as! Category
         cell.textLabel!.text = cat.name
     }
-    
-    //    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-    //        let sections = self.fetchedResultsController.sections
-    //        let sectionInfo = sections![section]
-    //        let Host = sectionInfo.objects![0] as! Host
-    //        return  event.date
-    //    }
     
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
@@ -162,7 +152,7 @@ class CategoryTableViewController: UITableViewController, NSFetchedResultsContro
     }
     
     func updateCoreData(data: Dictionary<String, String>) {
-        
+        // TODO: edit
     }
 
     // MARK: - Navigation
@@ -178,5 +168,9 @@ class CategoryTableViewController: UITableViewController, NSFetchedResultsContro
             let view = segue.destinationViewController as! AddNewCategoryViewController
             view.delegate = self
         }
+        // Set up the back button
+        let backItem = UIBarButtonItem()
+        backItem.title = "Back"
+        navigationItem.backBarButtonItem = backItem
     }
 }

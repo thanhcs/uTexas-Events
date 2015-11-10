@@ -19,9 +19,11 @@ class EventTableViewController: UITableViewController, NSFetchedResultsControlle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.title = "uTexas Events"
         // add test data
 //        addData()
         
+        // Configure the Search Controller
         searchController = ({
             let controllerSearch = UISearchController(searchResultsController: nil)
             controllerSearch.delegate = self
@@ -326,7 +328,6 @@ class EventTableViewController: UITableViewController, NSFetchedResultsControlle
     }
 
     // MARK: - Navigation
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "AddEvent") {
             let view = segue.destinationViewController as! AddNewEventViewController
@@ -339,8 +340,13 @@ class EventTableViewController: UITableViewController, NSFetchedResultsControlle
             view.event = self.fetchedResultsController.objectAtIndexPath(index) as? Event
             view.delegate = self
         }
+        // Set up the back button
+        let backItem = UIBarButtonItem()
+        backItem.title = "Back"
+        navigationItem.backBarButtonItem = backItem
     }
     
+    // Search functions
     func updateSearchResultsForSearchController(searchController: UISearchController) {
         let searchText = searchController.searchBar.text
         if searchText != nil {

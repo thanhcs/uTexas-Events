@@ -21,7 +21,7 @@ class AddNewHostViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         nameTextField.delegate = self
         emailTextField.delegate = self
-        // Do any additional setup after loading the view.
+        navigationItem.title = "Add New Host"
     }
 
     override func didReceiveMemoryWarning() {
@@ -48,9 +48,7 @@ class AddNewHostViewController: UIViewController, UITextFieldDelegate {
     
     // dismiss the keyboard when touching the return key
     func textFieldShouldReturn(textField: UITextField) -> Bool {
-        
         textField.resignFirstResponder()
-        
         return true
     }
 }

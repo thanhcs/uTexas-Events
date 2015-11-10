@@ -15,12 +15,7 @@ class HostTableViewController: UITableViewController, NSFetchedResultsController
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        navigationItem.title = "uTexas Events"
     }
 
     override func didReceiveMemoryWarning() {
@@ -28,7 +23,6 @@ class HostTableViewController: UITableViewController, NSFetchedResultsController
         // Dispose of any resources that can be recreated.
     }
 
-    
     // MARK: - Table view data source
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -51,14 +45,7 @@ class HostTableViewController: UITableViewController, NSFetchedResultsController
         let host = self.fetchedResultsController.objectAtIndexPath(indexPath) as! Host
         cell.textLabel!.text = host.name
     }
-    
-//    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//        let sections = self.fetchedResultsController.sections
-//        let sectionInfo = sections![section]
-//        let Host = sectionInfo.objects![0] as! Host
-//        return  event.date
-//    }
-    
+
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         return true
@@ -161,7 +148,6 @@ class HostTableViewController: UITableViewController, NSFetchedResultsController
         } catch {
             fatalError("Failure to save context: \(error)")
         }
-        
     }
     
     func updateCoreData(data: Dictionary<String, String>) {
@@ -180,8 +166,11 @@ class HostTableViewController: UITableViewController, NSFetchedResultsController
             let index = self.tableView.indexPathForSelectedRow!
             view.delegate = self
             view.host = self.fetchedResultsController.objectAtIndexPath(index) as? Host
-
         }
+        // Set up the Back button
+        let backItem = UIBarButtonItem()
+        backItem.title = "Back"
+        navigationItem.backBarButtonItem = backItem
     }
 
 }

@@ -8,16 +8,27 @@
 
 import UIKit
 
-class MainTabBarController: UITabBarController {
+class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        self.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
+    
+    // Try to fix the bug when the search bar active, move back from the other tab will cause black screen
+//    func tabBarController(tabBarController: UITabBarController, didSelectViewController viewController: UIViewController) {
+//        let nav = viewController as! UINavigationController
+//        nav.popToRootViewControllerAnimated(true)
+//        
+//        if (tabBarController.selectedIndex == 0) {
+//            let eventNav = viewController as! UINavigationController
+//            let eventView = eventNav.viewControllers[0] as! EventTableViewController
+//            eventView.searchController.active = false
+//        }
+//    }
 }

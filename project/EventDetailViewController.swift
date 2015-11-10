@@ -20,12 +20,15 @@ class EventDetailViewController: UIViewController {
     @IBOutlet weak var catLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var capacityLabel: UILabel!
+    @IBOutlet weak var addCalendarButton: UIButton!
     
     var event:Event? = nil
     var delegate: StoreCoreDataProtocol? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationItem.title = "Event Detail"
 
         // Do any additional setup after loading the view.
         titleLabel.text = event!.title
@@ -37,6 +40,12 @@ class EventDetailViewController: UIViewController {
         catLabel.text = event?.category!.name
         descriptionLabel.text = event?.desc
         capacityLabel.text = String(event!.capacity!)
+        
+        // Change the "Add to Calendar" button
+        addCalendarButton.backgroundColor = UIColor.clearColor()
+        addCalendarButton.layer.cornerRadius = 5
+        addCalendarButton.layer.borderWidth = 1
+        addCalendarButton.layer.borderColor = UIColor.blueColor().CGColor
     }
 
     override func didReceiveMemoryWarning() {
@@ -83,16 +92,4 @@ class EventDetailViewController: UIViewController {
             }
         })
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

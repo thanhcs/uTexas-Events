@@ -41,7 +41,7 @@ class AddNewEventViewController: UIViewController, UITextFieldDelegate, UIPicker
         hostTextField.tag = 1
         catTextField.tag = 2
         
-        self.navigationItem.title = "New Event"
+        self.navigationItem.title = "Add New Event"
 
         // Do any additional setup after loading the view.
         self.titleTextField.delegate = self
@@ -82,7 +82,6 @@ class AddNewEventViewController: UIViewController, UITextFieldDelegate, UIPicker
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     @IBAction func saveEvent(sender: AnyObject) {
@@ -105,10 +104,10 @@ class AddNewEventViewController: UIViewController, UITextFieldDelegate, UIPicker
     // dismiss the keyboard when touching the return key
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
-        
         return true
     }
     
+    // DatePicker for date
     @IBAction func datePickerAction(sender: AnyObject) {
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "MM-dd-yyyy"
@@ -127,6 +126,8 @@ class AddNewEventViewController: UIViewController, UITextFieldDelegate, UIPicker
         dateFormatter.dateFormat = "hh:mm a"
         to = dateFormatter.stringFromDate(toTimePicker.date)
     }
+    
+    // Picker for Host and Category
     
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
         return 1
@@ -158,6 +159,7 @@ class AddNewEventViewController: UIViewController, UITextFieldDelegate, UIPicker
         }
     }
     
+    // Control the keyboard and picker appearance
     func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
         if (textField.tag == 1) {
             hostPicker.hidden = false

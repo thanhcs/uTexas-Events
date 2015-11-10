@@ -42,9 +42,7 @@ class AddNewCategoryViewController: UIViewController, UITextFieldDelegate {
     
     // dismiss the keyboard when touching the return key
     func textFieldShouldReturn(textField: UITextField) -> Bool {
-        
         textField.resignFirstResponder()
-        
         return true
     }
 }
