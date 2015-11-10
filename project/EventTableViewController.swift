@@ -254,6 +254,8 @@ class EventTableViewController: UITableViewController, NSFetchedResultsControlle
     func saveCoreData(data: Dictionary<String, String>) {
         let entity = NSEntityDescription.entityForName("Event", inManagedObjectContext: managedObjectContext!)
         let event = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedObjectContext) as! Event
+        let host = getHost(data["host"]!)
+        let cat = getCategory(data["category"]!)
         event.title = data["title"]
         event.date = data["date"]
         event.from = data["from"]
@@ -261,8 +263,12 @@ class EventTableViewController: UITableViewController, NSFetchedResultsControlle
         event.location = data["title"]
         event.desc = data["description"]
         event.capacity = Int(data["capacity"]!)
-        event.host = getHost(data["host"]!)
-        event.category = getCategory(data["category"]!)
+        event.host = host
+        event.category = cat
+        
+        // add event to host and category
+        host.addEvent(event)
+        cat.addEvent(event)
         
         do {
             try self.managedObjectContext!.save()

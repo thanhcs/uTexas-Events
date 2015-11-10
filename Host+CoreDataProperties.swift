@@ -18,5 +18,7 @@ extension Host {
     @NSManaged var info: String?
     @NSManaged var email: String?
     @NSManaged var events: NSSet?
+    
+
 
 }
