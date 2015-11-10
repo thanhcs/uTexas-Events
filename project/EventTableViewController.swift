@@ -15,6 +15,7 @@ class EventTableViewController: UITableViewController, NSFetchedResultsControlle
     var searchController: UISearchController!
     var searchPredicate: NSPredicate!
     var filteredData: [Event]? = nil
+    var activeSearch: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -154,10 +155,14 @@ class EventTableViewController: UITableViewController, NSFetchedResultsControlle
     }
     
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        let sections = self.fetchedResultsController.sections
-        let sectionInfo = sections![section]
-        let event = sectionInfo.objects![0] as! Event
-        return  event.date
+        if (!activeSearch) {
+            let sections = self.fetchedResultsController.sections
+            let sectionInfo = sections![section]
+            let event = sectionInfo.objects![0] as! Event
+            return  event.date
+        } else {
+            return ""
+        }
     }
 
     // Override to support conditional editing of the table view.
@@ -354,6 +359,11 @@ class EventTableViewController: UITableViewController, NSFetchedResultsControlle
     func didDismissSearchController(searchController: UISearchController) {
         searchPredicate = nil
         filteredData = nil
+        activeSearch = false
         self.tableView.reloadData()
+    }
+    
+    func willPresentSearchController(searchController: UISearchController) {
+        activeSearch = true
     }
 }
