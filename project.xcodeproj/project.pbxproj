@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B232C22B1BF1BE7A007DD2B0 /* README in Resources */ = {isa = PBXBuildFile; fileRef = B232C22A1BF1BE7A007DD2B0 /* README */; };
 		B23D4A141BEFFE0E00496737 /* CategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23D4A131BEFFE0E00496737 /* CategoryTableViewController.swift */; };
 		B23D4A161BF0020F00496737 /* EventsOfCategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23D4A151BF0020F00496737 /* EventsOfCategoryTableViewController.swift */; };
 		B23D4A181BF0066600496737 /* AddNewCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23D4A171BF0066600496737 /* AddNewCategoryViewController.swift */; };
@@ -34,6 +35,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B232C22A1BF1BE7A007DD2B0 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
 		B23D4A131BEFFE0E00496737 /* CategoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryTableViewController.swift; sourceTree = "<group>"; };
 		B23D4A151BF0020F00496737 /* EventsOfCategoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsOfCategoryTableViewController.swift; sourceTree = "<group>"; };
 		B23D4A171BF0066600496737 /* AddNewCategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewCategoryViewController.swift; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 		B24716FB1BE9BAC2001D3F07 = {
 			isa = PBXGroup;
 			children = (
+				B232C22A1BF1BE7A007DD2B0 /* README */,
 				B24717061BE9BAC2001D3F07 /* project */,
 				B24717051BE9BAC2001D3F07 /* Products */,
 			);
@@ -187,6 +190,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B232C22B1BF1BE7A007DD2B0 /* README in Resources */,
 				B24717151BE9BAC2001D3F07 /* LaunchScreen.storyboard in Resources */,
 				B24717121BE9BAC2001D3F07 /* Assets.xcassets in Resources */,
 				B247170D1BE9BAC2001D3F07 /* Main.storyboard in Resources */,
