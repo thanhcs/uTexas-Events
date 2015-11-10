@@ -17,6 +17,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        let tabBarController = self.window?.rootViewController as! UITabBarController
+        // set managed object context on each view
+        let eventNav = tabBarController.viewControllers![0] as! UINavigationController
+        let eventView = eventNav.viewControllers[0] as! EventTableViewController
+        eventView.managedObjectContext = self.managedObjectContext
+        
+        let hostNav = tabBarController.viewControllers![1] as! UINavigationController
+        let hostView = hostNav.viewControllers[0] as! HostTableViewController
+        hostView.managedObjectContext = self.managedObjectContext
+        
+        let catNav = tabBarController.viewControllers![2] as! UINavigationController
+        let catView = catNav.viewControllers[0] as! CategoryTableViewController
+        catView.managedObjectContext = self.managedObjectContext
         return true
     }
 
