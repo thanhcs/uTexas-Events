@@ -14,6 +14,7 @@
 		B23D64C71BEAFDB300AF5D51 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23D64C51BEAFDB300AF5D51 /* Event.swift */; };
 		B23D64C91BEAFEAF00AF5D51 /* StoreCoreDataProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23D64C81BEAFEAF00AF5D51 /* StoreCoreDataProtocol.swift */; };
 		B23D64CF1BEB75AC00AF5D51 /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23D64CE1BEB75AC00AF5D51 /* EventDetailViewController.swift */; };
+		B23E6A061BF19D36006D5EE9 /* TestingInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23E6A051BF19D36006D5EE9 /* TestingInput.swift */; };
 		B24717081BE9BAC2001D3F07 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B24717071BE9BAC2001D3F07 /* AppDelegate.swift */; };
 		B247170D1BE9BAC2001D3F07 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B247170B1BE9BAC2001D3F07 /* Main.storyboard */; };
 		B24717101BE9BAC2001D3F07 /* project.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B247170E1BE9BAC2001D3F07 /* project.xcdatamodeld */; };
@@ -40,6 +41,7 @@
 		B23D64C51BEAFDB300AF5D51 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Event.swift; path = ../Event.swift; sourceTree = "<group>"; };
 		B23D64C81BEAFEAF00AF5D51 /* StoreCoreDataProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreCoreDataProtocol.swift; sourceTree = "<group>"; };
 		B23D64CE1BEB75AC00AF5D51 /* EventDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
+		B23E6A051BF19D36006D5EE9 /* TestingInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestingInput.swift; sourceTree = "<group>"; };
 		B24717041BE9BAC2001D3F07 /* project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = project.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B24717071BE9BAC2001D3F07 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B247170C1BE9BAC2001D3F07 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 				B23D4A131BEFFE0E00496737 /* CategoryTableViewController.swift */,
 				B23D4A151BF0020F00496737 /* EventsOfCategoryTableViewController.swift */,
 				B23D4A171BF0066600496737 /* AddNewCategoryViewController.swift */,
+				B23E6A051BF19D36006D5EE9 /* TestingInput.swift */,
 				B24717111BE9BAC2001D3F07 /* Assets.xcassets */,
 				B24717131BE9BAC2001D3F07 /* LaunchScreen.storyboard */,
 				B24717161BE9BAC2001D3F07 /* Info.plist */,
@@ -198,6 +201,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B23D64C61BEAFDB300AF5D51 /* Event+CoreDataProperties.swift in Sources */,
+				B23E6A061BF19D36006D5EE9 /* TestingInput.swift in Sources */,
 				B23D64C71BEAFDB300AF5D51 /* Event.swift in Sources */,
 				B2D5E5F91BEFC28100428843 /* EventsOfHostTableViewController.swift in Sources */,
 				B247172B1BE9C393001D3F07 /* Category.swift in Sources */,

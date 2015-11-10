@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Host Table View Controller-->
@@ -63,21 +64,21 @@
                                 <rect key="frame" x="77" y="135" width="50" height="21"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Information:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qJj-oe-uMK">
                                 <rect key="frame" x="35" y="226" width="92" height="21"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="06m-YV-WIT">
                                 <rect key="frame" x="20" y="366" width="335" height="21"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Def-gF-p98">
@@ -96,7 +97,7 @@
                                 <rect key="frame" x="81" y="180" width="46" height="21"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="hlv-2R-LZP">
@@ -146,35 +147,35 @@
                                 <rect key="frame" x="62" y="130" width="50" height="21"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Email:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Kv-jz-ZiC">
                                 <rect key="frame" x="66" y="164" width="46" height="21"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Information:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dZO-du-DPS">
                                 <rect key="frame" x="20" y="202" width="92" height="21"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CFe-TO-vAG">
                                 <rect key="frame" x="120" y="164" width="235" height="21"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" highlighted="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ag6-5Q-gKU">
                                 <rect key="frame" x="120" y="202" width="235" height="138"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aQH-so-T1b">
@@ -189,7 +190,7 @@
                                 <rect key="frame" x="120" y="130" width="235" height="21"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -229,7 +230,7 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="YyI-wh-7Ar">
@@ -643,7 +644,7 @@
                                 </connections>
                             </button>
                             <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="zwk-E2-4HE">
-                                <rect key="frame" x="119" y="132" width="250" height="57"/>
+                                <rect key="frame" x="119" y="132" width="250" height="44"/>
                                 <animations/>
                                 <date key="date" timeIntervalSinceReferenceDate="468700125.88090801">
                                     <!--2015-11-08 18:28:45 +0000-->
@@ -653,7 +654,7 @@
                                 </connections>
                             </datePicker>
                             <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="8v3-TK-kNj">
-                                <rect key="frame" x="119" y="184" width="250" height="40"/>
+                                <rect key="frame" x="119" y="179" width="250" height="40"/>
                                 <animations/>
                                 <date key="date" timeIntervalSinceReferenceDate="468701672.65149498">
                                     <!--2015-11-08 18:54:32 +0000-->
@@ -663,7 +664,7 @@
                                 </connections>
                             </datePicker>
                             <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="kC3-r3-vVo">
-                                <rect key="frame" x="119" y="221" width="250" height="42"/>
+                                <rect key="frame" x="119" y="219" width="250" height="42"/>
                                 <animations/>
                                 <date key="date" timeIntervalSinceReferenceDate="468702409.38550502">
                                     <!--2015-11-08 19:06:49 +0000-->
@@ -672,17 +673,45 @@
                                     <action selector="toPickerAction:" destination="dsp-Nl-Xwd" eventType="valueChanged" id="6yq-Po-Oji"/>
                                 </connections>
                             </datePicker>
+                            <pickerView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kKH-29-jxK">
+                                <rect key="frame" x="0.0" y="431" width="375" height="216"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="dsp-Nl-Xwd" id="OMk-JA-VEM"/>
+                                    <outlet property="delegate" destination="dsp-Nl-Xwd" id="egv-aG-Jn1"/>
+                                </connections>
+                            </pickerView>
+                            <pickerView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ku2-YH-5NW">
+                                <rect key="frame" x="0.0" y="431" width="375" height="216"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="dsp-Nl-Xwd" id="yct-Hm-Ca3"/>
+                                    <outlet property="delegate" destination="dsp-Nl-Xwd" id="eqw-Cv-nkE"/>
+                                </connections>
+                            </pickerView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="ku2-YH-5NW" secondAttribute="trailing" constant="-20" id="OCc-1A-GSw"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="kKH-29-jxK" secondAttribute="trailing" constant="-20" id="UVr-ma-2Dg"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="ku2-YH-5NW" secondAttribute="bottom" constant="20" id="VeK-FC-vCs"/>
+                            <constraint firstItem="kKH-29-jxK" firstAttribute="leading" secondItem="lDC-Ro-8JD" secondAttribute="leadingMargin" constant="-20" id="WpF-W4-2Ik"/>
+                            <constraint firstItem="ku2-YH-5NW" firstAttribute="leading" secondItem="lDC-Ro-8JD" secondAttribute="leadingMargin" constant="-20" id="fvy-AX-jQG"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="kKH-29-jxK" secondAttribute="bottom" constant="20" id="icB-Vt-sS0"/>
+                        </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="alertEmpty" destination="kww-z2-Vl4" id="Gry-eX-e8A"/>
                         <outlet property="capacityTextField" destination="zjg-bg-dTG" id="x6u-Zh-RcP"/>
+                        <outlet property="catPicker" destination="ku2-YH-5NW" id="xJH-XG-cZx"/>
                         <outlet property="catTextField" destination="CvE-hY-MT0" id="3AL-ou-GBv"/>
                         <outlet property="descriptionTextField" destination="xUY-nb-cmB" id="K4Z-cQ-4gc"/>
                         <outlet property="fromTimePicker" destination="8v3-TK-kNj" id="NSu-FH-9kK"/>
+                        <outlet property="hostPicker" destination="kKH-29-jxK" id="5Hf-K3-dog"/>
                         <outlet property="hostTextField" destination="L4n-rd-nmV" id="Pfx-2W-2tp"/>
                         <outlet property="locationTextField" destination="tSy-Rw-sc4" id="gq5-sx-GpV"/>
                         <outlet property="myDatePicker" destination="zwk-E2-4HE" id="kQb-j5-d0w"/>
@@ -773,14 +802,14 @@
                                 <rect key="frame" x="56" y="179" width="50" height="21"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CmA-n3-r3M">
                                 <rect key="frame" x="20" y="233" width="335" height="21"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nBG-YT-aeg">

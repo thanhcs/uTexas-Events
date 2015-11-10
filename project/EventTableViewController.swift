@@ -320,6 +320,7 @@ class EventTableViewController: UITableViewController, NSFetchedResultsControlle
         if (segue.identifier == "AddEvent") {
             let view = segue.destinationViewController as! AddNewEventViewController
             view.delegate = self
+            view.managedObjectContext = managedObjectContext
         }
         if (segue.identifier == "EventDetail") {
             let view = segue.destinationViewController as! EventDetailViewController
