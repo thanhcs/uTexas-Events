@@ -18,6 +18,16 @@ Thanh Nguyen:
 I changed change the idea of Data Model to directly use Core Data in the app
 I created most the things in the app except what Justin did.
 
+There are some bug:
+
+- when click the search bar without canceling it, then go to the another tab, going back will cause the back screen.
+- When do the search, then click one of the result, the action will slow because the table view of the search result will have to be dismissed first before go to the next view.
+
+Features to be in the final:
+
+- Log in
+- RSVP
+
 
 Differences:
 
