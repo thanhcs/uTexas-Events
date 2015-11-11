@@ -154,6 +154,10 @@ class EventsOfCategoryTableViewController: UITableViewController, NSFetchedResul
             let index = self.tableView.indexPathForSelectedRow!
             view.event = self.fetchedResultsController.objectAtIndexPath(index) as? Event
         }
+        // Set up the back button
+        let backItem = UIBarButtonItem()
+        backItem.title = "Back"
+        navigationItem.backBarButtonItem = backItem
     }
 
 }

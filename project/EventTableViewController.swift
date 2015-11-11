@@ -339,6 +339,7 @@ class EventTableViewController: UITableViewController, NSFetchedResultsControlle
             let index = self.tableView.indexPathForSelectedRow!
             view.event = self.fetchedResultsController.objectAtIndexPath(index) as? Event
             view.delegate = self
+            searchController.active = false
         }
         // Set up the back button
         let backItem = UIBarButtonItem()

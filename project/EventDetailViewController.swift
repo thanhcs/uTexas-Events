@@ -69,6 +69,7 @@ class EventDetailViewController: UIViewController {
                 let dateFormat = NSDateFormatter()
                 dateFormat.dateFormat = "MM-dd-yyyy HH:mm a"
                 let beganDate = self.event!.date! + " " + self.event!.from!
+                
                 let endDate = self.event!.date! + " " + self.event!.to!
                 print(beganDate)
                 print(endDate)

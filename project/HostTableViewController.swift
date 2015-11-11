@@ -9,13 +9,30 @@
 import UIKit
 import CoreData
 
-class HostTableViewController: UITableViewController, NSFetchedResultsControllerDelegate, StoreCoreDataProtocol {
+class HostTableViewController: UITableViewController, NSFetchedResultsControllerDelegate, StoreCoreDataProtocol, UISearchControllerDelegate, UISearchBarDelegate, UISearchResultsUpdating  {
     
     var managedObjectContext: NSManagedObjectContext? = nil
+    var searchController: UISearchController!
+    var searchPredicate: NSPredicate!
+    var filteredData: [Host]? = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "uTexas Events"
+        
+        searchController = ({
+            let controllerSearch = UISearchController(searchResultsController: nil)
+            controllerSearch.delegate = self
+            controllerSearch.searchBar.delegate = self
+            controllerSearch.hidesNavigationBarDuringPresentation = true
+            controllerSearch.definesPresentationContext = false
+            controllerSearch.dimsBackgroundDuringPresentation = false
+            controllerSearch.searchBar.sizeToFit()
+            controllerSearch.searchResultsUpdater = self
+            controllerSearch.searchBar.placeholder = "Search by name of host"
+            self.tableView.tableHeaderView = controllerSearch.searchBar
+            return controllerSearch
+        })()
     }
 
     override func didReceiveMemoryWarning() {
@@ -26,18 +43,34 @@ class HostTableViewController: UITableViewController, NSFetchedResultsController
     // MARK: - Table view data source
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return self.fetchedResultsController.sections!.count
+        if searchPredicate == nil {
+            return self.fetchedResultsController.sections!.count
+        } else {
+            return 1 ?? 0
+        }
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let sections = self.fetchedResultsController.sections
-        let sectionInfo = sections![section]
-        return sectionInfo.numberOfObjects
+        if searchPredicate == nil {
+            let sections = self.fetchedResultsController.sections
+            let sectionInfo = sections![section]
+            return sectionInfo.numberOfObjects
+        } else {
+            return filteredData?.count ?? 0
+        }
+        
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("HostCell", forIndexPath: indexPath)
-        self.configureCell(cell, atIndexPath: indexPath)
+        if searchPredicate == nil {
+            self.configureCell(cell, atIndexPath: indexPath)
+            
+        } else {
+            if let filteredSearch = filteredData?[indexPath.row] {
+                cell.textLabel?.text = filteredSearch.name
+            }
+        }
         return cell
     }
     
@@ -166,6 +199,7 @@ class HostTableViewController: UITableViewController, NSFetchedResultsController
             let index = self.tableView.indexPathForSelectedRow!
             view.delegate = self
             view.host = self.fetchedResultsController.objectAtIndexPath(index) as? Host
+            searchController.active = false
         }
         // Set up the Back button
         let backItem = UIBarButtonItem()
@@ -173,4 +207,24 @@ class HostTableViewController: UITableViewController, NSFetchedResultsController
         navigationItem.backBarButtonItem = backItem
     }
 
+    func updateSearchResultsForSearchController(searchController: UISearchController) {
+        let searchText = searchController.searchBar.text
+        if searchText != nil {
+            searchPredicate = NSPredicate(format: "name contains[c] %@", searchText!)
+            filteredData = fetchedResultsController.fetchedObjects!.filter() {
+                return self.searchPredicate.evaluateWithObject($0)
+                } as? [Host]
+            self.tableView.reloadData()
+        }
+    }
+    
+    func searchBar(searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+        updateSearchResultsForSearchController(searchController)
+    }
+    
+    func didDismissSearchController(searchController: UISearchController) {
+        searchPredicate = nil
+        filteredData = nil
+        self.tableView.reloadData()
+    }
 }
