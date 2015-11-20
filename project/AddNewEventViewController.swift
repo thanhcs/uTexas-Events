@@ -41,6 +41,9 @@ class AddNewEventViewController: UIViewController, UITextFieldDelegate, UIPicker
         hostTextField.tag = 1
         catTextField.tag = 2
         
+//        hostPicker.reloadInputViews()
+//        catPicker.reloadInputViews()
+        
         self.navigationItem.title = "Add New Event"
 
         // Do any additional setup after loading the view.
@@ -135,27 +138,37 @@ class AddNewEventViewController: UIViewController, UITextFieldDelegate, UIPicker
     
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if pickerView.tag == 1 {
-            return hosts!.count
+            return hosts!.count + 1
         } else {
-            return cats!.count
+            return cats!.count + 1
         }
     }
     
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        if pickerView.tag == 1 {
-            return hosts![row].name
+        if (row == 0) {
+            // add empty element to hosts and cats array
+            return ""
         } else {
-            return cats![row].name
+            if pickerView.tag == 1 {
+                return hosts![row-1].name
+            } else {
+                return cats![row-1].name
+            }
         }
     }
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        if pickerView.tag == 1 {
-            hostTextField.text = hosts![row].name
+        if (row == 0) {
+            hostTextField.text = ""
             hostPicker.hidden = true
-        } else if pickerView.tag == 2 {
-            catTextField.text = cats![row].name
-            catPicker.hidden = true
+        } else {
+            if pickerView.tag == 1 {
+                hostTextField.text = hosts![row-1].name
+                hostPicker.hidden = true
+            } else if pickerView.tag == 2 {
+                catTextField.text = cats![row-1].name
+                catPicker.hidden = true
+            }
         }
     }
     
