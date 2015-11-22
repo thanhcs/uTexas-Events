@@ -14,6 +14,8 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var firstNameStack: UIStackView!
     @IBOutlet weak var lastNameStack: UIStackView!
     @IBOutlet weak var emailStack: UIStackView!
+    @IBOutlet weak var usernameStack: UIStackView!
+    @IBOutlet weak var passwordStack: UIStackView!
     @IBOutlet weak var registerForgotStack: UIStackView!
     @IBOutlet weak var logInButton: UIButton!
     @IBOutlet weak var registerButton: UIButton!
@@ -24,6 +26,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var resetPasswordButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +39,9 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         logInViewButton.hidden = true
         usernameTextField.delegate = self
         passwordTextField.delegate = self
+        responseLabel.textColor = UIColor.redColor()
+        resetPasswordButton.hidden = true
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -59,10 +65,10 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     @IBAction func loginAction(sender: AnyObject) {
         
         if (usernameTextField.text == "") {
-            responseLabel.text = "Please fill in the username"
+            responseLabel.text = "Please input the username"
             
         } else if (passwordTextField.text == "") {
-            responseLabel.text = "Please fill in the password"
+            responseLabel.text = "Please input the password"
             
         } else {
             PFUser.logInWithUsernameInBackground(usernameTextField.text!, password: passwordTextField.text!) {
@@ -90,21 +96,46 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         responseLabel.text = ""
     }
     
+    @IBAction func recoveringPassword(sender: AnyObject) {
+        self.preferredContentSize = CGSize(width: 300, height: 150)
+        firstNameStack.hidden = true
+        lastNameStack.hidden = true
+        emailStack.hidden = false
+        logInButton.hidden = true
+        registerButton.hidden = true
+        registerForgotStack.hidden = true
+        logInViewButton.hidden = true
+        registerButton.hidden = true
+        responseLabel.text = ""
+        resetPasswordButton.hidden = false
+        usernameStack.hidden = true
+        passwordStack.hidden = true
+    }
+    
+    @IBAction func recoveringPasswordAction (sender: AnyObject) {
+        if (emailTextField.text == "") {
+            responseLabel.text = "Please input your email"
+            
+        } else {
+            PFUser.requestPasswordResetForEmailInBackground(emailTextField.text!)
+        }
+    }
+    
     @IBAction func registerAction(sender: AnyObject) {
         if (firstNameTextField.text == "") {
-            responseLabel.text = "Please fill in your first name"
+            responseLabel.text = "Please input your first name"
             
         } else if (lastNameTextField.text == "") {
-            responseLabel.text = "Please fill in your last name"
+            responseLabel.text = "Please input your last name"
             
         } else if (emailTextField.text == "") {
-            responseLabel.text = "Please fill in your email"
+            responseLabel.text = "Please input your email"
             
         } else if (usernameTextField.text == "") {
-            responseLabel.text = "Please fill in username"
+            responseLabel.text = "Please input username"
             
         } else if (passwordTextField.text == "") {
-            responseLabel.text = "Please fill in password"
+            responseLabel.text = "Please input password"
             
         } else {
             let user = PFUser()

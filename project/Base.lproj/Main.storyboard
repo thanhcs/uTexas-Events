@@ -418,7 +418,7 @@
                                         <rect key="frame" x="0.0" y="203" width="268" height="24"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="smG-uM-jfx">
-                                                <rect key="frame" x="0.0" y="0.0" width="90" height="24"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="67" height="24"/>
                                                 <animations/>
                                                 <state key="normal" title="Log in"/>
                                                 <connections>
@@ -426,7 +426,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="drC-sc-crU">
-                                                <rect key="frame" x="90" y="0.0" width="89" height="24"/>
+                                                <rect key="frame" x="67" y="0.0" width="67" height="24"/>
                                                 <animations/>
                                                 <state key="normal" title="Log In"/>
                                                 <connections>
@@ -434,11 +434,19 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i3b-ky-erS">
-                                                <rect key="frame" x="179" y="0.0" width="90" height="24"/>
+                                                <rect key="frame" x="134" y="0.0" width="67" height="24"/>
                                                 <animations/>
                                                 <state key="normal" title="Register!"/>
                                                 <connections>
                                                     <action selector="registerAction:" destination="ZmK-mp-BJd" eventType="touchUpInside" id="Xt9-gC-Xsp"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="54G-7G-aLH">
+                                                <rect key="frame" x="201" y="0.0" width="67" height="24"/>
+                                                <animations/>
+                                                <state key="normal" title="Reset Password"/>
+                                                <connections>
+                                                    <action selector="recoveringPasswordAction:" destination="ZmK-mp-BJd" eventType="touchUpInside" id="NTI-i2-8DI"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -456,9 +464,12 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WOr-Oh-EgE">
-                                                <rect key="frame" x="118" y="0.0" width="150" height="24"/>
+                                                <rect key="frame" x="145" y="0.0" width="123" height="24"/>
                                                 <animations/>
-                                                <state key="normal" title="Forgot your password"/>
+                                                <state key="normal" title="Forgot password?"/>
+                                                <connections>
+                                                    <action selector="recoveringPassword:" destination="ZmK-mp-BJd" eventType="touchUpInside" id="tOa-PY-Jdt"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <animations/>
@@ -515,10 +526,13 @@
                         <outlet property="lastNameTextField" destination="DSs-Ol-XG1" id="4zj-LL-Yxn"/>
                         <outlet property="logInButton" destination="smG-uM-jfx" id="4wq-p5-JNB"/>
                         <outlet property="logInViewButton" destination="drC-sc-crU" id="Mmb-U7-pje"/>
+                        <outlet property="passwordStack" destination="74K-WW-kAk" id="H0g-JP-gzl"/>
                         <outlet property="passwordTextField" destination="8CR-1f-bGZ" id="DAA-Ws-fEX"/>
                         <outlet property="registerButton" destination="i3b-ky-erS" id="Tod-2x-W5J"/>
                         <outlet property="registerForgotStack" destination="21O-bx-r0M" id="I51-c5-yV6"/>
+                        <outlet property="resetPasswordButton" destination="54G-7G-aLH" id="qbP-Pk-zfU"/>
                         <outlet property="responseLabel" destination="3KM-Sn-hU7" id="unV-1B-lO4"/>
+                        <outlet property="usernameStack" destination="JsB-Za-25P" id="OVo-ai-1Aj"/>
                         <outlet property="usernameTextField" destination="Tpw-De-PP2" id="gmT-uf-zG2"/>
                     </connections>
                 </viewController>
@@ -598,7 +612,6 @@
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
-                        <outlet property="logInButton" destination="jbu-Oq-uQn" id="n0n-Zc-goJ"/>
                         <outlet property="searchDisplayController" destination="XzB-qY-NdM" id="uh8-ib-JAY"/>
                     </connections>
                 </tableViewController>

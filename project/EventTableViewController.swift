@@ -11,7 +11,6 @@ import CoreData
 import Parse
 
 class EventTableViewController: UITableViewController, NSFetchedResultsControllerDelegate, StoreCoreDataProtocol, UISearchControllerDelegate, UISearchBarDelegate, UISearchResultsUpdating, UIPopoverPresentationControllerDelegate {
-    @IBOutlet weak var logInButton: UIBarButtonItem!
     
     var managedObjectContext: NSManagedObjectContext? = nil
     var searchController: UISearchController!
@@ -101,10 +100,7 @@ class EventTableViewController: UITableViewController, NSFetchedResultsControlle
         searchPredicate = nil
         filteredData = nil
         self.tableView.reloadData()
-        
-        if (Config.didLogIn) {
-            self.navigationItem.set
-        }
+
     }
     
     
