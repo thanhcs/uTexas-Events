@@ -27,6 +27,8 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var resetPasswordButton: UIButton!
+    
+    var eventView:UIViewController? = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,7 +78,24 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
                 if user != nil {
                     Config.didLogIn = true
                     self.dismissViewControllerAnimated(true, completion: nil)
-                    print(PFUser.currentUser()?.email)
+                    if let user = PFUser.currentUser() {
+                        if (user["isAdmin"] as! Bool) {
+                            Config.isAdmin = true
+                            print("Admin")
+                            self.eventView?.navigationItem.leftBarButtonItem?.title = ""
+                            self.eventView?.navigationItem.leftBarButtonItem?.enabled = false
+                            self.eventView?.navigationItem.rightBarButtonItem?.title = "Add Event"
+                            self.eventView?.navigationItem.rightBarButtonItem?.enabled = true
+                        } else {
+                            print("here")
+                            Config.RSVPList = user["eventRSVPs"] as? [String]
+                            self.eventView?.navigationItem.leftBarButtonItem!.title = "RSVPs"
+                            self.eventView?.navigationItem.leftBarButtonItem?.enabled = true
+                            self.eventView?.navigationItem.rightBarButtonItem?.title = ""
+                            self.eventView?.navigationItem.rightBarButtonItem?.enabled = false
+                        }
+                    }
+                    
                 } else {
                     let errorString = error!.userInfo["error"] as? NSString
                     self.responseLabel.text = errorString as? String
@@ -146,6 +165,8 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
             user.email = emailTextField.text!
             user["firstName"] = firstNameTextField.text!
             user["lastName"] = lastNameTextField.text!
+            user["isAdmin"] = false
+            user["eventRSVPs"] = [String]()
             
             user.signUpInBackgroundWithBlock {
                 (succeeded: Bool, error: NSError?) -> Void in
@@ -155,6 +176,21 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
                 } else {
                     Config.didLogIn = true
                     self.dismissViewControllerAnimated(true, completion: nil)
+                    if let user = PFUser.currentUser() {
+                        if (user["isAdmin"] as! Bool) {
+                            Config.isAdmin = true
+                            self.eventView?.navigationItem.leftBarButtonItem?.title = ""
+                            self.eventView?.navigationItem.leftBarButtonItem?.enabled = false
+                            self.eventView?.navigationItem.rightBarButtonItem?.title = "Add Event"
+                            self.eventView?.navigationItem.rightBarButtonItem?.enabled = true
+                        } else {
+                            Config.RSVPList = user["eventRSVPs"] as? [String]
+                            self.eventView?.navigationItem.leftBarButtonItem!.title = "RSVPs"
+                            self.eventView?.navigationItem.leftBarButtonItem?.enabled = true
+                            self.eventView?.navigationItem.rightBarButtonItem?.title = ""
+                            self.eventView?.navigationItem.rightBarButtonItem?.enabled = false
+                        }
+                    }
                 }
             }
         }

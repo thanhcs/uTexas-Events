@@ -15,11 +15,15 @@ class CategoryTableViewController: UITableViewController, NSFetchedResultsContro
     var searchController: UISearchController!
     var searchPredicate: NSPredicate!
     var filteredData: [Category]? = nil
+    var oldButton:UIBarButtonItem? = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         navigationItem.title = "uTexas Events"
+        
+        oldButton = self.navigationItem.rightBarButtonItem!
+        self.navigationItem.rightBarButtonItem = nil
         
         searchController = ({
             let controllerSearch = UISearchController(searchResultsController: nil)
@@ -40,6 +44,14 @@ class CategoryTableViewController: UITableViewController, NSFetchedResultsContro
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        if (!Config.isAdmin) {
+            self.navigationItem.rightBarButtonItem = nil
+        } else {
+            self.navigationItem.rightBarButtonItem = oldButton
+        }
     }
 
     // MARK: - Table view data source
@@ -82,6 +94,9 @@ class CategoryTableViewController: UITableViewController, NSFetchedResultsContro
     
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        if (!Config.isAdmin) {
+            return false
+        }
         return true
     }
     

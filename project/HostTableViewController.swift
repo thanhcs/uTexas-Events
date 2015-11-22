@@ -11,14 +11,20 @@ import CoreData
 
 class HostTableViewController: UITableViewController, NSFetchedResultsControllerDelegate, StoreCoreDataProtocol, UISearchControllerDelegate, UISearchBarDelegate, UISearchResultsUpdating  {
     
+    @IBOutlet weak var addHostButton: UIBarButtonItem!
+    
     var managedObjectContext: NSManagedObjectContext? = nil
     var searchController: UISearchController!
     var searchPredicate: NSPredicate!
     var filteredData: [Host]? = nil
+    var oldButton:UIBarButtonItem? = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "uTexas Events"
+        
+        oldButton = self.navigationItem.rightBarButtonItem!
+        self.navigationItem.rightBarButtonItem = nil
         
         searchController = ({
             let controllerSearch = UISearchController(searchResultsController: nil)
@@ -38,6 +44,14 @@ class HostTableViewController: UITableViewController, NSFetchedResultsController
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        if (!Config.isAdmin) {
+            self.navigationItem.rightBarButtonItem = nil
+        } else {
+            self.navigationItem.rightBarButtonItem = oldButton
+        }
     }
 
     // MARK: - Table view data source
@@ -81,11 +95,15 @@ class HostTableViewController: UITableViewController, NSFetchedResultsController
 
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        if (!Config.isAdmin) {
+            return false
+        }
         return true
     }
     
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        
         let context = self.fetchedResultsController.managedObjectContext
         context.deleteObject(self.fetchedResultsController.objectAtIndexPath(indexPath) as! NSManagedObject)
         do {

@@ -25,6 +25,10 @@ class EventTableViewController: UITableViewController, NSFetchedResultsControlle
 
         NSFetchedResultsController.deleteCacheWithName(nil)
         
+        self.navigationItem.rightBarButtonItem?.title = ""
+        self.navigationItem.rightBarButtonItem?.enabled = false
+        
+        
         //Deletes core data stored
         let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
         let context = appDel.managedObjectContext
@@ -168,6 +172,16 @@ class EventTableViewController: UITableViewController, NSFetchedResultsControlle
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    @IBAction func logIn_RSVP_Action(sender: AnyObject) {
+        if (Config.didLogIn) {
+            self.performSegueWithIdentifier("RSVPsListSegue", sender: self)
+            print(Config.didLogIn)
+        } else {
+            self.performSegueWithIdentifier("popoverSegue", sender: self)
+            print(Config.didLogIn)
+        }
+    }
 
     // MARK: - Table view data source
     
@@ -221,6 +235,9 @@ class EventTableViewController: UITableViewController, NSFetchedResultsControlle
 
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        if (!Config.isAdmin) {
+            return false
+        }
         return true
     }
     
@@ -421,9 +438,10 @@ class EventTableViewController: UITableViewController, NSFetchedResultsControlle
             view.managedObjectContext = managedObjectContext
             
         } else if segue.identifier == "popoverSegue" {
-            let popoverViewController = segue.destinationViewController as! LogInViewController
-            popoverViewController.modalPresentationStyle = UIModalPresentationStyle.Popover
-            popoverViewController.popoverPresentationController!.delegate = self
+            let logInView = segue.destinationViewController as! LogInViewController
+            logInView.eventView = self
+            logInView.modalPresentationStyle = UIModalPresentationStyle.Popover
+            logInView.popoverPresentationController!.delegate = self
             
         } else if (segue.identifier == "EventDetail") {
             let view = segue.destinationViewController as! EventDetailViewController

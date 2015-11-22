@@ -21,6 +21,7 @@ class EventDetailViewController: UIViewController {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var capacityLabel: UILabel!
     @IBOutlet weak var addCalendarButton: UIButton!
+    @IBOutlet weak var RSVPButton: UIButton!
     
     var event:Event? = nil
     var delegate: StoreCoreDataProtocol? = nil
@@ -40,6 +41,7 @@ class EventDetailViewController: UIViewController {
         catLabel.text = event?.category!.name
         descriptionLabel.text = event?.desc
         capacityLabel.text = String(event!.capacity!)
+        RSVPButton.hidden = true
         
         // Change the "Add to Calendar" button
         addCalendarButton.backgroundColor = UIColor.clearColor()
@@ -51,6 +53,18 @@ class EventDetailViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        if (Config.didLogIn && !Config.isAdmin) {
+            RSVPButton.hidden = false
+        } else {
+            RSVPButton.hidden = true
+        }
+    }
+    
+    @IBAction func addRSVP() {
+        Config.addEventToRSVPList(eventID: (event?.eventID)!)
     }
     
     @IBAction func saveEvent(sender: AnyObject) {

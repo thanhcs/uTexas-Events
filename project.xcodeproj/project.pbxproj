@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		B229EE551C01B76D006DFE13 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B229EE541C01B76D006DFE13 /* LogInViewController.swift */; };
 		B229EE571C01BD35006DFE13 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = B229EE561C01BD35006DFE13 /* Config.swift */; };
+		B229EE591C023765006DFE13 /* RSVPListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B229EE581C023765006DFE13 /* RSVPListTableViewController.swift */; };
 		B232C22B1BF1BE7A007DD2B0 /* README in Resources */ = {isa = PBXBuildFile; fileRef = B232C22A1BF1BE7A007DD2B0 /* README */; };
 		B23D4A141BEFFE0E00496737 /* CategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23D4A131BEFFE0E00496737 /* CategoryTableViewController.swift */; };
 		B23D4A161BF0020F00496737 /* EventsOfCategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23D4A151BF0020F00496737 /* EventsOfCategoryTableViewController.swift */; };
@@ -54,6 +55,7 @@
 /* Begin PBXFileReference section */
 		B229EE541C01B76D006DFE13 /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		B229EE561C01BD35006DFE13 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		B229EE581C023765006DFE13 /* RSVPListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSVPListTableViewController.swift; sourceTree = "<group>"; };
 		B232C22A1BF1BE7A007DD2B0 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
 		B23D4A131BEFFE0E00496737 /* CategoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryTableViewController.swift; sourceTree = "<group>"; };
 		B23D4A151BF0020F00496737 /* EventsOfCategoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsOfCategoryTableViewController.swift; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 				B247171C1BE9BDA9001D3F07 /* MainTabBarController.swift */,
 				B247171E1BE9C0B7001D3F07 /* EventTableViewController.swift */,
 				B229EE541C01B76D006DFE13 /* LogInViewController.swift */,
+				B229EE581C023765006DFE13 /* RSVPListTableViewController.swift */,
 				B247172D1BE9D623001D3F07 /* AddNewEventViewController.swift */,
 				B23D64CE1BEB75AC00AF5D51 /* EventDetailViewController.swift */,
 				B2B034871BEFB10F001B04C5 /* HostTableViewController.swift */,
@@ -279,6 +282,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B229EE591C023765006DFE13 /* RSVPListTableViewController.swift in Sources */,
 				B23D64C61BEAFDB300AF5D51 /* Event+CoreDataProperties.swift in Sources */,
 				B23D64C71BEAFDB300AF5D51 /* Event.swift in Sources */,
 				B2D5E5F91BEFC28100428843 /* EventsOfHostTableViewController.swift in Sources */,

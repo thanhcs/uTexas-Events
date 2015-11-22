@@ -297,6 +297,38 @@
             </objects>
             <point key="canvasLocation" x="2566.5" y="442.5"/>
         </scene>
+        <!--List Table View Controller-->
+        <scene sceneID="Dmm-Ra-ywb">
+            <objects>
+                <tableViewController id="8dz-JN-hkj" customClass="RSVPListTableViewController" customModule="project" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="mV6-Nz-tWh">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="EventCell" id="fpv-bT-awr" customClass="EventCell">
+                                <rect key="frame" x="0.0" y="92" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fpv-bT-awr" id="nXD-Pz-MvE">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <animations/>
+                                </tableViewCellContentView>
+                                <animations/>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="8dz-JN-hkj" id="Nod-ng-59q"/>
+                            <outlet property="delegate" destination="8dz-JN-hkj" id="tG2-h9-pdb"/>
+                        </connections>
+                    </tableView>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nmy-Ep-f71" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="631.5" y="-1280.5"/>
+        </scene>
         <!--Log In View Controller-->
         <scene sceneID="W91-z7-AvC">
             <objects>
@@ -609,9 +641,7 @@
                     <navigationItem key="navigationItem" id="ekE-g5-sWX">
                         <barButtonItem key="leftBarButtonItem" title="Log in" id="jbu-Oq-uQn">
                             <connections>
-                                <segue destination="ZmK-mp-BJd" kind="popoverPresentation" identifier="popoverSegue" popoverAnchorBarButtonItem="jbu-Oq-uQn" id="eqo-K0-oTX">
-                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                </segue>
+                                <action selector="logIn_RSVP_Action:" destination="8md-t9-RJi" id="Bs6-1G-ANP"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Add Event" id="v23-bj-w9e">
@@ -623,6 +653,10 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="searchDisplayController" destination="XzB-qY-NdM" id="uh8-ib-JAY"/>
+                        <segue destination="8dz-JN-hkj" kind="show" identifier="RSVPsListSegue" id="GWm-Qd-mmz"/>
+                        <segue destination="ZmK-mp-BJd" kind="popoverPresentation" identifier="popoverSegue" popoverAnchorBarButtonItem="jbu-Oq-uQn" id="2vD-vO-lIr">
+                            <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                        </segue>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wJG-YN-Bmz" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -636,7 +670,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="1208.5" y="-478.5"/>
+            <point key="canvasLocation" x="1171.5" y="-497.5"/>
         </scene>
         <!--Event Detail View Controller-->
         <scene sceneID="USd-1b-y1v">
@@ -777,7 +811,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h2v-gD-jTW">
-                                <rect key="frame" x="20" y="537" width="174" height="30"/>
+                                <rect key="frame" x="100" y="496" width="174" height="30"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="tintColor" red="0.062745098039215685" green="0.3843137254901961" blue="0.99607843137254903" alpha="1" colorSpace="calibratedRGB"/>
@@ -800,6 +834,14 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xfZ-PD-pLj">
+                                <rect key="frame" x="168" y="548" width="38" height="30"/>
+                                <animations/>
+                                <state key="normal" title="RSVP"/>
+                                <connections>
+                                    <action selector="addRSVP" destination="XrI-Fs-Yj7" eventType="touchUpInside" id="KF8-Ib-692"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -822,6 +864,7 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="RSVPButton" destination="xfZ-PD-pLj" id="m5a-Yy-A3N"/>
                         <outlet property="addCalendarButton" destination="h2v-gD-jTW" id="Igt-KA-BVa"/>
                         <outlet property="capacityLabel" destination="V4T-iT-y8E" id="FOQ-hh-yy2"/>
                         <outlet property="catLabel" destination="FwP-ZX-Igu" id="hMJ-4K-LHf"/>
