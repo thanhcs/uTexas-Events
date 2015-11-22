@@ -73,7 +73,7 @@ class EventTableViewController: UITableViewController, NSFetchedResultsControlle
             return controllerSearch
         })()
     
-        var query = PFQuery(className:"Events")
+        let query = PFQuery(className:"Events")
         query.findObjectsInBackgroundWithBlock {
             (objects: [PFObject]?, error: NSError?) -> Void in
             
@@ -112,16 +112,12 @@ class EventTableViewController: UITableViewController, NSFetchedResultsControlle
         
         let cat1 = NSEntityDescription.insertNewObjectForEntityForName("Category", inManagedObjectContext: managedObjectContext!) as! Category
         
-        
-        
-//        print("before 10 seconds")
-//        print(title)
-        var query = PFQuery(className: "Events")
+        let query = PFQuery(className: "Events")
         query.includeKey("host")
         query.includeKey("cat")
         query.getObjectInBackgroundWithId(object.objectId!, block: {
             (obj, error)in
-            if let event = obj! as? PFObject {
+            if let event = obj {
                 //print(event.objectForKey("host")!)
                 event1.title = (event.objectForKey("title") as? String)!
                 event1.date = (event.objectForKey("date") as? String)!
@@ -132,24 +128,19 @@ class EventTableViewController: UITableViewController, NSFetchedResultsControlle
                 event1.capacity = (event.objectForKey("capacity") as? Int)!
                 
                 let pointer = object["host"] as? PFObject
-                host1.email = pointer!["email"] as! String
-                host1.info = pointer!["info"] as! String
-                host1.name = pointer!["name"] as! String
-                //print(hname)
-//                print("host is")
-//                print(host1.name)
+                host1.email = pointer!["email"] as? String
+                host1.info = pointer!["info"] as? String
+                host1.name = pointer!["name"] as? String
                 
                 let pointer2 = object["cat"] as? PFObject
-                cat1.name = pointer2!["name"] as! String
-                
-            
-                
+                cat1.name = pointer2!["name"] as? String
+    
             } else {
                 print(error)
             }
         })
         
-        var triggerTime = (Int64(NSEC_PER_SEC) * 1)
+        let triggerTime = (Int64(NSEC_PER_SEC) * 1)
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, triggerTime), dispatch_get_main_queue(), { () -> Void in
             self.outputStuff(event1,h: host1,c: cat1)
         })
@@ -159,7 +150,9 @@ class EventTableViewController: UITableViewController, NSFetchedResultsControlle
     func outputStuff(e: Event,h: Host,c: Category) {
         
                 e.host = h
+                h.addEvent(e)
                 e.category = c
+                c.addEvent(e)
         
                 do {
                     try self.managedObjectContext!.save()
