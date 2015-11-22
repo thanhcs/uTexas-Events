@@ -118,6 +118,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
             
         } else {
             PFUser.requestPasswordResetForEmailInBackground(emailTextField.text!)
+            self.dismissViewControllerAnimated(true, completion: nil)
         }
     }
     
@@ -152,6 +153,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
                     self.responseLabel.text = errorString as? String
                 } else {
                     Config.didLogIn = true
+                    self.dismissViewControllerAnimated(true, completion: nil)
                 }
             }
         }
