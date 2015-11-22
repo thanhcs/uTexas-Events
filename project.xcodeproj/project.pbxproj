@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B229EE551C01B76D006DFE13 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B229EE541C01B76D006DFE13 /* LogInViewController.swift */; };
+		B229EE571C01BD35006DFE13 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = B229EE561C01BD35006DFE13 /* Config.swift */; };
 		B232C22B1BF1BE7A007DD2B0 /* README in Resources */ = {isa = PBXBuildFile; fileRef = B232C22A1BF1BE7A007DD2B0 /* README */; };
 		B23D4A141BEFFE0E00496737 /* CategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23D4A131BEFFE0E00496737 /* CategoryTableViewController.swift */; };
 		B23D4A161BF0020F00496737 /* EventsOfCategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23D4A151BF0020F00496737 /* EventsOfCategoryTableViewController.swift */; };
@@ -52,6 +53,7 @@
 
 /* Begin PBXFileReference section */
 		B229EE541C01B76D006DFE13 /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
+		B229EE561C01BD35006DFE13 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		B232C22A1BF1BE7A007DD2B0 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
 		B23D4A131BEFFE0E00496737 /* CategoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryTableViewController.swift; sourceTree = "<group>"; };
 		B23D4A151BF0020F00496737 /* EventsOfCategoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsOfCategoryTableViewController.swift; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 				B24717161BE9BAC2001D3F07 /* Info.plist */,
 				B247170E1BE9BAC2001D3F07 /* project.xcdatamodeld */,
 				B23D64C81BEAFEAF00AF5D51 /* StoreCoreDataProtocol.swift */,
+				B229EE561C01BD35006DFE13 /* Config.swift */,
 			);
 			path = project;
 			sourceTree = "<group>";
@@ -291,6 +294,7 @@
 				B24717081BE9BAC2001D3F07 /* AppDelegate.swift in Sources */,
 				B2D5E5F71BEFC06E00428843 /* HostDetailViewController.swift in Sources */,
 				B24717291BE9C393001D3F07 /* Host.swift in Sources */,
+				B229EE571C01BD35006DFE13 /* Config.swift in Sources */,
 				B2B034881BEFB10F001B04C5 /* HostTableViewController.swift in Sources */,
 				B24717281BE9C393001D3F07 /* Host+CoreDataProperties.swift in Sources */,
 				B229EE551C01B76D006DFE13 /* LogInViewController.swift in Sources */,

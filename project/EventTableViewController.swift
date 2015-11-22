@@ -11,6 +11,7 @@ import CoreData
 import Parse
 
 class EventTableViewController: UITableViewController, NSFetchedResultsControllerDelegate, StoreCoreDataProtocol, UISearchControllerDelegate, UISearchBarDelegate, UISearchResultsUpdating, UIPopoverPresentationControllerDelegate {
+    @IBOutlet weak var logInButton: UIBarButtonItem!
     
     var managedObjectContext: NSManagedObjectContext? = nil
     var searchController: UISearchController!
@@ -100,6 +101,10 @@ class EventTableViewController: UITableViewController, NSFetchedResultsControlle
         searchPredicate = nil
         filteredData = nil
         self.tableView.reloadData()
+        
+        if (Config.didLogIn) {
+            self.navigationItem.set
+        }
     }
     
     
@@ -325,15 +330,15 @@ class EventTableViewController: UITableViewController, NSFetchedResultsControlle
         
                 //add to server
 
-                var Host1 = PFObject(className:"Hosts")
+                let Host1 = PFObject(className:"Hosts")
                 Host1["name"] = host.name
                 Host1["info"] = host.info
                 Host1["email"] = host.email
         
-                var Cat1 = PFObject(className:"Categories")
+                let Cat1 = PFObject(className:"Categories")
                 Cat1["name"] = cat.name
         
-                var Event1 = PFObject(className:"Events")
+                let Event1 = PFObject(className:"Events")
                 Event1["title"] = data["title"]
                 Event1["date"] = data["date"]
                 Event1["from"] = data["from"]
