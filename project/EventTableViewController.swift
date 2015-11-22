@@ -127,6 +127,8 @@ class EventTableViewController: UITableViewController, NSFetchedResultsControlle
                 event1.location = (event.objectForKey("location") as? String)!
                 event1.desc = (event.objectForKey("desc") as? String)!
                 event1.capacity = (event.objectForKey("capacity") as? Int)!
+                event1.eventID = event.objectId
+//                print(event1.eventID)
                 
                 let pointer = object["host"] as? PFObject
                 host1.email = pointer!["email"] as? String

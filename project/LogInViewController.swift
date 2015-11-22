@@ -76,6 +76,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
                 if user != nil {
                     Config.didLogIn = true
                     self.dismissViewControllerAnimated(true, completion: nil)
+                    print(PFUser.currentUser()?.email)
                 } else {
                     let errorString = error!.userInfo["error"] as? NSString
                     self.responseLabel.text = errorString as? String

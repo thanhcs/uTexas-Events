@@ -335,17 +335,17 @@
                                         <animations/>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="v0x-f9-CWD">
-                                        <rect key="frame" x="0.0" y="34" width="268" height="24"/>
+                                        <rect key="frame" x="0.0" y="34" width="268" height="23.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vbk-Dy-v20">
-                                                <rect key="frame" x="0.0" y="0.0" width="83" height="24"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="83" height="23.5"/>
                                                 <animations/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DSs-Ol-XG1">
-                                                <rect key="frame" x="93" y="0.0" width="175" height="24"/>
+                                                <rect key="frame" x="93" y="0.0" width="175" height="23.5"/>
                                                 <animations/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="175" id="hl3-8q-Rfj"/>
@@ -357,7 +357,7 @@
                                         <animations/>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="0hk-M8-1Po">
-                                        <rect key="frame" x="0.0" y="68" width="268" height="24"/>
+                                        <rect key="frame" x="0.0" y="67" width="268" height="24"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yUN-oy-IfT">
                                                 <rect key="frame" x="0.0" y="0.0" width="83" height="24"/>
@@ -379,17 +379,17 @@
                                         <animations/>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="JsB-Za-25P">
-                                        <rect key="frame" x="0.0" y="102" width="268" height="24"/>
+                                        <rect key="frame" x="0.0" y="101" width="268" height="23.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JLJ-Sx-Bra">
-                                                <rect key="frame" x="0.0" y="0.0" width="83" height="24"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="83" height="23.5"/>
                                                 <animations/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Tpw-De-PP2">
-                                                <rect key="frame" x="93" y="0.0" width="175" height="24"/>
+                                                <rect key="frame" x="93" y="0.0" width="175" height="23.5"/>
                                                 <animations/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="175" id="xOM-Ct-LbZ"/>
@@ -406,14 +406,14 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="74K-WW-kAk">
                                         <rect key="frame" x="0.0" y="135" width="268" height="24"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2wU-hP-Her">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2wU-hP-Her">
                                                 <rect key="frame" x="0.0" y="0.0" width="83" height="24"/>
                                                 <animations/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8CR-1f-bGZ">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8CR-1f-bGZ">
                                                 <rect key="frame" x="93" y="0.0" width="175" height="24"/>
                                                 <animations/>
                                                 <constraints>
@@ -426,16 +426,16 @@
                                         <animations/>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3KM-Sn-hU7">
-                                        <rect key="frame" x="0.0" y="169" width="268" height="24"/>
+                                        <rect key="frame" x="0.0" y="169" width="268" height="23.5"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="saG-12-Y78">
-                                        <rect key="frame" x="0.0" y="203" width="268" height="24"/>
+                                        <rect key="frame" x="0.0" y="202" width="268" height="24"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="smG-uM-jfx">
+                                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="60" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="smG-uM-jfx">
                                                 <rect key="frame" x="0.0" y="0.0" width="67" height="24"/>
                                                 <animations/>
                                                 <state key="normal" title="Log in"/>
@@ -471,10 +471,10 @@
                                         <animations/>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="21O-bx-r0M">
-                                        <rect key="frame" x="0.0" y="237" width="268" height="24"/>
+                                        <rect key="frame" x="0.0" y="236" width="268" height="23.5"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dM0-9A-gD8">
-                                                <rect key="frame" x="0.0" y="0.0" width="57" height="24"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="57" height="23.5"/>
                                                 <animations/>
                                                 <state key="normal" title="Register"/>
                                                 <connections>
@@ -482,7 +482,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WOr-Oh-EgE">
-                                                <rect key="frame" x="145" y="0.0" width="123" height="24"/>
+                                                <rect key="frame" x="145" y="0.0" width="123" height="23.5"/>
                                                 <animations/>
                                                 <state key="normal" title="Forgot password?"/>
                                                 <connections>

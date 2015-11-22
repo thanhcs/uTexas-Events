@@ -24,7 +24,7 @@
     </entity>
     <elements>
         <element name="Category" positionX="-63" positionY="-18" width="128" height="75"/>
-        <element name="Event" positionX="115" positionY="57" width="128" height="193"/>
+        <element name="Event" positionX="115" positionY="57" width="128" height="195"/>
         <element name="Host" positionX="250" positionY="-117" width="128" height="103"/>
     </elements>
 </model>
