@@ -113,9 +113,7 @@ class EventTableViewController: UITableViewController, NSFetchedResultsControlle
         let cat1 = NSEntityDescription.insertNewObjectForEntityForName("Category", inManagedObjectContext: managedObjectContext!) as! Category
         
         
-        
-//        print("before 10 seconds")
-//        print(title)
+
         var query = PFQuery(className: "Events")
         query.includeKey("host")
         query.includeKey("cat")
@@ -135,9 +133,7 @@ class EventTableViewController: UITableViewController, NSFetchedResultsControlle
                 host1.email = pointer!["email"] as! String
                 host1.info = pointer!["info"] as! String
                 host1.name = pointer!["name"] as! String
-                //print(hname)
-//                print("host is")
-//                print(host1.name)
+
                 
                 let pointer2 = object["cat"] as? PFObject
                 cat1.name = pointer2!["name"] as! String
@@ -323,14 +319,48 @@ class EventTableViewController: UITableViewController, NSFetchedResultsControlle
         event.date = data["date"]
         event.from = data["from"]
         event.to = data["to"]
-        event.location = data["title"]
+        event.location = data["location"]
         event.desc = data["description"]
         event.capacity = Int(data["capacity"]!)
         event.host = host
         event.category = cat
         
+        
+                //add to server
+
+                var Host1 = PFObject(className:"Hosts")
+                Host1["name"] = host.name
+                Host1["info"] = host.info
+                Host1["email"] = host.email
+        
+                var Cat1 = PFObject(className:"Categories")
+                Cat1["name"] = cat.name
+        
+                var Event1 = PFObject(className:"Events")
+                Event1["title"] = data["title"]
+                Event1["date"] = data["date"]
+                Event1["from"] = data["from"]
+                Event1["to"] = data["to"]
+                Event1["host"] = Host1
+                Event1["cat"] = Cat1
+                Event1["location"] = data["location"]
+                Event1["desc"] = data["description"]
+                Event1["capacity"] = Int(data["capacity"]!)
+                Event1.saveInBackgroundWithBlock {
+                    (success: Bool, error: NSError?) -> Void in
+                    if (success) {
+                        print("object has been saved")
+                    } else {
+                        print("error")
+                    }
+                }
+
+        
         // add event to host and category
+        
+        //host
         host.addEvent(event)
+        //cat
         cat.addEvent(event)
         
         do {

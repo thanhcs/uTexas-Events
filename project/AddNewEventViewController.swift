@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import Parse
 
 class AddNewEventViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     
@@ -92,8 +93,15 @@ class AddNewEventViewController: UIViewController, UITextFieldDelegate, UIPicker
             let data: Dictionary<String, String> = ["title": titleTextField.text!, "date": date, "from": from, "to": to, "location": locationTextField.text!, "host": hostTextField.text!, "category": catTextField.text!, "description": descriptionTextField.text!, "capacity": capacityTextField.text!]
             self.delegate?.saveCoreData(data)
             print(data["from"])
+            
             navigationController?.popViewControllerAnimated(false)
         }
+        
+        
+        
+        
+        
+        
     }
     
     // dismiss the keyboard when touching anywhere
