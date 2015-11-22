@@ -22,8 +22,7 @@ class EventTableViewController: UITableViewController, NSFetchedResultsControlle
         super.viewDidLoad()
         navigationItem.title = "uTexas Events"
         definesPresentationContext = true
-        // add test data
-        //addData()
+
         NSFetchedResultsController.deleteCacheWithName(nil)
         
         //Deletes core data stored
@@ -73,40 +72,7 @@ class EventTableViewController: UITableViewController, NSFetchedResultsControlle
             self.tableView.tableHeaderView = controllerSearch.searchBar
             return controllerSearch
         })()
-        
-        
-
-        
-         //saves test data to server
-        
-//        var Host = PFObject(className:"Hosts")
-//        Host["name"] = "ServerMutualMobile"
-//        Host["info"] = ""
-//        Host["email"] = "thanhnguyencs@utexas.edu"
-//
-//        var Cat = PFObject(className:"Categories")
-//        Cat["name"] = "Android"
-//
-//        var Event = PFObject(className:"Events")
-//        Event["title"] = "ServerSample1"
-//        Event["date"] = "11-15-2015"
-//        Event["from"] = "4:30 PM"
-//        Event["to"] = "5:00 PM"
-//        Event["host"] = Host
-//        Event["cat"] = Cat
-//        Event["location"] = "GDC 1.304"
-//        Event["desc"] = "Testing of Server"
-//        Event["capacity"] = 20
-//        Event.saveInBackgroundWithBlock {
-//            (success: Bool, error: NSError?) -> Void in
-//            if (success) {
-//                print("object has been saved")
-//            } else {
-//                print("error")
-//            }
-//        }
-        
-        
+    
         var query = PFQuery(className:"Events")
         query.findObjectsInBackgroundWithBlock {
             (objects: [PFObject]?, error: NSError?) -> Void in
@@ -200,73 +166,6 @@ class EventTableViewController: UITableViewController, NSFetchedResultsControlle
                 } catch {
                     fatalError("Failure to save context: \(error)")
                 }
-    }
-    
-    private func addData() {
-        
-        let host = NSEntityDescription.insertNewObjectForEntityForName("Host", inManagedObjectContext: managedObjectContext!) as! Host
-        host.name = "MutualMobile"
-        host.info = ""
-        host.email = "thanhnguyencs@utexas.edu"
-        
-        // add host
-        let host1 = NSEntityDescription.insertNewObjectForEntityForName("Host", inManagedObjectContext: managedObjectContext!) as! Host
-        host1.name = "Visa"
-        host1.info = ""
-        host1.email = "thanhnguyencs@utexas.edu"
-        
-        // add category
-        // add host
-        let cat = NSEntityDescription.insertNewObjectForEntityForName("Category", inManagedObjectContext: managedObjectContext!) as! Category
-        cat.name = "Android"
-        
-        do {
-            try managedObjectContext!.save()
-        } catch {
-            fatalError("Failure to save context: \(error)")
-        }
-        
-        // add Event
-        let event = NSEntityDescription.insertNewObjectForEntityForName("Event", inManagedObjectContext: managedObjectContext!) as! Event
-        event.title = "Sample1"
-        event.date = "11-15-2015"
-        event.from = "4:30 PM"
-        event.to = "5:00 PM"
-        event.host = host
-        event.category = cat
-        event.location = "GDC 1.304"
-        event.desc = "abc"
-        event.capacity = 20
-        
-        // add Event
-        let event1 = NSEntityDescription.insertNewObjectForEntityForName("Event", inManagedObjectContext: managedObjectContext!) as! Event
-        event1.title = "Sample2"
-        event1.date = "11-16-2015"
-        event1.from = "8:30 AM"
-        event1.to = "10:00 AM"
-        event1.host = host1
-        event1.category = cat
-        event1.location = "GDC 1.304"
-        event1.desc = "abc"
-        event1.capacity = 20
-        
-        // add Event
-        let event2 = NSEntityDescription.insertNewObjectForEntityForName("Event", inManagedObjectContext: managedObjectContext!) as! Event
-        event2.title = "Sample3"
-        event2.date = "11-16-2015"
-        event2.from = "8:30 AM"
-        event2.to = "10:00 AM"
-        event2.host = host1
-        event2.category = cat
-        event2.location = "GDC 1.304"
-        event2.desc = "abc"
-        event2.capacity = 20
-        
-        do {
-            try managedObjectContext!.save()
-        } catch {
-            fatalError("Failure to save context: \(error)")
-        }
     }
 
     override func didReceiveMemoryWarning() {
