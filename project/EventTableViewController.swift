@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import Parse
 
 class EventTableViewController: UITableViewController, NSFetchedResultsControllerDelegate, StoreCoreDataProtocol, UISearchControllerDelegate, UISearchBarDelegate, UISearchResultsUpdating {
     
@@ -25,6 +26,39 @@ class EventTableViewController: UITableViewController, NSFetchedResultsControlle
         //addData()
         NSFetchedResultsController.deleteCacheWithName(nil)
         
+        //Deletes core data stored
+        let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context = appDel.managedObjectContext
+        let coord = appDel.persistentStoreCoordinator
+        
+        var fetchRequest = NSFetchRequest(entityName: "Event")
+        var deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        
+        do {
+            try coord.executeRequest(deleteRequest, withContext: context)
+        } catch let error as NSError {
+            debugPrint(error)
+        }
+        
+        fetchRequest = NSFetchRequest(entityName: "Host")
+        deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        
+        do {
+            try coord.executeRequest(deleteRequest, withContext: context)
+        } catch let error as NSError {
+            debugPrint(error)
+        }
+        
+        fetchRequest = NSFetchRequest(entityName: "Category")
+        deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        
+        do {
+            try coord.executeRequest(deleteRequest, withContext: context)
+        } catch let error as NSError {
+            debugPrint(error)
+        }
+        
+        
         // Configure the Search Controller
         searchController = ({
             let controllerSearch = UISearchController(searchResultsController: nil)
@@ -41,6 +75,57 @@ class EventTableViewController: UITableViewController, NSFetchedResultsControlle
         })()
         
         
+
+        
+         //saves test data to server
+        
+//        var Host = PFObject(className:"Hosts")
+//        Host["name"] = "ServerMutualMobile"
+//        Host["info"] = ""
+//        Host["email"] = "thanhnguyencs@utexas.edu"
+//
+//        var Cat = PFObject(className:"Categories")
+//        Cat["name"] = "Android"
+//
+//        var Event = PFObject(className:"Events")
+//        Event["title"] = "ServerSample1"
+//        Event["date"] = "11-15-2015"
+//        Event["from"] = "4:30 PM"
+//        Event["to"] = "5:00 PM"
+//        Event["host"] = Host
+//        Event["cat"] = Cat
+//        Event["location"] = "GDC 1.304"
+//        Event["desc"] = "Testing of Server"
+//        Event["capacity"] = 20
+//        Event.saveInBackgroundWithBlock {
+//            (success: Bool, error: NSError?) -> Void in
+//            if (success) {
+//                print("object has been saved")
+//            } else {
+//                print("error")
+//            }
+//        }
+        
+        
+        var query = PFQuery(className:"Events")
+        query.findObjectsInBackgroundWithBlock {
+            (objects: [PFObject]?, error: NSError?) -> Void in
+            
+            if error == nil {
+                // The find succeeded.
+                print("Successfully retrieved \(objects!.count) Events.")
+                // Do something with the found objects
+                if let objects = objects! as [PFObject]? {
+                    for object in objects {
+                        //print(object.objectId!)
+                        self.addObject(object)
+                    }
+                }
+            } else {
+                // Log details of the failure
+                print("Error: \(error!) \(error!.userInfo)")
+            }
+        }
         
     }
     
@@ -51,7 +136,74 @@ class EventTableViewController: UITableViewController, NSFetchedResultsControlle
         self.tableView.reloadData()
     }
     
+    
+    func addObject(object: PFObject) {
+        
+        
+        let event1 = NSEntityDescription.insertNewObjectForEntityForName("Event", inManagedObjectContext: managedObjectContext!) as! Event
+        
+        let host1 = NSEntityDescription.insertNewObjectForEntityForName("Host", inManagedObjectContext: managedObjectContext!) as! Host
+        
+        let cat1 = NSEntityDescription.insertNewObjectForEntityForName("Category", inManagedObjectContext: managedObjectContext!) as! Category
+        
+        
+        
+//        print("before 10 seconds")
+//        print(title)
+        var query = PFQuery(className: "Events")
+        query.includeKey("host")
+        query.includeKey("cat")
+        query.getObjectInBackgroundWithId(object.objectId!, block: {
+            (obj, error)in
+            if let event = obj! as? PFObject {
+                //print(event.objectForKey("host")!)
+                event1.title = (event.objectForKey("title") as? String)!
+                event1.date = (event.objectForKey("date") as? String)!
+                event1.from = (event.objectForKey("from") as? String)!
+                event1.to = (event.objectForKey("to") as? String)!
+                event1.location = (event.objectForKey("location") as? String)!
+                event1.desc = (event.objectForKey("desc") as? String)!
+                event1.capacity = (event.objectForKey("capacity") as? Int)!
+                
+                let pointer = object["host"] as? PFObject
+                host1.email = pointer!["email"] as! String
+                host1.info = pointer!["info"] as! String
+                host1.name = pointer!["name"] as! String
+                //print(hname)
+//                print("host is")
+//                print(host1.name)
+                
+                let pointer2 = object["cat"] as? PFObject
+                cat1.name = pointer2!["name"] as! String
+                
+            
+                
+            } else {
+                print(error)
+            }
+        })
+        
+        var triggerTime = (Int64(NSEC_PER_SEC) * 1)
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, triggerTime), dispatch_get_main_queue(), { () -> Void in
+            self.outputStuff(event1,h: host1,c: cat1)
+        })
+        
+    }
+    
+    func outputStuff(e: Event,h: Host,c: Category) {
+        
+                e.host = h
+                e.category = c
+        
+                do {
+                    try self.managedObjectContext!.save()
+                } catch {
+                    fatalError("Failure to save context: \(error)")
+                }
+    }
+    
     private func addData() {
+        
         let host = NSEntityDescription.insertNewObjectForEntityForName("Host", inManagedObjectContext: managedObjectContext!) as! Host
         host.name = "MutualMobile"
         host.info = ""
@@ -158,7 +310,7 @@ class EventTableViewController: UITableViewController, NSFetchedResultsControlle
     func configureCell(cell: UITableViewCell, atIndexPath indexPath: NSIndexPath) {
         let event = self.fetchedResultsController.objectAtIndexPath(indexPath) as! Event
         cell.textLabel!.text = event.title
-        cell.detailTextLabel!.text = event.host!.name
+        cell.detailTextLabel!.text = event.host?.name
     }
     
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {

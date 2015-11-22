@@ -8,6 +8,8 @@
 
 import UIKit
 import CoreData
+import Parse
+import Bolts
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -30,6 +32,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let catNav = tabBarController.viewControllers![2] as! UINavigationController
         let catView = catNav.viewControllers[0] as! CategoryTableViewController
         catView.managedObjectContext = self.managedObjectContext
+        
+        // [Optional] Power your app with Local Datastore. For more info, go to
+        // https://parse.com/docs/ios_guide#localdatastore/iOS
+        Parse.enableLocalDatastore()
+        
+        // Initialize Parse.
+        Parse.setApplicationId("vFys7oQyPdCuOW8OwGeMnisbOG9TfDD8TLggOkl8",
+            clientKey: "fiZ2w9ebE6h5xU4YMe8RXf0RCVEByAjo4etEaPXo")
+        
+        // [Optional] Track statistics around application opens.
+        PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
+        
+        
+        
+        
         return true
     }
 
