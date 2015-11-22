@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 import Parse
 
-class EventTableViewController: UITableViewController, NSFetchedResultsControllerDelegate, StoreCoreDataProtocol, UISearchControllerDelegate, UISearchBarDelegate, UISearchResultsUpdating {
+class EventTableViewController: UITableViewController, NSFetchedResultsControllerDelegate, StoreCoreDataProtocol, UISearchControllerDelegate, UISearchBarDelegate, UISearchResultsUpdating, UIPopoverPresentationControllerDelegate {
     
     var managedObjectContext: NSManagedObjectContext? = nil
     var searchController: UISearchController!
@@ -382,8 +382,13 @@ class EventTableViewController: UITableViewController, NSFetchedResultsControlle
             let view = segue.destinationViewController as! AddNewEventViewController
             view.delegate = self
             view.managedObjectContext = managedObjectContext
-        }
-        if (segue.identifier == "EventDetail") {
+            
+        } else if segue.identifier == "popoverSegue" {
+            let popoverViewController = segue.destinationViewController as! LogInViewController
+            popoverViewController.modalPresentationStyle = UIModalPresentationStyle.Popover
+            popoverViewController.popoverPresentationController!.delegate = self
+            
+        } else if (segue.identifier == "EventDetail") {
             let view = segue.destinationViewController as! EventDetailViewController
             let index = self.tableView.indexPathForSelectedRow!
             print(index)
@@ -400,6 +405,10 @@ class EventTableViewController: UITableViewController, NSFetchedResultsControlle
         let backItem = UIBarButtonItem()
         backItem.title = "Back"
         navigationItem.backBarButtonItem = backItem
+    }
+    
+    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .None
     }
     
     // Search functions
