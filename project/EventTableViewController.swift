@@ -40,6 +40,11 @@ class EventTableViewController: UITableViewController, NSFetchedResultsControlle
                 self.navigationItem.rightBarButtonItem?.title = "Add Event"
                 self.navigationItem.rightBarButtonItem?.enabled = true
             } else {
+                self.navigationItem.leftBarButtonItem!.title = "RSVPs"
+                self.navigationItem.leftBarButtonItem!.tintColor = UIColor.darkGrayColor()
+                self.navigationItem.leftBarButtonItem?.enabled = false
+                self.navigationItem.rightBarButtonItem?.title = ""
+                self.navigationItem.rightBarButtonItem?.enabled = false
                 let triggerTime = (Int64(NSEC_PER_SEC) * 2)
                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, triggerTime), dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0), { () -> Void in
                     do {
@@ -51,9 +56,10 @@ class EventTableViewController: UITableViewController, NSFetchedResultsControlle
                     Config.RSVPList = currentUser!["eventRSVPs"] as? [String]
                     print(Config.RSVPList)
                     self.navigationItem.leftBarButtonItem!.title = "RSVPs"
+                    dispatch_async(dispatch_get_main_queue()) {
+                        self.navigationItem.leftBarButtonItem!.tintColor = UIColor.blueColor()
+                    }
                     self.navigationItem.leftBarButtonItem?.enabled = true
-                    self.navigationItem.rightBarButtonItem?.title = ""
-                    self.navigationItem.rightBarButtonItem?.enabled = false
                 })
             }
         }
@@ -501,7 +507,6 @@ class EventTableViewController: UITableViewController, NSFetchedResultsControlle
             } else {
             view.event = filteredData?[index.row]
             }
-            print("here")
             view.delegate = self
             //searchController.active = false
         }

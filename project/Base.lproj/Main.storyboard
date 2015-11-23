@@ -316,6 +316,9 @@
                                     <animations/>
                                 </tableViewCellContentView>
                                 <animations/>
+                                <connections>
+                                    <segue destination="XrI-Fs-Yj7" kind="show" identifier="RSVPToEvent" id="wAx-K0-uri"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -1334,6 +1337,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="1ia-us-ag0"/>
+        <segue reference="wAx-K0-uri"/>
     </inferredMetricsTieBreakers>
 </document>

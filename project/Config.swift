@@ -29,4 +29,8 @@ class Config {
         user["eventRSVPs"] = RSVPList
         user.saveInBackground()
     }
+    
+    class func isRSVPed(eventid: String) -> Bool {
+        return (RSVPList?.contains(eventid))!
+    }
 }

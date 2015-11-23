@@ -50,22 +50,21 @@ class RSVPListTableViewController: UITableViewController, NSFetchedResultsContro
     
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return true
+        return false
     }
     
     // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        let context = self.fetchedResultsController.managedObjectContext
-        context.deleteObject(self.fetchedResultsController.objectAtIndexPath(indexPath) as! NSManagedObject)
-        do {
-            try context.save()
-        } catch {
-            // Replace this implementation with code to handle the error appropriately.
-            // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-            //print("Unresolved error \(error), \(error.userInfo)")
-            abort()
-        }
-    }
+//    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+//        
+//        let event = self.fetchedResultsController.objectAtIndexPath(indexPath) as! Event
+//        let id = event.eventID!
+//        Config.delEventToRSVPList(eventID: id)
+//        print(Config.RSVPList)
+//        
+//        dispatch_async(dispatch_get_main_queue()) {
+//            self.tableView.reloadData()
+//        }
+//    }
     
     var fetchedResultsController: NSFetchedResultsController {
         if _fetchedResultsController != nil {
@@ -140,14 +139,19 @@ class RSVPListTableViewController: UITableViewController, NSFetchedResultsContro
         self.tableView.endUpdates()
     }
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "RSVPToEvent" {
+            let view = segue.destinationViewController as! EventDetailViewController
+            let index = self.tableView.indexPathForSelectedRow!
+            view.event = self.fetchedResultsController.objectAtIndexPath(index) as? Event
+        }
+        // Set up the back button
+        let backItem = UIBarButtonItem()
+        backItem.title = "Back"
+        navigationItem.backBarButtonItem = backItem
     }
-    */
 
 }
