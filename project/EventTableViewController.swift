@@ -28,6 +28,35 @@ class EventTableViewController: UITableViewController, NSFetchedResultsControlle
         self.navigationItem.rightBarButtonItem?.title = ""
         self.navigationItem.rightBarButtonItem?.enabled = false
         
+        // Keep log in old account
+        let currentUser = PFUser.currentUser()
+        if currentUser != nil {
+            Config.didLogIn = true
+            if (currentUser!["isAdmin"] as! Bool) {
+                Config.isAdmin = true
+                print("Admin")
+                self.navigationItem.leftBarButtonItem?.title = "Log out"
+                self.navigationItem.leftBarButtonItem?.enabled = true
+                self.navigationItem.rightBarButtonItem?.title = "Add Event"
+                self.navigationItem.rightBarButtonItem?.enabled = true
+            } else {
+                let triggerTime = (Int64(NSEC_PER_SEC) * 2)
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, triggerTime), dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0), { () -> Void in
+                    do {
+                        try currentUser?.fetch()
+                    } catch _ {
+                        print ("can't refrest user's data")
+                        self.logout()
+                    }
+                    Config.RSVPList = currentUser!["eventRSVPs"] as? [String]
+                    print(Config.RSVPList)
+                    self.navigationItem.leftBarButtonItem!.title = "RSVPs"
+                    self.navigationItem.leftBarButtonItem?.enabled = true
+                    self.navigationItem.rightBarButtonItem?.title = ""
+                    self.navigationItem.rightBarButtonItem?.enabled = false
+                })
+            }
+        }
         
         //Deletes core data stored
         let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
@@ -109,8 +138,6 @@ class EventTableViewController: UITableViewController, NSFetchedResultsControlle
     
     
     func addObject(object: PFObject) {
-        
-        
         let event1 = NSEntityDescription.insertNewObjectForEntityForName("Event", inManagedObjectContext: managedObjectContext!) as! Event
         
         let host1 = NSEntityDescription.insertNewObjectForEntityForName("Host", inManagedObjectContext: managedObjectContext!) as! Host
@@ -156,16 +183,16 @@ class EventTableViewController: UITableViewController, NSFetchedResultsControlle
     
     func outputStuff(e: Event,h: Host,c: Category) {
         
-                e.host = h
-                h.addEvent(e)
-                e.category = c
-                c.addEvent(e)
-        
-                do {
-                    try self.managedObjectContext!.save()
-                } catch {
-                    fatalError("Failure to save context: \(error)")
-                }
+        e.host = h
+        h.addEvent(e)
+        e.category = c
+        c.addEvent(e)
+
+        do {
+            try self.managedObjectContext!.save()
+        } catch {
+            fatalError("Failure to save context: \(error)")
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -175,12 +202,34 @@ class EventTableViewController: UITableViewController, NSFetchedResultsControlle
     
     @IBAction func logIn_RSVP_Action(sender: AnyObject) {
         if (Config.didLogIn) {
-            self.performSegueWithIdentifier("RSVPsListSegue", sender: self)
-            print(Config.didLogIn)
+            if (Config.isAdmin) {
+                logout()
+            } else {
+                self.performSegueWithIdentifier("RSVPsListSegue", sender: self)
+            }
         } else {
             self.performSegueWithIdentifier("popoverSegue", sender: self)
-            print(Config.didLogIn)
         }
+    }
+    
+    @IBAction func logout_AddEvent_Action(sender: AnyObject) {
+        if (Config.didLogIn && !Config.isAdmin) {
+            logout()
+        } else {
+            self.performSegueWithIdentifier("AddEvent", sender: self)
+        }
+    }
+    
+    func logout() {
+        PFUser.logOut()
+        Config.RSVPList = nil
+        Config.isAdmin = false
+        Config.didLogIn = false
+        
+        self.navigationItem.leftBarButtonItem!.title = "Log in"
+        self.navigationItem.leftBarButtonItem?.enabled = true
+        self.navigationItem.rightBarButtonItem?.title = ""
+        self.navigationItem.rightBarButtonItem?.enabled = false
     }
 
     // MARK: - Table view data source

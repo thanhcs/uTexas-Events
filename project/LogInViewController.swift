@@ -82,8 +82,8 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
                         if (user["isAdmin"] as! Bool) {
                             Config.isAdmin = true
                             print("Admin")
-                            self.eventView?.navigationItem.leftBarButtonItem?.title = ""
-                            self.eventView?.navigationItem.leftBarButtonItem?.enabled = false
+                            self.eventView?.navigationItem.leftBarButtonItem?.title = "Log out"
+                            self.eventView?.navigationItem.leftBarButtonItem?.enabled = true
                             self.eventView?.navigationItem.rightBarButtonItem?.title = "Add Event"
                             self.eventView?.navigationItem.rightBarButtonItem?.enabled = true
                         } else {
@@ -91,8 +91,8 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
                             Config.RSVPList = user["eventRSVPs"] as? [String]
                             self.eventView?.navigationItem.leftBarButtonItem!.title = "RSVPs"
                             self.eventView?.navigationItem.leftBarButtonItem?.enabled = true
-                            self.eventView?.navigationItem.rightBarButtonItem?.title = ""
-                            self.eventView?.navigationItem.rightBarButtonItem?.enabled = false
+                            self.eventView?.navigationItem.rightBarButtonItem?.title = "Log out"
+                            self.eventView?.navigationItem.rightBarButtonItem?.enabled = true
                         }
                     }
                     
@@ -176,21 +176,12 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
                 } else {
                     Config.didLogIn = true
                     self.dismissViewControllerAnimated(true, completion: nil)
-                    if let user = PFUser.currentUser() {
-                        if (user["isAdmin"] as! Bool) {
-                            Config.isAdmin = true
-                            self.eventView?.navigationItem.leftBarButtonItem?.title = ""
-                            self.eventView?.navigationItem.leftBarButtonItem?.enabled = false
-                            self.eventView?.navigationItem.rightBarButtonItem?.title = "Add Event"
-                            self.eventView?.navigationItem.rightBarButtonItem?.enabled = true
-                        } else {
-                            Config.RSVPList = user["eventRSVPs"] as? [String]
-                            self.eventView?.navigationItem.leftBarButtonItem!.title = "RSVPs"
-                            self.eventView?.navigationItem.leftBarButtonItem?.enabled = true
-                            self.eventView?.navigationItem.rightBarButtonItem?.title = ""
-                            self.eventView?.navigationItem.rightBarButtonItem?.enabled = false
-                        }
-                    }
+                
+                    Config.RSVPList = user["eventRSVPs"] as? [String]
+                    self.eventView?.navigationItem.leftBarButtonItem!.title = "RSVPs"
+                    self.eventView?.navigationItem.leftBarButtonItem?.enabled = true
+                    self.eventView?.navigationItem.rightBarButtonItem?.title = "Log out"
+                    self.eventView?.navigationItem.rightBarButtonItem?.enabled = true
                 }
             }
         }

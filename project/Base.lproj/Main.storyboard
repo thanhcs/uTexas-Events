@@ -307,7 +307,7 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="EventCell" id="fpv-bT-awr" customClass="EventCell">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="EventCell" id="fpv-bT-awr">
                                 <rect key="frame" x="0.0" y="92" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fpv-bT-awr" id="nXD-Pz-MvE">
@@ -323,6 +323,10 @@
                             <outlet property="delegate" destination="8dz-JN-hkj" id="tG2-h9-pdb"/>
                         </connections>
                     </tableView>
+                    <toolbarItems>
+                        <barButtonItem title="Item" id="93H-bl-rbM"/>
+                    </toolbarItems>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nmy-Ep-f71" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -646,7 +650,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Add Event" id="v23-bj-w9e">
                             <connections>
-                                <segue destination="dsp-Nl-Xwd" kind="show" identifier="AddEvent" id="hBv-TA-Ftv"/>
+                                <action selector="logout_AddEvent_Action:" destination="8md-t9-RJi" id="G8v-bs-0FS"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -657,6 +661,7 @@
                         <segue destination="ZmK-mp-BJd" kind="popoverPresentation" identifier="popoverSegue" popoverAnchorBarButtonItem="jbu-Oq-uQn" id="2vD-vO-lIr">
                             <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                         </segue>
+                        <segue destination="dsp-Nl-Xwd" kind="show" identifier="AddEvent" id="esm-ND-D7y"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wJG-YN-Bmz" userLabel="First Responder" sceneMemberID="firstResponder"/>
