@@ -57,7 +57,7 @@ class EventDetailViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         dispatch_async(dispatch_get_main_queue()) {
-            if (Config.didLogIn && !Config.isRSVPed((self.event?.eventID)!) && !Config.isAdmin) {
+            if (Config.didLogIn && !Config.isAdmin && !Config.isRSVPed((self.event?.eventID)!)) {
                 self.RSVPButton.hidden = false
             } else {
                 self.RSVPButton.hidden = true
