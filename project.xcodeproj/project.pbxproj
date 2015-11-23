@@ -30,6 +30,7 @@
 		B247172A1BE9C393001D3F07 /* Category+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B24717241BE9C393001D3F07 /* Category+CoreDataProperties.swift */; };
 		B247172B1BE9C393001D3F07 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = B24717251BE9C393001D3F07 /* Category.swift */; };
 		B247172E1BE9D623001D3F07 /* AddNewEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B247172D1BE9D623001D3F07 /* AddNewEventViewController.swift */; };
+		B28D0CD21C02B61F007FFFA1 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28D0CD11C02B61F007FFFA1 /* TableViewController.swift */; };
 		B2B034881BEFB10F001B04C5 /* HostTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B034871BEFB10F001B04C5 /* HostTableViewController.swift */; };
 		B2D5E5F51BEFB3D200428843 /* AddNewHostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D5E5F41BEFB3D200428843 /* AddNewHostViewController.swift */; };
 		B2D5E5F71BEFC06E00428843 /* HostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D5E5F61BEFC06E00428843 /* HostDetailViewController.swift */; };
@@ -78,6 +79,7 @@
 		B24717241BE9C393001D3F07 /* Category+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Category+CoreDataProperties.swift"; path = "../Category+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		B24717251BE9C393001D3F07 /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Category.swift; path = ../Category.swift; sourceTree = "<group>"; };
 		B247172D1BE9D623001D3F07 /* AddNewEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewEventViewController.swift; sourceTree = "<group>"; };
+		B28D0CD11C02B61F007FFFA1 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		B2B034871BEFB10F001B04C5 /* HostTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HostTableViewController.swift; sourceTree = "<group>"; };
 		B2D5E5F41BEFB3D200428843 /* AddNewHostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewHostViewController.swift; sourceTree = "<group>"; };
 		B2D5E5F61BEFC06E00428843 /* HostDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HostDetailViewController.swift; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 		B24716FB1BE9BAC2001D3F07 = {
 			isa = PBXGroup;
 			children = (
+				B28D0CD11C02B61F007FFFA1 /* TableViewController.swift */,
 				CDADE2EC1C00DD7300D90479 /* libsqlite3.tbd */,
 				CDADE2EA1C00DD6700D90479 /* libz.tbd */,
 				CDADE2E81C00DD5B00D90479 /* SystemConfiguration.framework */,
@@ -301,6 +304,7 @@
 				B229EE571C01BD35006DFE13 /* Config.swift in Sources */,
 				B2B034881BEFB10F001B04C5 /* HostTableViewController.swift in Sources */,
 				B24717281BE9C393001D3F07 /* Host+CoreDataProperties.swift in Sources */,
+				B28D0CD21C02B61F007FFFA1 /* TableViewController.swift in Sources */,
 				B229EE551C01B76D006DFE13 /* LogInViewController.swift in Sources */,
 				B247171F1BE9C0B7001D3F07 /* EventTableViewController.swift in Sources */,
 				B23D64CF1BEB75AC00AF5D51 /* EventDetailViewController.swift in Sources */,

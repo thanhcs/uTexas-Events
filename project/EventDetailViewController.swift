@@ -68,6 +68,8 @@ class EventDetailViewController: UIViewController {
     
     @IBAction func addRSVP() {
         Config.addEventToRSVPList(eventID: (event?.eventID)!)
+        RSVPButton.setTitle("RSVPed", forState: .Normal)
+        RSVPButton.enabled = false
     }
     
     @IBAction func saveEvent(sender: AnyObject) {

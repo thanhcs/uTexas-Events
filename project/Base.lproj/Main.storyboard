@@ -820,16 +820,6 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h2v-gD-jTW">
-                                <rect key="frame" x="100" y="496" width="174" height="30"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <color key="tintColor" red="0.062745098039215685" green="0.3843137254901961" blue="0.99607843137254903" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Add to Calendar"/>
-                                <connections>
-                                    <action selector="saveEvent:" destination="XrI-Fs-Yj7" eventType="touchUpInside" id="kDp-U7-umG"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7xp-Sq-uZ0">
                                 <rect key="frame" x="129" y="219" width="109" height="21"/>
                                 <animations/>
@@ -845,11 +835,21 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xfZ-PD-pLj">
-                                <rect key="frame" x="168" y="548" width="38" height="30"/>
+                                <rect key="frame" x="138" y="546" width="98" height="30"/>
                                 <animations/>
                                 <state key="normal" title="RSVP"/>
                                 <connections>
                                     <action selector="addRSVP" destination="XrI-Fs-Yj7" eventType="touchUpInside" id="KF8-Ib-692"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h2v-gD-jTW">
+                                <rect key="frame" x="100" y="496" width="174" height="30"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="tintColor" red="0.062745098039215685" green="0.3843137254901961" blue="0.99607843137254903" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Add to Calendar"/>
+                                <connections>
+                                    <action selector="saveEvent:" destination="XrI-Fs-Yj7" eventType="touchUpInside" id="kDp-U7-umG"/>
                                 </connections>
                             </button>
                         </subviews>
