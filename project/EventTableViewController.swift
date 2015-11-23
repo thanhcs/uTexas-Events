@@ -43,8 +43,8 @@ class EventTableViewController: UITableViewController, NSFetchedResultsControlle
                 self.navigationItem.leftBarButtonItem!.title = "RSVPs"
                 self.navigationItem.leftBarButtonItem!.tintColor = UIColor.darkGrayColor()
                 self.navigationItem.leftBarButtonItem?.enabled = false
-                self.navigationItem.rightBarButtonItem?.title = ""
-                self.navigationItem.rightBarButtonItem?.enabled = false
+                self.navigationItem.rightBarButtonItem?.title = "Log out"
+                self.navigationItem.rightBarButtonItem?.enabled = true
                 let triggerTime = (Int64(NSEC_PER_SEC) * 2)
                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, triggerTime), dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0), { () -> Void in
                     do {
@@ -57,7 +57,7 @@ class EventTableViewController: UITableViewController, NSFetchedResultsControlle
                     print(Config.RSVPList)
                     self.navigationItem.leftBarButtonItem!.title = "RSVPs"
                     dispatch_async(dispatch_get_main_queue()) {
-                        self.navigationItem.leftBarButtonItem!.tintColor = UIColor.blueColor()
+                        self.navigationItem.leftBarButtonItem!.tintColor = nil
                     }
                     self.navigationItem.leftBarButtonItem?.enabled = true
                 })
@@ -236,6 +236,7 @@ class EventTableViewController: UITableViewController, NSFetchedResultsControlle
         self.navigationItem.leftBarButtonItem?.enabled = true
         self.navigationItem.rightBarButtonItem?.title = ""
         self.navigationItem.rightBarButtonItem?.enabled = false
+        self.navigationItem.leftBarButtonItem!.tintColor = nil
     }
 
     // MARK: - Table view data source

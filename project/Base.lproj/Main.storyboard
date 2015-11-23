@@ -477,7 +477,9 @@
                                             <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="60" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="smG-uM-jfx">
                                                 <rect key="frame" x="0.0" y="0.0" width="67" height="24"/>
                                                 <animations/>
-                                                <state key="normal" title="Log in"/>
+                                                <state key="normal" title="Log in">
+                                                    <color key="titleColor" red="0.039215686274509803" green="0.37647058823529411" blue="0.99607843137254903" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
                                                 <connections>
                                                     <action selector="loginAction:" destination="ZmK-mp-BJd" eventType="touchUpInside" id="Ryx-Rj-Ndu"/>
                                                 </connections>
