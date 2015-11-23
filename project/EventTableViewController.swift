@@ -25,6 +25,21 @@ class EventTableViewController: UITableViewController, NSFetchedResultsControlle
 
         NSFetchedResultsController.deleteCacheWithName(nil)
         
+        //checks internet connection
+        var connected = Reachability.isConnectedToNetwork()
+        
+        if (!connected) {
+            let actionSheetController: UIAlertController = UIAlertController(title: "Connection Error", message: "Phone is not connected to internet. Please try again later.", preferredStyle: .ActionSheet)
+            
+            //Create and add the Cancel action
+            let cancelAction: UIAlertAction = UIAlertAction(title: "OK", style: .Cancel) { action -> Void in
+                //Just dismiss the action sheet
+            }
+            actionSheetController.addAction(cancelAction)
+            self.presentViewController(actionSheetController, animated: true, completion: nil)
+        }
+        
+        
         self.navigationItem.rightBarButtonItem?.title = ""
         self.navigationItem.rightBarButtonItem?.enabled = false
         

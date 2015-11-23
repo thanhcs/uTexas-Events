@@ -35,6 +35,7 @@
 		B2D5E5F51BEFB3D200428843 /* AddNewHostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D5E5F41BEFB3D200428843 /* AddNewHostViewController.swift */; };
 		B2D5E5F71BEFC06E00428843 /* HostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D5E5F61BEFC06E00428843 /* HostDetailViewController.swift */; };
 		B2D5E5F91BEFC28100428843 /* EventsOfHostTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D5E5F81BEFC28100428843 /* EventsOfHostTableViewController.swift */; };
+		CD4AA64D1C02CDA8009ED80D /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4AA64C1C02CDA8009ED80D /* Connection.swift */; };
 		CDADE2D41C00DCB800D90479 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDADE2CE1C00DCB800D90479 /* Bolts.framework */; };
 		CDADE2D51C00DCB800D90479 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDADE2CF1C00DCB800D90479 /* Parse.framework */; };
 		CDADE2D61C00DCB800D90479 /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDADE2D01C00DCB800D90479 /* ParseFacebookUtils.framework */; };
@@ -84,6 +85,7 @@
 		B2D5E5F41BEFB3D200428843 /* AddNewHostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewHostViewController.swift; sourceTree = "<group>"; };
 		B2D5E5F61BEFC06E00428843 /* HostDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HostDetailViewController.swift; sourceTree = "<group>"; };
 		B2D5E5F81BEFC28100428843 /* EventsOfHostTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsOfHostTableViewController.swift; sourceTree = "<group>"; };
+		CD4AA64C1C02CDA8009ED80D /* Connection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
 		CDADE2CE1C00DCB800D90479 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		CDADE2CF1C00DCB800D90479 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		CDADE2D01C00DCB800D90479 /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 				CDADE2CD1C00DCB800D90479 /* parse-library-1 */,
 				B247172C1BE9C3A2001D3F07 /* CoreData */,
 				B24717071BE9BAC2001D3F07 /* AppDelegate.swift */,
+				CD4AA64C1C02CDA8009ED80D /* Connection.swift */,
 				B247170B1BE9BAC2001D3F07 /* Main.storyboard */,
 				B247171C1BE9BDA9001D3F07 /* MainTabBarController.swift */,
 				B229EE581C023765006DFE13 /* RSVPListTableViewController.swift */,
@@ -297,6 +300,7 @@
 				B23D4A161BF0020F00496737 /* EventsOfCategoryTableViewController.swift in Sources */,
 				B2D5E5F51BEFB3D200428843 /* AddNewHostViewController.swift in Sources */,
 				B24717101BE9BAC2001D3F07 /* project.xcdatamodeld in Sources */,
+				CD4AA64D1C02CDA8009ED80D /* Connection.swift in Sources */,
 				B247172E1BE9D623001D3F07 /* AddNewEventViewController.swift in Sources */,
 				B24717081BE9BAC2001D3F07 /* AppDelegate.swift in Sources */,
 				B2D5E5F71BEFC06E00428843 /* HostDetailViewController.swift in Sources */,
