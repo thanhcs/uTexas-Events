@@ -103,14 +103,22 @@ class CategoryTableViewController: UITableViewController, NSFetchedResultsContro
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         let context = self.fetchedResultsController.managedObjectContext
-        context.deleteObject(self.fetchedResultsController.objectAtIndexPath(indexPath) as! NSManagedObject)
+        let backup = self.fetchedResultsController.objectAtIndexPath(indexPath) as! NSManagedObject
+        context.deleteObject(backup)
         do {
             try context.save()
         } catch {
-            // Replace this implementation with code to handle the error appropriately.
-            // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-            //print("Unresolved error \(error), \(error.userInfo)")
-            abort()
+            context.insertObject(backup)
+            dispatch_async(dispatch_get_main_queue()) {
+                let alertController = UIAlertController(title: "Error", message: "Host can't be removed without deleting all events belong to the host.", preferredStyle: UIAlertControllerStyle.Alert)
+                
+                let OKAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) { (action:UIAlertAction) in
+                }
+                alertController.addAction(OKAction)
+                
+                self.presentViewController(alertController, animated: true, completion:nil)
+            }
+
         }
     }
     

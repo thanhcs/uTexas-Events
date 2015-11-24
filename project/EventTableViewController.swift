@@ -26,7 +26,7 @@ class EventTableViewController: UITableViewController, NSFetchedResultsControlle
         NSFetchedResultsController.deleteCacheWithName(nil)
         
         //checks internet connection
-        var connected = Reachability.isConnectedToNetwork()
+        let connected = Reachability.isConnectedToNetwork()
         
         if (!connected) {
             let actionSheetController: UIAlertController = UIAlertController(title: "Connection Error", message: "Phone is not connected to internet. Please try again later.", preferredStyle: .ActionSheet)
