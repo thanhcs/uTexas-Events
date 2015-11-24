@@ -88,20 +88,13 @@ class AddNewEventViewController: UIViewController, UITextFieldDelegate, UIPicker
     @IBAction func saveEvent(sender: AnyObject) {
         // need to check nil
         if (titleTextField.text == "" || locationTextField.text == "" || hostTextField.text == "" || descriptionTextField.text == "" || capacityTextField.text == "" || catTextField.text == "" || date == "" || from == "" || to == "") {
+            alertEmpty.textColor = UIColor.redColor()
             alertEmpty.text = "You have to fill in all information!"
         } else {
             let data: Dictionary<String, String> = ["title": titleTextField.text!, "date": date, "from": from, "to": to, "location": locationTextField.text!, "host": hostTextField.text!, "category": catTextField.text!, "description": descriptionTextField.text!, "capacity": capacityTextField.text!]
             self.delegate?.saveCoreData(data)
-            print(data["from"])
-            
             navigationController?.popViewControllerAnimated(false)
         }
-        
-        
-        
-        
-        
-        
     }
     
     // dismiss the keyboard when touching anywhere
@@ -143,27 +136,42 @@ class AddNewEventViewController: UIViewController, UITextFieldDelegate, UIPicker
     
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if pickerView.tag == 1 {
-            return hosts!.count
+            return hosts!.count + 1
         } else {
-            return cats!.count
+            return cats!.count + 1
         }
     }
     
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        // add blank row
+        if (row == 0) {
+            return ""
+        }
+        
         if pickerView.tag == 1 {
-            return hosts![row].name
+            return hosts![row - 1].name
         } else {
-            return cats![row].name
+            return cats![row - 1].name
         }
     }
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if pickerView.tag == 1 {
-            hostTextField.text = hosts![row].name
-            hostPicker.hidden = true
+            if (row == 0){
+                hostTextField.text = ""
+                hostPicker.hidden = true
+            } else {
+                hostTextField.text = hosts![row - 1].name
+                hostPicker.hidden = true
+            }
         } else if pickerView.tag == 2 {
-            catTextField.text = cats![row].name
-            catPicker.hidden = true
+            if (row == 0){
+                catTextField.text = ""
+                catPicker.hidden = true
+            } else {
+                catTextField.text = cats![row - 1].name
+                catPicker.hidden = true
+            }
         }
     }
     
