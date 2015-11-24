@@ -1098,11 +1098,13 @@
                         <outlet property="myDatePicker" destination="zwk-E2-4HE" id="kQb-j5-d0w"/>
                         <outlet property="titleTextField" destination="vh0-3Q-e3G" id="MlR-St-TKG"/>
                         <outlet property="toTimePicker" destination="kC3-r3-vVo" id="tw5-kH-cqa"/>
+                        <segue destination="Fvz-Zo-Gig" kind="showDetail" identifier="addHostNewEvent" id="X8s-1P-IZV"/>
+                        <segue destination="Bai-sd-gLQ" kind="showDetail" identifier="addCatNewEvent" id="YCY-kU-sGX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l2h-7p-wgb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1757.5" y="-1500.5"/>
+            <point key="canvasLocation" x="1699.5" y="-1390.5"/>
         </scene>
         <!--Main Tab Bar Controller-->
         <scene sceneID="H2p-wq-br2">
@@ -1339,6 +1341,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="YCY-kU-sGX"/>
+        <segue reference="X8s-1P-IZV"/>
         <segue reference="wAx-K0-uri"/>
     </inferredMetricsTieBreakers>
 </document>

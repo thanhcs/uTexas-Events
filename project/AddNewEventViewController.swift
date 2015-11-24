@@ -149,8 +149,14 @@ class AddNewEventViewController: UIViewController, UITextFieldDelegate, UIPicker
         }
         
         if pickerView.tag == 1 {
+            if (row == hosts?.count) {
+                return "add host.."
+            }
             return hosts![row - 1].name
         } else {
+            if (row == cats?.count) {
+                return "add category.."
+            }
             return cats![row - 1].name
         }
     }
@@ -160,14 +166,19 @@ class AddNewEventViewController: UIViewController, UITextFieldDelegate, UIPicker
             if (row == 0){
                 hostTextField.text = ""
                 hostPicker.hidden = true
+            } else if (row == hosts?.count){
+                self.performSegueWithIdentifier("addHostNewEvent", sender: self)
             } else {
                 hostTextField.text = hosts![row - 1].name
                 hostPicker.hidden = true
             }
+            
         } else if pickerView.tag == 2 {
             if (row == 0){
                 catTextField.text = ""
                 catPicker.hidden = true
+            } else if (row == hosts?.count){
+                self.performSegueWithIdentifier("addCatNewEvent", sender: self)
             } else {
                 catTextField.text = cats![row - 1].name
                 catPicker.hidden = true
@@ -192,5 +203,20 @@ class AddNewEventViewController: UIViewController, UITextFieldDelegate, UIPicker
             hostPicker.hidden = true
             return true
         }
+    }
+    
+
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "addHostNewEvent") {
+            let view = segue.destinationViewController as! AddNewHostViewController
+            view.fromEventForm = true
+        } else if (segue.identifier == "addCatNewEvent") {
+            let view = segue.destinationViewController as! AddNewCategoryViewController
+//            view.fromEventForm = true
+        }
+        // Set up the back button
+        let backItem = UIBarButtonItem()
+        backItem.title = "Back"
+        navigationItem.backBarButtonItem = backItem
     }
 }

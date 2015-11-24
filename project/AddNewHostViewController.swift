@@ -16,6 +16,7 @@ class AddNewHostViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var alertLabel: UILabel!
     
     var delegate: StoreCoreDataProtocol? = nil
+    var fromEventForm = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
