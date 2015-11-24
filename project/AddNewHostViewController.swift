@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class AddNewHostViewController: UIViewController, UITextFieldDelegate {
     
@@ -14,15 +15,21 @@ class AddNewHostViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var infoTextView: UITextView!
     @IBOutlet weak var alertLabel: UILabel!
+    @IBOutlet weak var cancelButton: UIButton!
     
-    var delegate: StoreCoreDataProtocol? = nil
+    var managedObjectContext: NSManagedObjectContext? = nil
     var fromEventForm = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
         nameTextField.delegate = self
         emailTextField.delegate = self
+        
         navigationItem.title = "Add New Host"
+        
+        if (!fromEventForm) {
+            cancelButton.hidden = true
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -37,8 +44,22 @@ class AddNewHostViewController: UIViewController, UITextFieldDelegate {
             alertLabel.text = "You have to fill in the email"
         } else {
             let data: Dictionary<String, String> = ["name": nameTextField.text!, "email": emailTextField.text!, "info": infoTextView.text!]
-            delegate?.saveCoreData(data)
+            saveToCoreData(data)
             navigationController?.popViewControllerAnimated(false)
+        }
+    }
+    
+    private func saveToCoreData(data: Dictionary<String, String>) {
+        let entity = NSEntityDescription.entityForName("Host", inManagedObjectContext: managedObjectContext!)
+        let host = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedObjectContext) as! Host
+        host.name = data["name"]
+        host.email = data["email"]
+        host.info = data["info"]
+        
+        do {
+            try self.managedObjectContext!.save()
+        } catch {
+            fatalError("Failure to save context: \(error)")
         }
     }
     
@@ -52,4 +73,6 @@ class AddNewHostViewController: UIViewController, UITextFieldDelegate {
         textField.resignFirstResponder()
         return true
     }
+    
+    
 }

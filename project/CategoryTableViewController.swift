@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class CategoryTableViewController: UITableViewController, NSFetchedResultsControllerDelegate, StoreCoreDataProtocol, UISearchControllerDelegate, UISearchBarDelegate, UISearchResultsUpdating {
+class CategoryTableViewController: UITableViewController, NSFetchedResultsControllerDelegate, UISearchControllerDelegate, UISearchBarDelegate, UISearchResultsUpdating {
     
     var managedObjectContext: NSManagedObjectContext? = nil
     var searchController: UISearchController!
@@ -192,23 +192,6 @@ class CategoryTableViewController: UITableViewController, NSFetchedResultsContro
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
         self.tableView.endUpdates()
     }
-    
-    func saveCoreData(data: Dictionary<String, String>) {
-        let entity = NSEntityDescription.entityForName("Category", inManagedObjectContext: managedObjectContext!)
-        let cat = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedObjectContext) as! Category
-        cat.name = data["name"]
-        
-        do {
-            try self.managedObjectContext!.save()
-        } catch {
-            fatalError("Failure to save context: \(error)")
-        }
-        
-    }
-    
-    func updateCoreData(data: Dictionary<String, String>) {
-        // TODO: edit
-    }
 
     // MARK: - Navigation
 
@@ -222,7 +205,7 @@ class CategoryTableViewController: UITableViewController, NSFetchedResultsContro
             searchController.active = false
         } else if segue.identifier == "AddCategory" {
             let view = segue.destinationViewController as! AddNewCategoryViewController
-            view.delegate = self
+            view.managedObjectContext = managedObjectContext
         }
         // Set up the back button
         let backItem = UIBarButtonItem()

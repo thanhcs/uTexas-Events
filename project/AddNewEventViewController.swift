@@ -136,9 +136,9 @@ class AddNewEventViewController: UIViewController, UITextFieldDelegate, UIPicker
     
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if pickerView.tag == 1 {
-            return hosts!.count + 1
+            return hosts!.count + 2
         } else {
-            return cats!.count + 1
+            return cats!.count + 2
         }
     }
     
@@ -149,12 +149,12 @@ class AddNewEventViewController: UIViewController, UITextFieldDelegate, UIPicker
         }
         
         if pickerView.tag == 1 {
-            if (row == hosts?.count) {
+            if (row == (hosts?.count)! + 1) {
                 return "add host.."
             }
             return hosts![row - 1].name
         } else {
-            if (row == cats?.count) {
+            if (row == (cats?.count)! + 1) {
                 return "add category.."
             }
             return cats![row - 1].name
@@ -163,10 +163,10 @@ class AddNewEventViewController: UIViewController, UITextFieldDelegate, UIPicker
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if pickerView.tag == 1 {
-            if (row == 0){
+            if (row == 0) {
                 hostTextField.text = ""
                 hostPicker.hidden = true
-            } else if (row == hosts?.count){
+            } else if (row == (hosts?.count)! + 1) {
                 self.performSegueWithIdentifier("addHostNewEvent", sender: self)
             } else {
                 hostTextField.text = hosts![row - 1].name
@@ -174,10 +174,10 @@ class AddNewEventViewController: UIViewController, UITextFieldDelegate, UIPicker
             }
             
         } else if pickerView.tag == 2 {
-            if (row == 0){
+            if (row == 0) {
                 catTextField.text = ""
                 catPicker.hidden = true
-            } else if (row == hosts?.count){
+            } else if (row == (cats?.count)! + 1){
                 self.performSegueWithIdentifier("addCatNewEvent", sender: self)
             } else {
                 catTextField.text = cats![row - 1].name
@@ -212,7 +212,7 @@ class AddNewEventViewController: UIViewController, UITextFieldDelegate, UIPicker
             view.fromEventForm = true
         } else if (segue.identifier == "addCatNewEvent") {
             let view = segue.destinationViewController as! AddNewCategoryViewController
-//            view.fromEventForm = true
+            view.fromEventForm = true
         }
         // Set up the back button
         let backItem = UIBarButtonItem()

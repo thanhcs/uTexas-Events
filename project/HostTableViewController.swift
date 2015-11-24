@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class HostTableViewController: UITableViewController, NSFetchedResultsControllerDelegate, StoreCoreDataProtocol, UISearchControllerDelegate, UISearchBarDelegate, UISearchResultsUpdating  {
+class HostTableViewController: UITableViewController, NSFetchedResultsControllerDelegate, UISearchControllerDelegate, UISearchBarDelegate, UISearchResultsUpdating  {
     
     @IBOutlet weak var addHostButton: UIBarButtonItem!
     
@@ -193,24 +193,6 @@ class HostTableViewController: UITableViewController, NSFetchedResultsController
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
         self.tableView.endUpdates()
     }
-    
-    func saveCoreData(data: Dictionary<String, String>) {
-        let entity = NSEntityDescription.entityForName("Host", inManagedObjectContext: managedObjectContext!)
-        let host = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedObjectContext) as! Host
-        host.name = data["name"]
-        host.email = data["email"]
-        host.info = data["info"]
-        
-        do {
-            try self.managedObjectContext!.save()
-        } catch {
-            fatalError("Failure to save context: \(error)")
-        }
-    }
-    
-    func updateCoreData(data: Dictionary<String, String>) {
-        
-    }
 
     // MARK: - Navigation
 
@@ -218,11 +200,10 @@ class HostTableViewController: UITableViewController, NSFetchedResultsController
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "AddHost") {
             let view = segue.destinationViewController as! AddNewHostViewController
-            view.delegate = self
+            view.managedObjectContext = managedObjectContext
         } else if (segue.identifier == "HostDetail") {
             let view = segue.destinationViewController as! HostDetailViewController
             let index = self.tableView.indexPathForSelectedRow!
-            view.delegate = self
             view.host = self.fetchedResultsController.objectAtIndexPath(index) as? Host
             searchController.active = false
         }

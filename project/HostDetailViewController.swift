@@ -16,7 +16,6 @@ class HostDetailViewController: UIViewController {
     @IBOutlet weak var emailButton: UIButton!
     
     var host:Host? = nil
-    var delegate:StoreCoreDataProtocol? = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
