@@ -10,5 +10,5 @@ import Foundation
 
 protocol StoreCoreDataProtocol {
     func saveCoreData(data: Dictionary<String, String>)
-    func updateCoreData(data: Dictionary<String, String>)
+//    func updateCoreData(data: Dictionary<String, String>)
 }

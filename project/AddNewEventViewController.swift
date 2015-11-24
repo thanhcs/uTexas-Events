@@ -58,16 +58,8 @@ class AddNewEventViewController: UIViewController, UITextFieldDelegate, UIPicker
         hostPicker.hidden = true
         catPicker.hidden = true
         
-        // create hosts array
-        let fetchRequest1 = NSFetchRequest(entityName:"Host")
-        do {
-            hosts = try managedObjectContext!.executeFetchRequest(fetchRequest1) as? [Host]
-        } catch {
-            // what to do if an error occurs?
-            let nserror = error as NSError
-            NSLog("Unresolved error \(nserror), \(nserror.userInfo)")
-            abort()
-        }
+        refreshCatsList()
+        refreshHostsList()
         
         // create categories array
         let fetchRequest2 = NSFetchRequest(entityName:"Category")
@@ -85,6 +77,34 @@ class AddNewEventViewController: UIViewController, UITextFieldDelegate, UIPicker
         super.didReceiveMemoryWarning()
     }
     
+    func refreshHostsList() {
+        // create hosts array
+        let fetchRequest1 = NSFetchRequest(entityName:"Host")
+        do {
+            hosts = try managedObjectContext!.executeFetchRequest(fetchRequest1) as? [Host]
+        } catch {
+            // what to do if an error occurs?
+            let nserror = error as NSError
+            NSLog("Unresolved error \(nserror), \(nserror.userInfo)")
+            abort()
+        }
+        hostPicker.reloadAllComponents()
+    }
+    
+    func refreshCatsList() {
+        // create categories array
+        let fetchRequest2 = NSFetchRequest(entityName:"Category")
+        do {
+            cats = try managedObjectContext!.executeFetchRequest(fetchRequest2) as? [Category]
+        } catch {
+            // what to do if an error occurs?
+            let nserror = error as NSError
+            NSLog("Unresolved error \(nserror), \(nserror.userInfo)")
+            abort()
+        }
+        catPicker.reloadAllComponents()
+    }
+    
     @IBAction func saveEvent(sender: AnyObject) {
         // need to check nil
         if (titleTextField.text == "" || locationTextField.text == "" || hostTextField.text == "" || descriptionTextField.text == "" || capacityTextField.text == "" || catTextField.text == "" || date == "" || from == "" || to == "") {
@@ -100,6 +120,8 @@ class AddNewEventViewController: UIViewController, UITextFieldDelegate, UIPicker
     // dismiss the keyboard when touching anywhere
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         self.view.endEditing(true)
+        catPicker.hidden = true
+        hostPicker.hidden = true
     }
     
     // dismiss the keyboard when touching the return key
@@ -207,12 +229,21 @@ class AddNewEventViewController: UIViewController, UITextFieldDelegate, UIPicker
     
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        dispatch_async(dispatch_get_main_queue()) {
+            self.hostPicker.hidden = true
+            self.catPicker.hidden = true
+        }
+        
         if (segue.identifier == "addHostNewEvent") {
             let view = segue.destinationViewController as! AddNewHostViewController
             view.fromEventForm = true
+            view.managedObjectContext = managedObjectContext
+            view.addEventView = self
         } else if (segue.identifier == "addCatNewEvent") {
             let view = segue.destinationViewController as! AddNewCategoryViewController
             view.fromEventForm = true
+            view.managedObjectContext = managedObjectContext
+            view.addEventView = self
         }
         // Set up the back button
         let backItem = UIBarButtonItem()

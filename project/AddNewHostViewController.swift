@@ -16,8 +16,11 @@ class AddNewHostViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var infoTextView: UITextView!
     @IBOutlet weak var alertLabel: UILabel!
     @IBOutlet weak var cancelButton: UIButton!
+    @IBOutlet weak var doneButton: UIButton!
+    @IBOutlet weak var saveButton: UIButton!
     
     var managedObjectContext: NSManagedObjectContext? = nil
+    var addEventView: AddNewEventViewController? = nil
     var fromEventForm = false
 
     override func viewDidLoad() {
@@ -31,10 +34,14 @@ class AddNewHostViewController: UIViewController, UITextFieldDelegate {
             cancelButton.hidden = true
         }
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func cancel(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     @IBAction func addNew(sender: AnyObject) {
@@ -44,11 +51,20 @@ class AddNewHostViewController: UIViewController, UITextFieldDelegate {
             alertLabel.text = "You have to fill in the email"
         } else {
             let data: Dictionary<String, String> = ["name": nameTextField.text!, "email": emailTextField.text!, "info": infoTextView.text!]
+            
+            // save to Core Data
             saveToCoreData(data)
-            navigationController?.popViewControllerAnimated(false)
+            
+            if (fromEventForm) {
+                addEventView?.hostTextField.text = nameTextField.text
+                addEventView?.refreshHostsList()
+                self.dismissViewControllerAnimated(true, completion: nil)
+            } else {
+                navigationController?.popViewControllerAnimated(true)
+            }
         }
     }
-    
+
     private func saveToCoreData(data: Dictionary<String, String>) {
         let entity = NSEntityDescription.entityForName("Host", inManagedObjectContext: managedObjectContext!)
         let host = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedObjectContext) as! Host
@@ -73,6 +89,4 @@ class AddNewHostViewController: UIViewController, UITextFieldDelegate {
         textField.resignFirstResponder()
         return true
     }
-    
-    
 }

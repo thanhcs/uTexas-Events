@@ -16,6 +16,7 @@ class AddNewCategoryViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var cancelButton: UIButton!
     
     var managedObjectContext:NSManagedObjectContext? = nil
+    var addEventView: AddNewEventViewController? = nil
     var fromEventForm = false
 
     override func viewDidLoad() {
@@ -32,13 +33,26 @@ class AddNewCategoryViewController: UIViewController, UITextFieldDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func cancel(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
     @IBAction func addNew(sender: AnyObject) {
         if (nameTextField.text == "") {
             alertLabel.text = "You have to fill in the name"
         } else {
             let data: Dictionary<String, String> = ["name": nameTextField.text!]
+            
+            // Save to Core Data
             saveToCoreData(data)
-            navigationController?.popViewControllerAnimated(false)
+            
+            if (fromEventForm) {
+                addEventView?.catTextField.text = nameTextField.text
+                addEventView?.refreshCatsList()
+                self.dismissViewControllerAnimated(true, completion: nil)
+            } else {
+                navigationController?.popViewControllerAnimated(true)
+            }
         }
     }
     
