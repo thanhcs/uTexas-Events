@@ -150,12 +150,12 @@ class AddNewEventViewController: UIViewController, UITextFieldDelegate, UIPicker
         
         if pickerView.tag == 1 {
             if (row == (hosts?.count)! + 1) {
-                return "add host.."
+                return "Add new host.."
             }
             return hosts![row - 1].name
         } else {
             if (row == (cats?.count)! + 1) {
-                return "add category.."
+                return "Add new category.."
             }
             return cats![row - 1].name
         }
