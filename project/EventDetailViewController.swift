@@ -48,6 +48,13 @@ class EventDetailViewController: UIViewController {
         addCalendarButton.layer.cornerRadius = 5
         addCalendarButton.layer.borderWidth = 1
         addCalendarButton.layer.borderColor = UIColor.blueColor().CGColor
+        
+        // control appearance of RSVP
+        if (Config.didLogIn && !Config.isAdmin && !Config.isRSVPed((self.event?.eventID)!)) {
+            self.RSVPButton.hidden = false
+        } else {
+            self.RSVPButton.hidden = true
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -56,13 +63,6 @@ class EventDetailViewController: UIViewController {
     }
     
     override func viewDidAppear(animated: Bool) {
-        dispatch_async(dispatch_get_main_queue()) {
-            if (Config.didLogIn && !Config.isAdmin && !Config.isRSVPed((self.event?.eventID)!)) {
-                self.RSVPButton.hidden = false
-            } else {
-                self.RSVPButton.hidden = true
-            }
-        }
     }
     
     
