@@ -133,15 +133,16 @@
                             <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="91c-xs-tJq">
                                 <rect key="frame" x="36" y="405" width="303" height="30"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qBe-px-4fu">
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qBe-px-4fu">
                                         <rect key="frame" x="0.0" y="0.0" width="152" height="30"/>
                                         <animations/>
                                         <state key="normal" title="Cancel"/>
                                         <connections>
+                                            <action selector="cancel:" destination="Fvz-Zo-Gig" eventType="touchUpInside" id="E56-8D-VcQ"/>
                                             <segue destination="6pm-vd-yHc" kind="unwind" unwindAction="cancelAction:" id="bra-vw-i4A"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b4p-gv-nLI">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b4p-gv-nLI">
                                         <rect key="frame" x="152" y="0.0" width="152" height="30"/>
                                         <animations/>
                                         <state key="normal" title="Save"/>
@@ -1246,6 +1247,9 @@
                                         <rect key="frame" x="0.0" y="0.0" width="152" height="30"/>
                                         <animations/>
                                         <state key="normal" title="Cancel"/>
+                                        <connections>
+                                            <action selector="cancel:" destination="Bai-sd-gLQ" eventType="touchUpInside" id="aDu-Wo-6qN"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3gZ-vB-GVi">
                                         <rect key="frame" x="152" y="0.0" width="152" height="30"/>
