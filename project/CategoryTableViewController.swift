@@ -21,6 +21,7 @@ class CategoryTableViewController: UITableViewController, NSFetchedResultsContro
         super.viewDidLoad()
 
         navigationItem.title = "uTexas Events"
+        definesPresentationContext = true
         
         oldButton = self.navigationItem.rightBarButtonItem!
         self.navigationItem.rightBarButtonItem = nil
@@ -38,6 +39,38 @@ class CategoryTableViewController: UITableViewController, NSFetchedResultsContro
             self.tableView.tableHeaderView = controllerSearch.searchBar
             return controllerSearch
         })()
+        
+        let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context = appDel.managedObjectContext
+        let coord = appDel.persistentStoreCoordinator
+        
+        var fetchRequest = NSFetchRequest(entityName: "Event")
+        var deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        
+        do {
+            try coord.executeRequest(deleteRequest, withContext: context)
+        } catch let error as NSError {
+            debugPrint(error)
+        }
+        
+        fetchRequest = NSFetchRequest(entityName: "Host")
+        deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        
+        do {
+            try coord.executeRequest(deleteRequest, withContext: context)
+        } catch let error as NSError {
+            debugPrint(error)
+        }
+        
+        fetchRequest = NSFetchRequest(entityName: "Category")
+        deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        
+        do {
+            try coord.executeRequest(deleteRequest, withContext: context)
+        } catch let error as NSError {
+            debugPrint(error)
+        }
+
 
     }
 
@@ -202,7 +235,7 @@ class CategoryTableViewController: UITableViewController, NSFetchedResultsContro
             view.managedObjectContext = self.managedObjectContext
             let index = self.tableView.indexPathForSelectedRow!
             view.category = self.fetchedResultsController.objectAtIndexPath(index) as? Category
-            searchController.active = false
+            //searchController.active = false
         } else if segue.identifier == "AddCategory" {
             let view = segue.destinationViewController as! AddNewCategoryViewController
             view.managedObjectContext = managedObjectContext
