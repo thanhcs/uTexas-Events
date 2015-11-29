@@ -157,40 +157,41 @@ class EventTableViewController: UITableViewController, NSFetchedResultsControlle
                 event1.desc = (event.objectForKey("desc") as? String)!
                 event1.capacity = (event.objectForKey("capacity") as? Int)!
                 event1.eventID = event.objectId
-                
+                //print(event1.title!)
                 let pointer = object["host"] as? PFObject
-                self.storeHosts[(pointer!["name"] as? String)!] = pointer!.objectId!
-                event1.host = self.addHost((pointer!["name"] as? String)!,e: event,H: H)
+                print("pointer1")
+                print(pointer!["name"])
+                
+                event1.host = self.addHost((pointer!["name"] as? String)!,e: event,H: H,pointer: pointer!)
                 
                 let pointer2 = object["cat"] as? PFObject
-                self.storeCats[(pointer2!["name"] as? String)!] = pointer2!.objectId!
-                event1.category = self.addCat((pointer2!["name"] as? String)!, e: event,C:C)
+                print("pointer2")
+                print(pointer2!["name"])
+                event1.category = self.addCat((pointer2!["name"] as? String)!, e: event,C:C,pointer2: pointer2!)
             
-
             } else {
                 print(error)
             }
         })
         
-        let triggerTime = (Int64(NSEC_PER_SEC) * 4)
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, triggerTime), dispatch_get_main_queue(), { () -> Void in
-            event1.host?.addEvent(event1)
-            event1.category?.addEvent(event1)
-//            do {
-//                try self.managedObjectContext!.save()
-//                print("saved context")
-//            } catch {
-//                fatalError("Failure to save context: \(error)")
-//            }
-        })
+        event1.host?.addEvent(event1)
+        event1.category?.addEvent(event1)
+        
+//        let triggerTime = (Int64(NSEC_PER_SEC) * 4)
+//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, triggerTime), dispatch_get_main_queue(), { () -> Void in
+//            
+//        })
         
     }
     
-    func addHost(hostName: String,e: PFObject,H:Host) -> Host{
+    func addHost(hostName: String,e: PFObject,H:Host,pointer: PFObject) -> Host{
         
         
         //if host is stored , retrieve information else create new one
         let check = storeHosts[hostName]
+        print("check")
+        print(hostName)
+        //print(check!)
         
         if check != nil {
         
@@ -201,22 +202,39 @@ class EventTableViewController: UITableViewController, NSFetchedResultsControlle
                 H.name = (host.objectForKey("name") as? String)!
                 H.email = (host.objectForKey("email") as? String)!
                 H.info = (host.objectForKey("info") as? String)!
+                print("host is stored")
+                print(H.name!)
             } else {
                 print(error)
             }
         })
-                return H
+            //this query returns after all data structures stored causing the last host returned to over-write the others..
+            //if there is a way to delay this return so H can be populated with the query results before the function returns
+            //then I think we will be ok.
+            return H
+            
         } else {
+            print("host not stored")
+            self.storeHosts[(pointer["name"] as? String)!] = pointer.objectId!
+            if H.name != nil {
             let host1 = NSEntityDescription.insertNewObjectForEntityForName("Host", inManagedObjectContext: managedObjectContext!) as! Host
-              host1.name = (e.objectForKey("name") as? String)!
-              host1.email = (e.objectForKey("email") as? String)!
-              host1.info = (e.objectForKey("info") as? String)!
-                return host1
+              print(pointer["email"])
+              host1.name = pointer["name"] as? String
+              host1.email = pointer["email"] as? String
+              host1.info = pointer["info"] as? String
+              print(host1.name!)
+            
+             return host1
+            }
+            print("first host data structure")
+            H.name = pointer["name"] as? String
+            H.email = pointer["email"] as? String
+            H.info = pointer["info"] as? String
+            return H
         }
-        
     }
     
-    func addCat(catName: String,e: PFObject,C: Category) -> Category {
+    func addCat(catName: String,e: PFObject,C: Category,pointer2: PFObject) -> Category {
         
         //if category is stored , retrieve information else create new one
         let check = storeCats[catName]
@@ -233,17 +251,21 @@ class EventTableViewController: UITableViewController, NSFetchedResultsControlle
                     print(error)
                 }
             })
+            
+            //this query returns after all data structures stored causing the last host returned to over-write the others..
+            //if there is a way to delay this return so C can be populated with the query results before the function returns
+            //then I think we will be ok.
             return C
         } else {
+            self.storeCats[(pointer2["name"] as? String)!] = pointer2.objectId!
+            if C.name != nil {
             let cat1 = NSEntityDescription.insertNewObjectForEntityForName("Category", inManagedObjectContext: managedObjectContext!) as! Category
-            cat1.name = (e.objectForKey("name") as? String)!
+            cat1.name = pointer2["name"] as? String
             return cat1
+            }
+            C.name = pointer2["name"] as? String
+            return C
         }
-        
-    }
-    
-    func outputStuff(e: Event,h: Host,c: Category) {
-
         
     }
 
@@ -448,8 +470,6 @@ class EventTableViewController: UITableViewController, NSFetchedResultsControlle
                 //add to server
                 var Host1 = PFObject(className:"Hosts")
         
-                let host1 = NSEntityDescription.insertNewObjectForEntityForName("Host", inManagedObjectContext: managedObjectContext!) as! Host
-        
                 //if host is stored , retrieve information else create new one
                 let check = storeHosts[host.name!]
         
@@ -472,7 +492,6 @@ class EventTableViewController: UITableViewController, NSFetchedResultsControlle
 
                 //if category is stored , retrieve information else create new one
                 var Cat1 = PFObject(className:"Categories")
-                let cat1 = NSEntityDescription.insertNewObjectForEntityForName("Category", inManagedObjectContext: managedObjectContext!) as! Category
         
                 let check1 = storeCats[cat.name!]
                 print("cat name")
@@ -523,7 +542,7 @@ class EventTableViewController: UITableViewController, NSFetchedResultsControlle
         
         // add event to host and category after query finished
         
-        triggerTime = (Int64(NSEC_PER_SEC) * 5)
+        triggerTime = (Int64(NSEC_PER_SEC) * 6)
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, triggerTime), dispatch_get_main_queue(), { () -> Void in
             self.saveNew(event,c: cat,h: host)
         })
