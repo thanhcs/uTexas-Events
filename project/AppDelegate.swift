@@ -19,19 +19,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-        let tabBarController = self.window?.rootViewController as! UITabBarController
-        // set managed object context on each view
-        let eventNav = tabBarController.viewControllers![0] as! UINavigationController
-        let eventView = eventNav.viewControllers[0] as! EventTableViewController
-        eventView.managedObjectContext = self.managedObjectContext
         
-        let hostNav = tabBarController.viewControllers![1] as! UINavigationController
-        let hostView = hostNav.viewControllers[0] as! HostTableViewController
-        hostView.managedObjectContext = self.managedObjectContext
-        
-        let catNav = tabBarController.viewControllers![2] as! UINavigationController
-        let catView = catNav.viewControllers[0] as! CategoryTableViewController
-        catView.managedObjectContext = self.managedObjectContext
+        application.statusBarHidden = true
+         self.window?.rootViewController as! AnimationViewController
+
         
         // [Optional] Power your app with Local Datastore. For more info, go to
         // https://parse.com/docs/ios_guide#localdatastore/iOS
@@ -132,6 +123,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 abort()
             }
         }
+    }
+    
+    func goToApp(tab: UITabBarController) {
+        
+                let tabBarController = tab
+                // set managed object context on each view
+                let eventNav = tabBarController.viewControllers![0] as! UINavigationController
+                let eventView = eventNav.viewControllers[0] as! EventTableViewController
+                eventView.managedObjectContext = self.managedObjectContext
+        
+                let hostNav = tabBarController.viewControllers![1] as! UINavigationController
+                let hostView = hostNav.viewControllers[0] as! HostTableViewController
+                hostView.managedObjectContext = self.managedObjectContext
+        
+                let catNav = tabBarController.viewControllers![2] as! UINavigationController
+                let catView = catNav.viewControllers[0] as! CategoryTableViewController
+            catView.managedObjectContext = self.managedObjectContext
+        
     }
 
 }
