@@ -62,7 +62,7 @@ class HolderView: UIView {
         layer.anchorPoint = CGPointMake(0.5, 0.6)
         
         // 2
-        var rotationAnimation: CABasicAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
+        let rotationAnimation: CABasicAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
         rotationAnimation.toValue = CGFloat(M_PI * 2.0)
         rotationAnimation.duration = 0.45
         rotationAnimation.removedOnCompletion = true

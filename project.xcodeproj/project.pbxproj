@@ -36,9 +36,6 @@
 		B2D5E5F71BEFC06E00428843 /* HostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D5E5F61BEFC06E00428843 /* HostDetailViewController.swift */; };
 		B2D5E5F91BEFC28100428843 /* EventsOfHostTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D5E5F81BEFC28100428843 /* EventsOfHostTableViewController.swift */; };
 		CD0A09611C0CB51A005CDE0A /* AnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0A09601C0CB51A005CDE0A /* AnimationViewController.swift */; };
-		CD0A09701C0CCB05005CDE0A /* calendar-7.png in Resources */ = {isa = PBXBuildFile; fileRef = CD0A096F1C0CCB05005CDE0A /* calendar-7.png */; };
-		CD0A09721C0CCB1D005CDE0A /* list-simple-7.png in Resources */ = {isa = PBXBuildFile; fileRef = CD0A09711C0CCB1D005CDE0A /* list-simple-7.png */; };
-		CD0A09741C0CCB60005CDE0A /* woman-man-7.png in Resources */ = {isa = PBXBuildFile; fileRef = CD0A09731C0CCB60005CDE0A /* woman-man-7.png */; };
 		CD0A09761C0CF258005CDE0A /* ArcLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0A09751C0CF258005CDE0A /* ArcLayer.swift */; };
 		CD0A09781C0CF25D005CDE0A /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0A09771C0CF25D005CDE0A /* Colors.swift */; };
 		CD0A097A1C0CF262005CDE0A /* HolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0A09791C0CF262005CDE0A /* HolderView.swift */; };
@@ -96,9 +93,6 @@
 		B2D5E5F61BEFC06E00428843 /* HostDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HostDetailViewController.swift; sourceTree = "<group>"; };
 		B2D5E5F81BEFC28100428843 /* EventsOfHostTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsOfHostTableViewController.swift; sourceTree = "<group>"; };
 		CD0A09601C0CB51A005CDE0A /* AnimationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationViewController.swift; sourceTree = "<group>"; };
-		CD0A096F1C0CCB05005CDE0A /* calendar-7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "calendar-7.png"; path = "../../../Downloads/iconbeast-lite-200/iconbeast lite 200 - png/calendar-7.png"; sourceTree = "<group>"; };
-		CD0A09711C0CCB1D005CDE0A /* list-simple-7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "list-simple-7.png"; path = "../../../Downloads/iconbeast-lite-200/iconbeast lite 200 - png/list-simple-7.png"; sourceTree = "<group>"; };
-		CD0A09731C0CCB60005CDE0A /* woman-man-7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "woman-man-7.png"; path = "../../../Downloads/iconbeast-lite-200/iconbeast lite 200 - png/woman-man-7.png"; sourceTree = "<group>"; };
 		CD0A09751C0CF258005CDE0A /* ArcLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArcLayer.swift; sourceTree = SOURCE_ROOT; };
 		CD0A09771C0CF25D005CDE0A /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = SOURCE_ROOT; };
 		CD0A09791C0CF262005CDE0A /* HolderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HolderView.swift; sourceTree = SOURCE_ROOT; };
@@ -201,9 +195,6 @@
 				B23D4A131BEFFE0E00496737 /* CategoryTableViewController.swift */,
 				B23D4A151BF0020F00496737 /* EventsOfCategoryTableViewController.swift */,
 				B23D4A171BF0066600496737 /* AddNewCategoryViewController.swift */,
-				CD0A096F1C0CCB05005CDE0A /* calendar-7.png */,
-				CD0A09711C0CCB1D005CDE0A /* list-simple-7.png */,
-				CD0A09731C0CCB60005CDE0A /* woman-man-7.png */,
 				B24717111BE9BAC2001D3F07 /* Assets.xcassets */,
 				B24717131BE9BAC2001D3F07 /* LaunchScreen.storyboard */,
 				B24717161BE9BAC2001D3F07 /* Info.plist */,
@@ -313,12 +304,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				B232C22B1BF1BE7A007DD2B0 /* README in Resources */,
-				CD0A09741C0CCB60005CDE0A /* woman-man-7.png in Resources */,
-				CD0A09721C0CCB1D005CDE0A /* list-simple-7.png in Resources */,
 				B24717151BE9BAC2001D3F07 /* LaunchScreen.storyboard in Resources */,
 				B24717121BE9BAC2001D3F07 /* Assets.xcassets in Resources */,
 				B247170D1BE9BAC2001D3F07 /* Main.storyboard in Resources */,
-				CD0A09701C0CCB05005CDE0A /* calendar-7.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

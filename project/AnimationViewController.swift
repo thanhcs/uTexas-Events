@@ -43,7 +43,7 @@ class AnimationViewController: UIViewController, HolderViewDelegate {
             view.backgroundColor = UIColor.orangeColor()
             
             // 2
-            var label: UILabel = UILabel(frame: view.frame)
+            let label: UILabel = UILabel(frame: view.frame)
             label.textColor = Colors.white
             label.font = UIFont(name: "HelveticaNeue-Thin", size: 50.0)
             label.textAlignment = NSTextAlignment.Center
