@@ -127,19 +127,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func goToApp(tab: UITabBarController) {
         
-                let tabBarController = tab
-                // set managed object context on each view
-                let eventNav = tabBarController.viewControllers![0] as! UINavigationController
-                let eventView = eventNav.viewControllers[0] as! EventTableViewController
-                eventView.managedObjectContext = self.managedObjectContext
+        //let event = UIImage(named: <#T##String#>)
         
-                let hostNav = tabBarController.viewControllers![1] as! UINavigationController
-                let hostView = hostNav.viewControllers[0] as! HostTableViewController
-                hostView.managedObjectContext = self.managedObjectContext
+        let tabBarController = tab
+        // set managed object context on each view
+        let eventNav = tabBarController.viewControllers![0] as! UINavigationController
+        let eventView = eventNav.viewControllers[0] as! EventTableViewController
+        eventView.managedObjectContext = self.managedObjectContext
+        //eventView.tabBarItem = UITabBarItem(title: "Event", image: calendar-7.png, tag: <#T##Int#>)
         
-                let catNav = tabBarController.viewControllers![2] as! UINavigationController
-                let catView = catNav.viewControllers[0] as! CategoryTableViewController
-            catView.managedObjectContext = self.managedObjectContext
+        let hostNav = tabBarController.viewControllers![1] as! UINavigationController
+        let hostView = hostNav.viewControllers[0] as! HostTableViewController
+        hostView.managedObjectContext = self.managedObjectContext
+        //hostView.tabBarItem = UITabBarSystemItem.Contacts as? UITabBarItem
+        
+        let catNav = tabBarController.viewControllers![2] as! UINavigationController
+        let catView = catNav.viewControllers[0] as! CategoryTableViewController
+        catView.managedObjectContext = self.managedObjectContext
+        //catView.tabBarItem = UITabBarSystemItem.MostViewed as? UITabBarItem
         
     }
 

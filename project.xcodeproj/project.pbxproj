@@ -36,12 +36,15 @@
 		B2D5E5F71BEFC06E00428843 /* HostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D5E5F61BEFC06E00428843 /* HostDetailViewController.swift */; };
 		B2D5E5F91BEFC28100428843 /* EventsOfHostTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D5E5F81BEFC28100428843 /* EventsOfHostTableViewController.swift */; };
 		CD0A09611C0CB51A005CDE0A /* AnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0A09601C0CB51A005CDE0A /* AnimationViewController.swift */; };
-		CD0A09651C0CB5D5005CDE0A /* OvalLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0A09621C0CB5D5005CDE0A /* OvalLayer.swift */; };
-		CD0A09661C0CB5D5005CDE0A /* RectangleLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0A09631C0CB5D5005CDE0A /* RectangleLayer.swift */; };
-		CD0A09671C0CB5D5005CDE0A /* TriangleLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0A09641C0CB5D5005CDE0A /* TriangleLayer.swift */; };
-		CD0A096B1C0CB5EE005CDE0A /* ArcLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0A09681C0CB5EE005CDE0A /* ArcLayer.swift */; };
-		CD0A096C1C0CB5EE005CDE0A /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0A09691C0CB5EE005CDE0A /* Colors.swift */; };
-		CD0A096D1C0CB5EE005CDE0A /* HolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0A096A1C0CB5EE005CDE0A /* HolderView.swift */; };
+		CD0A09701C0CCB05005CDE0A /* calendar-7.png in Resources */ = {isa = PBXBuildFile; fileRef = CD0A096F1C0CCB05005CDE0A /* calendar-7.png */; };
+		CD0A09721C0CCB1D005CDE0A /* list-simple-7.png in Resources */ = {isa = PBXBuildFile; fileRef = CD0A09711C0CCB1D005CDE0A /* list-simple-7.png */; };
+		CD0A09741C0CCB60005CDE0A /* woman-man-7.png in Resources */ = {isa = PBXBuildFile; fileRef = CD0A09731C0CCB60005CDE0A /* woman-man-7.png */; };
+		CD0A09761C0CF258005CDE0A /* ArcLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0A09751C0CF258005CDE0A /* ArcLayer.swift */; };
+		CD0A09781C0CF25D005CDE0A /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0A09771C0CF25D005CDE0A /* Colors.swift */; };
+		CD0A097A1C0CF262005CDE0A /* HolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0A09791C0CF262005CDE0A /* HolderView.swift */; };
+		CD0A097C1C0CF268005CDE0A /* OvalLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0A097B1C0CF268005CDE0A /* OvalLayer.swift */; };
+		CD0A097E1C0CF26D005CDE0A /* RectangleLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0A097D1C0CF26D005CDE0A /* RectangleLayer.swift */; };
+		CD0A09801C0CF272005CDE0A /* TriangleLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0A097F1C0CF272005CDE0A /* TriangleLayer.swift */; };
 		CD4AA64D1C02CDA8009ED80D /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4AA64C1C02CDA8009ED80D /* Connection.swift */; };
 		CDADE2D41C00DCB800D90479 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDADE2CE1C00DCB800D90479 /* Bolts.framework */; };
 		CDADE2D51C00DCB800D90479 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDADE2CF1C00DCB800D90479 /* Parse.framework */; };
@@ -93,12 +96,15 @@
 		B2D5E5F61BEFC06E00428843 /* HostDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HostDetailViewController.swift; sourceTree = "<group>"; };
 		B2D5E5F81BEFC28100428843 /* EventsOfHostTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsOfHostTableViewController.swift; sourceTree = "<group>"; };
 		CD0A09601C0CB51A005CDE0A /* AnimationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationViewController.swift; sourceTree = "<group>"; };
-		CD0A09621C0CB5D5005CDE0A /* OvalLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OvalLayer.swift; path = "../../../Downloads/SBLoader - Starter/SBLoader/OvalLayer.swift"; sourceTree = "<group>"; };
-		CD0A09631C0CB5D5005CDE0A /* RectangleLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RectangleLayer.swift; path = "../../../Downloads/SBLoader - Starter/SBLoader/RectangleLayer.swift"; sourceTree = "<group>"; };
-		CD0A09641C0CB5D5005CDE0A /* TriangleLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TriangleLayer.swift; path = "../../../Downloads/SBLoader - Starter/SBLoader/TriangleLayer.swift"; sourceTree = "<group>"; };
-		CD0A09681C0CB5EE005CDE0A /* ArcLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ArcLayer.swift; path = "../../../Downloads/SBLoader - Starter/SBLoader/ArcLayer.swift"; sourceTree = "<group>"; };
-		CD0A09691C0CB5EE005CDE0A /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Colors.swift; path = "../../../Downloads/SBLoader - Starter/SBLoader/Colors.swift"; sourceTree = "<group>"; };
-		CD0A096A1C0CB5EE005CDE0A /* HolderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HolderView.swift; path = "../../../Downloads/SBLoader - Starter/SBLoader/HolderView.swift"; sourceTree = "<group>"; };
+		CD0A096F1C0CCB05005CDE0A /* calendar-7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "calendar-7.png"; path = "../../../Downloads/iconbeast-lite-200/iconbeast lite 200 - png/calendar-7.png"; sourceTree = "<group>"; };
+		CD0A09711C0CCB1D005CDE0A /* list-simple-7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "list-simple-7.png"; path = "../../../Downloads/iconbeast-lite-200/iconbeast lite 200 - png/list-simple-7.png"; sourceTree = "<group>"; };
+		CD0A09731C0CCB60005CDE0A /* woman-man-7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "woman-man-7.png"; path = "../../../Downloads/iconbeast-lite-200/iconbeast lite 200 - png/woman-man-7.png"; sourceTree = "<group>"; };
+		CD0A09751C0CF258005CDE0A /* ArcLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArcLayer.swift; sourceTree = SOURCE_ROOT; };
+		CD0A09771C0CF25D005CDE0A /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = SOURCE_ROOT; };
+		CD0A09791C0CF262005CDE0A /* HolderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HolderView.swift; sourceTree = SOURCE_ROOT; };
+		CD0A097B1C0CF268005CDE0A /* OvalLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OvalLayer.swift; sourceTree = SOURCE_ROOT; };
+		CD0A097D1C0CF26D005CDE0A /* RectangleLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RectangleLayer.swift; sourceTree = SOURCE_ROOT; };
+		CD0A097F1C0CF272005CDE0A /* TriangleLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TriangleLayer.swift; sourceTree = SOURCE_ROOT; };
 		CD4AA64C1C02CDA8009ED80D /* Connection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
 		CDADE2CE1C00DCB800D90479 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		CDADE2CF1C00DCB800D90479 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
@@ -195,6 +201,9 @@
 				B23D4A131BEFFE0E00496737 /* CategoryTableViewController.swift */,
 				B23D4A151BF0020F00496737 /* EventsOfCategoryTableViewController.swift */,
 				B23D4A171BF0066600496737 /* AddNewCategoryViewController.swift */,
+				CD0A096F1C0CCB05005CDE0A /* calendar-7.png */,
+				CD0A09711C0CCB1D005CDE0A /* list-simple-7.png */,
+				CD0A09731C0CCB60005CDE0A /* woman-man-7.png */,
 				B24717111BE9BAC2001D3F07 /* Assets.xcassets */,
 				B24717131BE9BAC2001D3F07 /* LaunchScreen.storyboard */,
 				B24717161BE9BAC2001D3F07 /* Info.plist */,
@@ -222,12 +231,12 @@
 		CD0A096E1C0CB600005CDE0A /* Loading Animation */ = {
 			isa = PBXGroup;
 			children = (
-				CD0A09681C0CB5EE005CDE0A /* ArcLayer.swift */,
-				CD0A09691C0CB5EE005CDE0A /* Colors.swift */,
-				CD0A096A1C0CB5EE005CDE0A /* HolderView.swift */,
-				CD0A09621C0CB5D5005CDE0A /* OvalLayer.swift */,
-				CD0A09631C0CB5D5005CDE0A /* RectangleLayer.swift */,
-				CD0A09641C0CB5D5005CDE0A /* TriangleLayer.swift */,
+				CD0A097F1C0CF272005CDE0A /* TriangleLayer.swift */,
+				CD0A097D1C0CF26D005CDE0A /* RectangleLayer.swift */,
+				CD0A097B1C0CF268005CDE0A /* OvalLayer.swift */,
+				CD0A09791C0CF262005CDE0A /* HolderView.swift */,
+				CD0A09771C0CF25D005CDE0A /* Colors.swift */,
+				CD0A09751C0CF258005CDE0A /* ArcLayer.swift */,
 			);
 			name = "Loading Animation";
 			sourceTree = "<group>";
@@ -304,9 +313,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				B232C22B1BF1BE7A007DD2B0 /* README in Resources */,
+				CD0A09741C0CCB60005CDE0A /* woman-man-7.png in Resources */,
+				CD0A09721C0CCB1D005CDE0A /* list-simple-7.png in Resources */,
 				B24717151BE9BAC2001D3F07 /* LaunchScreen.storyboard in Resources */,
 				B24717121BE9BAC2001D3F07 /* Assets.xcassets in Resources */,
 				B247170D1BE9BAC2001D3F07 /* Main.storyboard in Resources */,
+				CD0A09701C0CCB05005CDE0A /* calendar-7.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -318,29 +330,29 @@
 			buildActionMask = 2147483647;
 			files = (
 				B229EE591C023765006DFE13 /* RSVPListTableViewController.swift in Sources */,
+				CD0A09801C0CF272005CDE0A /* TriangleLayer.swift in Sources */,
 				B23D64C61BEAFDB300AF5D51 /* Event+CoreDataProperties.swift in Sources */,
+				CD0A097E1C0CF26D005CDE0A /* RectangleLayer.swift in Sources */,
 				B23D64C71BEAFDB300AF5D51 /* Event.swift in Sources */,
 				B2D5E5F91BEFC28100428843 /* EventsOfHostTableViewController.swift in Sources */,
-				CD0A096D1C0CB5EE005CDE0A /* HolderView.swift in Sources */,
 				B247172B1BE9C393001D3F07 /* Category.swift in Sources */,
-				CD0A096C1C0CB5EE005CDE0A /* Colors.swift in Sources */,
+				CD0A097C1C0CF268005CDE0A /* OvalLayer.swift in Sources */,
 				B247172A1BE9C393001D3F07 /* Category+CoreDataProperties.swift in Sources */,
 				B23D4A181BF0066600496737 /* AddNewCategoryViewController.swift in Sources */,
 				B23D4A141BEFFE0E00496737 /* CategoryTableViewController.swift in Sources */,
 				B23D64C91BEAFEAF00AF5D51 /* StoreCoreDataProtocol.swift in Sources */,
-				CD0A09661C0CB5D5005CDE0A /* RectangleLayer.swift in Sources */,
 				B23D4A161BF0020F00496737 /* EventsOfCategoryTableViewController.swift in Sources */,
 				B2D5E5F51BEFB3D200428843 /* AddNewHostViewController.swift in Sources */,
-				CD0A096B1C0CB5EE005CDE0A /* ArcLayer.swift in Sources */,
-				CD0A09671C0CB5D5005CDE0A /* TriangleLayer.swift in Sources */,
 				B24717101BE9BAC2001D3F07 /* project.xcdatamodeld in Sources */,
 				CD4AA64D1C02CDA8009ED80D /* Connection.swift in Sources */,
 				B247172E1BE9D623001D3F07 /* AddNewEventViewController.swift in Sources */,
 				B24717081BE9BAC2001D3F07 /* AppDelegate.swift in Sources */,
 				B2D5E5F71BEFC06E00428843 /* HostDetailViewController.swift in Sources */,
+				CD0A097A1C0CF262005CDE0A /* HolderView.swift in Sources */,
 				B24717291BE9C393001D3F07 /* Host.swift in Sources */,
-				CD0A09651C0CB5D5005CDE0A /* OvalLayer.swift in Sources */,
+				CD0A09781C0CF25D005CDE0A /* Colors.swift in Sources */,
 				B229EE571C01BD35006DFE13 /* Config.swift in Sources */,
+				CD0A09761C0CF258005CDE0A /* ArcLayer.swift in Sources */,
 				B2B034881BEFB10F001B04C5 /* HostTableViewController.swift in Sources */,
 				B24717281BE9C393001D3F07 /* Host+CoreDataProperties.swift in Sources */,
 				B28D0CD21C02B61F007FFFA1 /* TableViewController.swift in Sources */,
