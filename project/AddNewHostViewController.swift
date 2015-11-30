@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import Parse
 
 class AddNewHostViewController: UIViewController, UITextFieldDelegate {
     
@@ -76,6 +77,22 @@ class AddNewHostViewController: UIViewController, UITextFieldDelegate {
             try self.managedObjectContext!.save()
         } catch {
             fatalError("Failure to save context: \(error)")
+        }
+        
+        //add to server
+        let hostP = PFObject(className:"Hosts")
+        hostP["name"] = data["name"]
+        hostP["email"] = data["email"]
+        hostP["info"] = data["info"]
+        
+        hostP.saveInBackgroundWithBlock {
+            (success: Bool, error: NSError?) -> Void in
+            if (success) {
+                print("object host has been saved")
+                host.id = hostP.objectId
+            } else {
+                print("error")
+            }
         }
     }
     

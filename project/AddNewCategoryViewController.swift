@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import Parse
 
 class AddNewCategoryViewController: UIViewController, UITextFieldDelegate {
     
@@ -65,6 +66,20 @@ class AddNewCategoryViewController: UIViewController, UITextFieldDelegate {
             try self.managedObjectContext!.save()
         } catch {
             fatalError("Failure to save context: \(error)")
+        }
+        
+        //add to server
+        let catP = PFObject(className:"Categories")
+        catP["name"] = data["name"]
+        
+        catP.saveInBackgroundWithBlock {
+            (success: Bool, error: NSError?) -> Void in
+            if (success) {
+                print("object host has been saved")
+                cat.id = catP.objectId
+            } else {
+                print("error")
+            }
         }
         
     }

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9057" systemVersion="15B42" minimumToolsVersion="Automatic">
     <entity name="Category" representedClassName=".Category" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="events" optional="YES" toMany="YES" deletionRule="Deny" destinationEntity="Event" inverseName="category" inverseEntity="Event" syncable="YES"/>
     </entity>
@@ -18,13 +19,14 @@
     </entity>
     <entity name="Host" representedClassName=".Host" syncable="YES">
         <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="info" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="events" optional="YES" toMany="YES" deletionRule="Deny" destinationEntity="Event" inverseName="host" inverseEntity="Event" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Category" positionX="-63" positionY="-18" width="128" height="75"/>
+        <element name="Category" positionX="-63" positionY="-18" width="128" height="90"/>
         <element name="Event" positionX="115" positionY="57" width="128" height="195"/>
-        <element name="Host" positionX="250" positionY="-117" width="128" height="103"/>
+        <element name="Host" positionX="250" positionY="-117" width="128" height="120"/>
     </elements>
 </model>
