@@ -178,14 +178,23 @@ class EventTableViewController: UITableViewController, NSFetchedResultsControlle
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         let context = self.fetchedResultsController.managedObjectContext
-        context.deleteObject(self.fetchedResultsController.objectAtIndexPath(indexPath) as! NSManagedObject)
-        do {
-            try context.save()
-        } catch {
-            // Replace this implementation with code to handle the error appropriately.
-            // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-            //print("Unresolved error \(error), \(error.userInfo)")
-            abort()
+        let event = self.fetchedResultsController.objectAtIndexPath(indexPath) as! Event
+        print(event.eventID)
+        let query = PFQuery(className:"Events")
+        query.getObjectInBackgroundWithId(event.eventID!) {
+            (eventP: PFObject?, error: NSError?) -> Void in
+            if error == nil && eventP != nil {
+                context.deleteObject(event)
+                do {
+                    try context.save()
+                    eventP?.deleteInBackground()
+                } catch {
+                    print("error when delete event in Core Data")
+                    abort()
+                }
+            } else {
+                print(error)
+            }
         }
     }
     
@@ -374,7 +383,6 @@ class EventTableViewController: UITableViewController, NSFetchedResultsControlle
         } else if (segue.identifier == "EventDetail") {
             let view = segue.destinationViewController as! EventDetailViewController
             let index = self.tableView.indexPathForSelectedRow!
-            print(index)
             if (searchPredicate == nil) {
             view.event = self.fetchedResultsController.objectAtIndexPath(index) as? Event
             } else {

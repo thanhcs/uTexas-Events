@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import Parse
 
 class CategoryTableViewController: UITableViewController, NSFetchedResultsControllerDelegate, UISearchControllerDelegate, UISearchBarDelegate, UISearchResultsUpdating {
     
@@ -103,22 +104,38 @@ class CategoryTableViewController: UITableViewController, NSFetchedResultsContro
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         let context = self.fetchedResultsController.managedObjectContext
-        let backup = self.fetchedResultsController.objectAtIndexPath(indexPath) as! NSManagedObject
-        context.deleteObject(backup)
-        do {
-            try context.save()
-        } catch {
-            context.insertObject(backup)
+        let cat = self.fetchedResultsController.objectAtIndexPath(indexPath) as! Category
+        
+        if (cat.events!.count == 0) {
+            do {
+                let query = PFQuery(className:"Categories")
+                query.getObjectInBackgroundWithId(cat.id!) {
+                    (catP: PFObject?, error: NSError?) -> Void in
+                    if error == nil && catP != nil {
+                        context.deleteObject(cat)
+                        do {
+                            try context.save()
+                            catP?.deleteInBackground()
+                        } catch {
+                            print("ERROR: Can't delete a category having events")
+                            abort()
+                        }
+                    } else {
+                        print(error)
+                    }
+                }
+            }
+        } else {
             dispatch_async(dispatch_get_main_queue()) {
-                let alertController = UIAlertController(title: "Error", message: "Host can't be removed without deleting all events belong to the host.", preferredStyle: UIAlertControllerStyle.Alert)
+                let alertController = UIAlertController(title: "Error", message: "Category can't be removed without deleting all events belong to it.", preferredStyle: UIAlertControllerStyle.Alert)
                 
                 let OKAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) { (action:UIAlertAction) in
                 }
                 alertController.addAction(OKAction)
                 
                 self.presentViewController(alertController, animated: true, completion:nil)
+                self.tableView.reloadData()
             }
-
         }
     }
     

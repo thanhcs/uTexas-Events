@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import Parse
 
 class HostTableViewController: UITableViewController, NSFetchedResultsControllerDelegate, UISearchControllerDelegate, UISearchBarDelegate, UISearchResultsUpdating  {
     
@@ -106,20 +107,37 @@ class HostTableViewController: UITableViewController, NSFetchedResultsController
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         
         let context = self.fetchedResultsController.managedObjectContext
-        let backup = self.fetchedResultsController.objectAtIndexPath(indexPath) as! NSManagedObject
-        context.deleteObject(backup)
-        do {
-            try context.save()
-        } catch {
-            context.insertObject(backup)
+        let host = self.fetchedResultsController.objectAtIndexPath(indexPath) as! Host
+        
+        if (host.events!.count == 0) {
+            do {
+                let query = PFQuery(className:"Hosts")
+                query.getObjectInBackgroundWithId(host.id!) {
+                    (hostP: PFObject?, error: NSError?) -> Void in
+                    if error == nil && hostP != nil {
+                        context.deleteObject(host)
+                        do {
+                            try context.save()
+                            hostP?.deleteInBackground()
+                        } catch {
+                            print("ERROR: Can't delete a host having events")
+                            abort()
+                        }
+                    } else {
+                        print(error)
+                    }
+                }
+            }
+        } else {
             dispatch_async(dispatch_get_main_queue()) {
-                let alertController = UIAlertController(title: "Error", message: "Host can't be removed without deleting all events belong to the host.", preferredStyle: UIAlertControllerStyle.Alert)
+                let alertController = UIAlertController(title: "Error", message: "Host can't be removed without deleting all events belong to it.", preferredStyle: UIAlertControllerStyle.Alert)
                 
                 let OKAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) { (action:UIAlertAction) in
                 }
                 alertController.addAction(OKAction)
                 
                 self.presentViewController(alertController, animated: true, completion:nil)
+                self.tableView.reloadData()
             }
         }
     }
