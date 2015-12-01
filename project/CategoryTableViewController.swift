@@ -38,6 +38,7 @@ class CategoryTableViewController: UITableViewController, NSFetchedResultsContro
             controllerSearch.searchBar.sizeToFit()
             controllerSearch.searchResultsUpdater = self
             controllerSearch.searchBar.placeholder = "Search by name of category"
+            controllerSearch.searchBar.barTintColor = UIColor.orangeColor()
             controllerSearch.searchBar.tintColor = UIColor.orangeColor()
             self.tableView.tableHeaderView = controllerSearch.searchBar
             return controllerSearch
