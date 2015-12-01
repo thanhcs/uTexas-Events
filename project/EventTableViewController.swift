@@ -96,8 +96,10 @@ class EventTableViewController: UITableViewController, NSFetchedResultsControlle
     }
     
     func update() {
-        print("Update")
-        tableView.reloadData()
+        NSNotificationCenter.defaultCenter().postNotificationName("updateCoreData", object: nil, userInfo: nil)
+        dispatch_async(dispatch_get_main_queue()) {
+            self.tableView.reloadData()
+        }
         refreshControl?.endRefreshing()
     }
     
@@ -250,7 +252,7 @@ class EventTableViewController: UITableViewController, NSFetchedResultsControlle
         
         // Edit the section name key path and cache name if appropriate.
         // nil for section name key path means "no sections".
-        let aFetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.managedObjectContext!, sectionNameKeyPath: "date", cacheName: nil)
+        let aFetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.managedObjectContext!, sectionNameKeyPath: "date", cacheName: "event")
         aFetchedResultsController.delegate = self
         _fetchedResultsController = aFetchedResultsController
         

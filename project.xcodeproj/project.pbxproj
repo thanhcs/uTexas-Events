@@ -179,6 +179,7 @@
 				B24717071BE9BAC2001D3F07 /* AppDelegate.swift */,
 				CD4AA64C1C02CDA8009ED80D /* Connection.swift */,
 				B247170B1BE9BAC2001D3F07 /* Main.storyboard */,
+				CD0A09601C0CB51A005CDE0A /* AnimationViewController.swift */,
 				B247171C1BE9BDA9001D3F07 /* MainTabBarController.swift */,
 				B229EE581C023765006DFE13 /* RSVPListTableViewController.swift */,
 				B247171E1BE9C0B7001D3F07 /* EventTableViewController.swift */,
@@ -197,7 +198,6 @@
 				B247170E1BE9BAC2001D3F07 /* project.xcdatamodeld */,
 				B23D64C81BEAFEAF00AF5D51 /* StoreCoreDataProtocol.swift */,
 				B229EE561C01BD35006DFE13 /* Config.swift */,
-				CD0A09601C0CB51A005CDE0A /* AnimationViewController.swift */,
 				B24717161BE9BAC2001D3F07 /* Info.plist */,
 			);
 			path = project;

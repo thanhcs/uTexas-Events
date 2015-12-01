@@ -40,9 +40,9 @@ class AnimationViewController: UIViewController, HolderViewDelegate {
             }
         }
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateData:", name: "updateCoreData", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateNotificationHandler:", name: "updateCoreData", object: nil)
         
-        updateData()
+//        updateData()
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -58,6 +58,10 @@ class AnimationViewController: UIViewController, HolderViewDelegate {
         return true
     }
     
+    func updateNotificationHandler (notification: NSNotification) {
+        updateData()
+    }
+    
     func logout() {
         PFUser.logOut()
         Config.RSVPList = nil
@@ -66,6 +70,8 @@ class AnimationViewController: UIViewController, HolderViewDelegate {
     }
     
     func updateData() {
+        NSFetchedResultsController.deleteCacheWithName(nil)
+
         //Deletes core data stored
         let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
         let context = appDel.managedObjectContext
@@ -116,7 +122,7 @@ class AnimationViewController: UIViewController, HolderViewDelegate {
             self.addEvents()
             print("event")
         })
-
+        
     }
     
     func addHosts() {
@@ -131,6 +137,12 @@ class AnimationViewController: UIViewController, HolderViewDelegate {
                     host.email = (object.objectForKey("email") as? String)!
                     host.info = (object.objectForKey("info") as? String)!
                     host.id = object.objectId
+                    do {
+                        print("here ------------")
+                        try self.managedObjectContext!.save()
+                    } catch {
+                        abort()
+                    }
                 }
             }
         } catch _ {
@@ -151,6 +163,12 @@ class AnimationViewController: UIViewController, HolderViewDelegate {
                     let cat = NSEntityDescription.insertNewObjectForEntityForName("Category", inManagedObjectContext: self.managedObjectContext!) as! Category
                     cat.name = (object.objectForKey("name") as? String)!
                     cat.id = object.objectId
+                    do {
+                        print("here ------------")
+                        try self.managedObjectContext!.save()
+                    } catch {
+                        abort()
+                    }
                 }
             }
             
@@ -196,6 +214,12 @@ class AnimationViewController: UIViewController, HolderViewDelegate {
                         let cat = self.getCategoryById(object.objectForKey("cat")!.objectId!!)
                         cat.addEvent(event)
                         event.category = cat
+                        do {
+                            print("here ------------")
+                            try self.managedObjectContext!.save()
+                        } catch {
+                            abort()
+                        }
                     }
                 }
             } else {
