@@ -26,6 +26,7 @@ class CategoryTableViewController: UITableViewController, NSFetchedResultsContro
         
         oldButton = self.navigationItem.rightBarButtonItem!
         self.navigationItem.rightBarButtonItem = nil
+        navigationController!.navigationBar.barTintColor = UIColor.orangeColor()
         
         searchController = ({
             let controllerSearch = UISearchController(searchResultsController: nil)
@@ -37,6 +38,7 @@ class CategoryTableViewController: UITableViewController, NSFetchedResultsContro
             controllerSearch.searchBar.sizeToFit()
             controllerSearch.searchResultsUpdater = self
             controllerSearch.searchBar.placeholder = "Search by name of category"
+            controllerSearch.searchBar.tintColor = UIColor.orangeColor()
             self.tableView.tableHeaderView = controllerSearch.searchBar
             return controllerSearch
         })()
@@ -77,6 +79,8 @@ class CategoryTableViewController: UITableViewController, NSFetchedResultsContro
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("CategoryCell", forIndexPath: indexPath)
+        cell.backgroundColor = UIColor.orangeColor()
+        cell.textLabel?.textColor = UIColor.whiteColor()
         if searchPredicate == nil {
             self.configureCell(cell, atIndexPath: indexPath)
             

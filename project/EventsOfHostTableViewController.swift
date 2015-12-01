@@ -41,6 +41,8 @@ class EventsOfHostTableViewController: UITableViewController, NSFetchedResultsCo
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("EventCell", forIndexPath: indexPath)
+        cell.backgroundColor = UIColor.orangeColor()
+        cell.textLabel?.textColor = UIColor.whiteColor()
         self.configureCell(cell, atIndexPath: indexPath)
         return cell
     }
@@ -49,7 +51,7 @@ class EventsOfHostTableViewController: UITableViewController, NSFetchedResultsCo
         let event = self.fetchedResultsController.objectAtIndexPath(indexPath) as! Event
         cell.textLabel!.text = event.title
         cell.detailTextLabel!.text = event.from
-        print(event.from)
+        //print(event.from)
     }
     
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {

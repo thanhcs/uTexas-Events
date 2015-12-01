@@ -23,23 +23,25 @@ class HostDetailViewController: UIViewController {
 
         nameLabel.text = host?.name
         infoLabel.text = host?.info
+        infoLabel.textColor = UIColor.whiteColor()
         
         // Change the "events" button
         eventsButton.backgroundColor = UIColor.clearColor()
         eventsButton.layer.cornerRadius = 5
         eventsButton.layer.borderWidth = 1
-        eventsButton.layer.borderColor = UIColor.blueColor().CGColor
+        eventsButton.layer.borderColor = UIColor.whiteColor().CGColor
         // Change the "email" button
         emailButton.backgroundColor = UIColor.clearColor()
         emailButton.layer.cornerRadius = 5
         emailButton.layer.borderWidth = 1
-        emailButton.layer.borderColor = UIColor.blueColor().CGColor
+        emailButton.layer.borderColor = UIColor.whiteColor().CGColor
 
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
 
     // MARK: - Navigation
 

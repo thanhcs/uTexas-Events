@@ -24,6 +24,7 @@ class HostTableViewController: UITableViewController, NSFetchedResultsController
         super.viewDidLoad()
         navigationItem.title = "uTexas Events"
         definesPresentationContext = true
+        navigationController!.navigationBar.barTintColor = UIColor.orangeColor()
         
         oldButton = self.navigationItem.rightBarButtonItem!
         self.navigationItem.rightBarButtonItem = nil
@@ -38,6 +39,7 @@ class HostTableViewController: UITableViewController, NSFetchedResultsController
             controllerSearch.searchBar.sizeToFit()
             controllerSearch.searchResultsUpdater = self
             controllerSearch.searchBar.placeholder = "Search by name of host"
+            controllerSearch.searchBar.tintColor = UIColor.orangeColor()
             self.tableView.tableHeaderView = controllerSearch.searchBar
             return controllerSearch
         })()
@@ -79,6 +81,8 @@ class HostTableViewController: UITableViewController, NSFetchedResultsController
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("HostCell", forIndexPath: indexPath)
+        cell.backgroundColor = UIColor.orangeColor()
+        cell.textLabel?.textColor = UIColor.whiteColor()
         if searchPredicate == nil {
             self.configureCell(cell, atIndexPath: indexPath)
             

@@ -41,6 +41,9 @@
 		CD0A097C1C0CF268005CDE0A /* OvalLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0A097B1C0CF268005CDE0A /* OvalLayer.swift */; };
 		CD0A097E1C0CF26D005CDE0A /* RectangleLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0A097D1C0CF26D005CDE0A /* RectangleLayer.swift */; };
 		CD0A09801C0CF272005CDE0A /* TriangleLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0A097F1C0CF272005CDE0A /* TriangleLayer.swift */; };
+		CD27BC6B1C0E4C790035BC8B /* album-simple-7.png in Resources */ = {isa = PBXBuildFile; fileRef = CD27BC681C0E4C790035BC8B /* album-simple-7.png */; };
+		CD27BC6C1C0E4C790035BC8B /* calendar-7.png in Resources */ = {isa = PBXBuildFile; fileRef = CD27BC691C0E4C790035BC8B /* calendar-7.png */; };
+		CD27BC6D1C0E4C790035BC8B /* woman-man-7.png in Resources */ = {isa = PBXBuildFile; fileRef = CD27BC6A1C0E4C790035BC8B /* woman-man-7.png */; };
 		CD4AA64D1C02CDA8009ED80D /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4AA64C1C02CDA8009ED80D /* Connection.swift */; };
 		CDADE2D41C00DCB800D90479 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDADE2CE1C00DCB800D90479 /* Bolts.framework */; };
 		CDADE2D51C00DCB800D90479 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDADE2CF1C00DCB800D90479 /* Parse.framework */; };
@@ -97,6 +100,9 @@
 		CD0A097B1C0CF268005CDE0A /* OvalLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OvalLayer.swift; sourceTree = SOURCE_ROOT; };
 		CD0A097D1C0CF26D005CDE0A /* RectangleLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RectangleLayer.swift; sourceTree = SOURCE_ROOT; };
 		CD0A097F1C0CF272005CDE0A /* TriangleLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TriangleLayer.swift; sourceTree = SOURCE_ROOT; };
+		CD27BC681C0E4C790035BC8B /* album-simple-7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "album-simple-7.png"; sourceTree = SOURCE_ROOT; };
+		CD27BC691C0E4C790035BC8B /* calendar-7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "calendar-7.png"; sourceTree = SOURCE_ROOT; };
+		CD27BC6A1C0E4C790035BC8B /* woman-man-7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "woman-man-7.png"; sourceTree = SOURCE_ROOT; };
 		CD4AA64C1C02CDA8009ED80D /* Connection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
 		CDADE2CE1C00DCB800D90479 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		CDADE2CF1C00DCB800D90479 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
@@ -178,6 +184,9 @@
 				B247172C1BE9C3A2001D3F07 /* CoreData */,
 				B24717071BE9BAC2001D3F07 /* AppDelegate.swift */,
 				CD4AA64C1C02CDA8009ED80D /* Connection.swift */,
+				CD27BC681C0E4C790035BC8B /* album-simple-7.png */,
+				CD27BC691C0E4C790035BC8B /* calendar-7.png */,
+				CD27BC6A1C0E4C790035BC8B /* woman-man-7.png */,
 				B247170B1BE9BAC2001D3F07 /* Main.storyboard */,
 				CD0A09601C0CB51A005CDE0A /* AnimationViewController.swift */,
 				B247171C1BE9BDA9001D3F07 /* MainTabBarController.swift */,
@@ -301,9 +310,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				B232C22B1BF1BE7A007DD2B0 /* README in Resources */,
+				CD27BC6D1C0E4C790035BC8B /* woman-man-7.png in Resources */,
 				B24717151BE9BAC2001D3F07 /* LaunchScreen.storyboard in Resources */,
 				B24717121BE9BAC2001D3F07 /* Assets.xcassets in Resources */,
+				CD27BC6C1C0E4C790035BC8B /* calendar-7.png in Resources */,
 				B247170D1BE9BAC2001D3F07 /* Main.storyboard in Resources */,
+				CD27BC6B1C0E4C790035BC8B /* album-simple-7.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

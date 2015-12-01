@@ -85,6 +85,7 @@ class EventTableViewController: UITableViewController, NSFetchedResultsControlle
             controllerSearch.searchBar.sizeToFit()
             controllerSearch.searchResultsUpdater = self
             controllerSearch.searchBar.placeholder = "Search by name of event"
+            controllerSearch.searchBar.tintColor = UIColor.orangeColor()
             self.tableView.tableHeaderView = controllerSearch.searchBar
             return controllerSearch
         })()
@@ -172,6 +173,8 @@ class EventTableViewController: UITableViewController, NSFetchedResultsControlle
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("EventCell", forIndexPath: indexPath)
+        cell.backgroundColor = UIColor.orangeColor()
+        cell.textLabel?.textColor = UIColor.whiteColor()
         if searchPredicate == nil {
             self.configureCell(cell, atIndexPath: indexPath)
             
@@ -187,6 +190,7 @@ class EventTableViewController: UITableViewController, NSFetchedResultsControlle
         let event = self.fetchedResultsController.objectAtIndexPath(indexPath) as! Event
         cell.textLabel!.text = event.title
         cell.detailTextLabel!.text = event.host?.name
+        cell.detailTextLabel?.textColor = UIColor.whiteColor()
     }
     
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
