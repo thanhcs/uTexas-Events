@@ -85,6 +85,7 @@ class EventTableViewController: UITableViewController, NSFetchedResultsControlle
             controllerSearch.searchBar.sizeToFit()
             controllerSearch.searchResultsUpdater = self
             controllerSearch.searchBar.placeholder = "Search by name of event"
+            controllerSearch.searchBar.barTintColor = UIColor.orangeColor()
             controllerSearch.searchBar.tintColor = UIColor.orangeColor()
             self.tableView.tableHeaderView = controllerSearch.searchBar
             return controllerSearch
