@@ -62,6 +62,8 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         registerButton.hidden = true
         registerForgotStack.hidden = false
         responseLabel.text = ""
+        logInViewButton.hidden = true
+        logInButton.hidden = false
     }
     
     @IBAction func loginAction(sender: AnyObject) {
