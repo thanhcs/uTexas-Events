@@ -236,7 +236,6 @@ class AnimationViewController: UIViewController, HolderViewDelegate {
         
         return fetchedResults![0]
     }
-
         
     func addHolderView() {
         let boxSize: CGFloat = 100.0

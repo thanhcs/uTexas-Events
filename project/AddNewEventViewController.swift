@@ -10,6 +10,18 @@ import UIKit
 import CoreData
 import Parse
 
+extension NSDate {
+    
+    func isGreaterThanDate(dateToCompare : NSDate) -> Bool {
+        return self.compare(dateToCompare) == NSComparisonResult.OrderedDescending
+    }
+    
+    
+    func isLessThanDate(dateToCompare : NSDate) -> Bool {
+        return self.compare(dateToCompare) == NSComparisonResult.OrderedAscending
+    }
+}
+
 class AddNewEventViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     
     @IBOutlet weak var titleTextField: UITextField!
@@ -43,6 +55,15 @@ class AddNewEventViewController: UIViewController, UITextFieldDelegate, UIPicker
         catTextField.tag = 2
         
         self.navigationItem.title = "Add New Event"
+        
+        // set up default date and time
+        let todaysDate:NSDate = NSDate()
+        let dateFormatter:NSDateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "MM-dd-yyyy"
+        date = dateFormatter.stringFromDate(todaysDate)
+        dateFormatter.dateFormat = "hh:mm a"
+        from = dateFormatter.stringFromDate(todaysDate)
+        to = dateFormatter.stringFromDate(todaysDate)
 
         // Do any additional setup after loading the view.
         self.titleTextField.delegate = self
@@ -107,14 +128,32 @@ class AddNewEventViewController: UIViewController, UITextFieldDelegate, UIPicker
     
     @IBAction func saveEvent(sender: AnyObject) {
         // need to check nil
-        if (titleTextField.text == "" || locationTextField.text == "" || hostTextField.text == "" || descriptionTextField.text == "" || capacityTextField.text == "" || catTextField.text == "" || date == "" || from == "" || to == "") {
-            alertEmpty.textColor = UIColor.redColor()
+        if (titleTextField.text == "" || locationTextField.text == "" || hostTextField.text == "" || descriptionTextField.text == "" || capacityTextField.text == "" || catTextField.text == "") {
             alertEmpty.text = "You have to fill in all information!"
+        } else if (!verifyDate()) {
+            alertEmpty.text = "The input date is invalid"
         } else {
             let data: Dictionary<String, String> = ["title": titleTextField.text!, "date": date, "from": from, "to": to, "location": locationTextField.text!, "host": hostTextField.text!, "category": catTextField.text!, "description": descriptionTextField.text!, "capacity": capacityTextField.text!]
             self.delegate?.saveCoreData(data)
             navigationController?.popViewControllerAnimated(false)
         }
+    }
+    
+    private func verifyDate() -> Bool {
+        
+        let todaysDate:NSDate = NSDate()
+        let dateFormatter:NSDateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "MM-dd-yyyy hh:mm a"
+        let tempFromDate = dateFormatter.dateFromString(date + " " + from)
+        let tempToDate = dateFormatter.dateFromString(date + " " + from)
+        print(todaysDate)
+        print(tempFromDate)
+        if (todaysDate.isGreaterThanDate(tempFromDate!) || tempFromDate!.isGreaterThanDate(tempToDate!)) {
+            print("false")
+            return false
+        }
+        print("true")
+        return true
     }
     
     // dismiss the keyboard when touching anywhere
