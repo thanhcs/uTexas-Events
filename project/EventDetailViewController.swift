@@ -39,6 +39,7 @@ class EventDetailViewController: UIViewController {
         locationLabel.text = event?.location
         hostLabel.text = event?.host!.name
         catLabel.text = event?.category!.name
+        catLabel.textColor = UIColor.whiteColor()
         descriptionLabel.text = event?.desc
         capacityLabel.text = String(event!.capacity!)
         RSVPButton.hidden = true
@@ -47,7 +48,7 @@ class EventDetailViewController: UIViewController {
         addCalendarButton.backgroundColor = UIColor.clearColor()
         addCalendarButton.layer.cornerRadius = 5
         addCalendarButton.layer.borderWidth = 1
-        addCalendarButton.layer.borderColor = UIColor.blueColor().CGColor
+        addCalendarButton.layer.borderColor = UIColor.whiteColor().CGColor
         
         // control appearance of RSVP
         if (Config.didLogIn && !Config.isAdmin && !Config.isRSVPed((self.event?.eventID)!)) {

@@ -44,6 +44,8 @@ class EventsOfCategoryTableViewController: UITableViewController, NSFetchedResul
     func configureCell(cell: UITableViewCell, atIndexPath indexPath: NSIndexPath) {
         let event = self.fetchedResultsController.objectAtIndexPath(indexPath) as! Event
         cell.textLabel!.text = event.title
+        cell.textLabel?.textColor = UIColor.whiteColor()
+        cell.backgroundColor = UIColor.orangeColor()
     }
     
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {

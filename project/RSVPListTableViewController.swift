@@ -56,6 +56,8 @@ class RSVPListTableViewController: UITableViewController, NSFetchedResultsContro
     func configureCell(cell: UITableViewCell, atIndexPath indexPath: NSIndexPath) {
         let event = events![indexPath.row]
         cell.textLabel!.text = event.title
+        cell.textLabel?.textColor = UIColor.whiteColor()
+        cell.backgroundColor = UIColor.orangeColor()
     }
     
     // Override to support conditional editing of the table view.
