@@ -146,8 +146,6 @@ class AddNewEventViewController: UIViewController, UITextFieldDelegate, UIPicker
         dateFormatter.dateFormat = "MM-dd-yyyy hh:mm a"
         let tempFromDate = dateFormatter.dateFromString(date + " " + from)
         let tempToDate = dateFormatter.dateFromString(date + " " + from)
-        print(todaysDate)
-        print(tempFromDate)
         if (todaysDate.isGreaterThanDate(tempFromDate!) || tempFromDate!.isGreaterThanDate(tempToDate!)) {
             print("false")
             return false

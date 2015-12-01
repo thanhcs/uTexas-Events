@@ -88,14 +88,26 @@ class EventTableViewController: UITableViewController, NSFetchedResultsControlle
             self.tableView.tableHeaderView = controllerSearch.searchBar
             return controllerSearch
         })()
+        
+        // Refreshing
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: Selector("update"), forControlEvents: UIControlEvents.ValueChanged)
+        self.refreshControl = refreshControl
+    }
+    
+    func update() {
+        print("Update")
+        tableView.reloadData()
+        refreshControl?.endRefreshing()
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         searchPredicate = nil
         filteredData = nil
-        self.tableView.reloadData()
-
+        dispatch_async(dispatch_get_main_queue()) {
+            self.tableView.reloadData()
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -180,6 +192,7 @@ class EventTableViewController: UITableViewController, NSFetchedResultsControlle
             let sections = self.fetchedResultsController.sections
             let sectionInfo = sections![section]
             let event = sectionInfo.objects![0] as! Event
+            print(event.dateSort)
             return  event.date
         } else {
             return ""
@@ -231,14 +244,13 @@ class EventTableViewController: UITableViewController, NSFetchedResultsControlle
         fetchRequest.fetchBatchSize = 20
         
         // Edit the sort key as appropriate.
-        let dateSort = NSSortDescriptor(key: "date", ascending: true)
-        let fromSort = NSSortDescriptor(key: "from", ascending: true)
+        let dateSort = NSSortDescriptor(key: "dateSort", ascending: true)
         
-        fetchRequest.sortDescriptors = [dateSort, fromSort]
+        fetchRequest.sortDescriptors = [dateSort]
         
         // Edit the section name key path and cache name if appropriate.
         // nil for section name key path means "no sections".
-        let aFetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.managedObjectContext!, sectionNameKeyPath: "date", cacheName: "event")
+        let aFetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.managedObjectContext!, sectionNameKeyPath: "date", cacheName: nil)
         aFetchedResultsController.delegate = self
         _fetchedResultsController = aFetchedResultsController
         

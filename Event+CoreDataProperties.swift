@@ -24,5 +24,6 @@ extension Event {
     @NSManaged var eventID: String?
     @NSManaged var category: Category?
     @NSManaged var host: Host?
+    @NSManaged var dateSort: NSDate?
 
 }

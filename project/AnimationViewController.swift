@@ -40,6 +40,32 @@ class AnimationViewController: UIViewController, HolderViewDelegate {
             }
         }
         
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateData:", name: "updateCoreData", object: nil)
+        
+        updateData()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        addHolderView()
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
+    
+    func logout() {
+        PFUser.logOut()
+        Config.RSVPList = nil
+        Config.isAdmin = false
+        Config.didLogIn = false
+    }
+    
+    func updateData() {
         //Deletes core data stored
         let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
         let context = appDel.managedObjectContext
@@ -91,26 +117,6 @@ class AnimationViewController: UIViewController, HolderViewDelegate {
             print("event")
         })
 
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        addHolderView()
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
-    override func prefersStatusBarHidden() -> Bool {
-        return true
-    }
-    
-    func logout() {
-        PFUser.logOut()
-        Config.RSVPList = nil
-        Config.isAdmin = false
-        Config.didLogIn = false
     }
     
     func addHosts() {
@@ -178,6 +184,11 @@ class AnimationViewController: UIViewController, HolderViewDelegate {
                         event.capacity = (object.objectForKey("capacity") as? Int)!
                         event.eventID = object.objectId
                         
+                        let dateFormatter:NSDateFormatter = NSDateFormatter()
+                        dateFormatter.dateFormat = "MM-dd-yyyy hh:mm a"
+                        event.dateSort = dateFormatter.dateFromString(event.date! + " " + event.from!)
+                        
+                        
                         let host = self.getHostById(object.objectForKey("host")!.objectId!!)
                         host.addEvent(event)
                         event.host = host
@@ -187,13 +198,6 @@ class AnimationViewController: UIViewController, HolderViewDelegate {
                         event.category = cat
                     }
                 }
-                
-                //                do {
-                //                    try self.managedObjectContext!.save()
-                //                } catch {
-                //                    fatalError("Failure to save context: \(error)")
-                //                }
-                
             } else {
                 print("Error when pulling events' data")
                 print("Error: \(error!) \(error!.userInfo)")
