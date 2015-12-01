@@ -97,6 +97,7 @@ class EventTableViewController: UITableViewController, NSFetchedResultsControlle
     }
     
     func update() {
+        NSFetchedResultsController.deleteCacheWithName(nil)
         NSNotificationCenter.defaultCenter().postNotificationName("updateCoreData", object: nil, userInfo: nil)
         dispatch_async(dispatch_get_main_queue()) {
             self.tableView.reloadData()
@@ -198,7 +199,6 @@ class EventTableViewController: UITableViewController, NSFetchedResultsControlle
             let sections = self.fetchedResultsController.sections
             let sectionInfo = sections![section]
             let event = sectionInfo.objects![0] as! Event
-            print(event.dateSort)
             return  event.date
         } else {
             return ""

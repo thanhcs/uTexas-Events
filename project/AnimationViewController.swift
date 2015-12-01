@@ -70,8 +70,6 @@ class AnimationViewController: UIViewController, HolderViewDelegate {
     }
     
     func updateData() {
-        NSFetchedResultsController.deleteCacheWithName(nil)
-
         //Deletes core data stored
         let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
         let context = appDel.managedObjectContext
@@ -105,7 +103,6 @@ class AnimationViewController: UIViewController, HolderViewDelegate {
         }
         
         do {
-            print("here ------------")
             try self.managedObjectContext!.save()
         } catch {
             abort()
@@ -145,7 +142,6 @@ class AnimationViewController: UIViewController, HolderViewDelegate {
                     host.info = (object.objectForKey("info") as? String)!
                     host.id = object.objectId
                     do {
-                        print("here ------------")
                         try self.managedObjectContext!.save()
                     } catch {
                         abort()
@@ -171,7 +167,6 @@ class AnimationViewController: UIViewController, HolderViewDelegate {
                     cat.name = (object.objectForKey("name") as? String)!
                     cat.id = object.objectId
                     do {
-                        print("here ------------")
                         try self.managedObjectContext!.save()
                     } catch {
                         abort()
@@ -222,7 +217,6 @@ class AnimationViewController: UIViewController, HolderViewDelegate {
                         cat.addEvent(event)
                         event.category = cat
                         do {
-                            print("here ------------")
                             try self.managedObjectContext!.save()
                         } catch {
                             abort()
