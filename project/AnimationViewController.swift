@@ -102,6 +102,10 @@ class AnimationViewController: UIViewController, HolderViewDelegate {
         super.didReceiveMemoryWarning()
     }
     
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
+    
     func logout() {
         PFUser.logOut()
         Config.RSVPList = nil

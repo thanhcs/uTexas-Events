@@ -14,6 +14,8 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
         super.viewDidLoad()
 
         self.delegate = self
+        UITabBar.appearance().barTintColor = UIColor.orangeColor()
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -31,5 +33,9 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
 //            let eventView = eventNav.viewControllers[0] as! EventTableViewController
 //            eventView.searchController.active = false
 //        }
+    }
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return true
     }
 }

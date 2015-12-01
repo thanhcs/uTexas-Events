@@ -1255,7 +1255,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Ac0-Fl-BR1">
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Ac0-Fl-BR1">
                                 <rect key="frame" x="36" y="313" width="303" height="30"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MQa-BL-6Is">
@@ -1401,8 +1401,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="X8s-1P-IZV"/>
+        <segue reference="1ia-us-ag0"/>
         <segue reference="YCY-kU-sGX"/>
-        <segue reference="Io9-tT-OpX"/>
+        <segue reference="X8s-1P-IZV"/>
     </inferredMetricsTieBreakers>
 </document>

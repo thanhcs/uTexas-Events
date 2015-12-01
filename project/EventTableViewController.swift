@@ -20,7 +20,11 @@ class EventTableViewController: UITableViewController, NSFetchedResultsControlle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // setting up the navigation bar
         navigationItem.title = "uTexas Events"
+        navigationController!.navigationBar.barTintColor = UIColor.orangeColor()
+    
         definesPresentationContext = true
 
         NSFetchedResultsController.deleteCacheWithName(nil)

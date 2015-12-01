@@ -194,11 +194,11 @@
 				B23D4A171BF0066600496737 /* AddNewCategoryViewController.swift */,
 				B24717111BE9BAC2001D3F07 /* Assets.xcassets */,
 				B24717131BE9BAC2001D3F07 /* LaunchScreen.storyboard */,
-				B24717161BE9BAC2001D3F07 /* Info.plist */,
 				B247170E1BE9BAC2001D3F07 /* project.xcdatamodeld */,
 				B23D64C81BEAFEAF00AF5D51 /* StoreCoreDataProtocol.swift */,
 				B229EE561C01BD35006DFE13 /* Config.swift */,
 				CD0A09601C0CB51A005CDE0A /* AnimationViewController.swift */,
+				B24717161BE9BAC2001D3F07 /* Info.plist */,
 			);
 			path = project;
 			sourceTree = "<group>";
