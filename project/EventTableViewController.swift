@@ -69,6 +69,21 @@ class EventTableViewController: UITableViewController, NSFetchedResultsControlle
                 }
             }
         }
+        
+        // Configure the Search Controller
+        searchController = ({
+            let controllerSearch = UISearchController(searchResultsController: nil)
+            controllerSearch.delegate = self
+            controllerSearch.searchBar.delegate = self
+            controllerSearch.hidesNavigationBarDuringPresentation = true
+            controllerSearch.definesPresentationContext = false
+            controllerSearch.dimsBackgroundDuringPresentation = false
+            controllerSearch.searchBar.sizeToFit()
+            controllerSearch.searchResultsUpdater = self
+            controllerSearch.searchBar.placeholder = "Search by name of event"
+            self.tableView.tableHeaderView = controllerSearch.searchBar
+            return controllerSearch
+        })()
     }
     
     override func viewDidAppear(animated: Bool) {
