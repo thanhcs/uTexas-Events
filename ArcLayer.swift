@@ -89,37 +89,37 @@ class ArcLayer: CAShapeLayer {
   }
   
     func animate() {
-        var arcAnimationPre: CABasicAnimation = CABasicAnimation(keyPath: "path")
+        let arcAnimationPre: CABasicAnimation = CABasicAnimation(keyPath: "path")
         arcAnimationPre.fromValue = arcPathPre.CGPath
         arcAnimationPre.toValue = arcPathStarting.CGPath
         arcAnimationPre.beginTime = 0.0
         arcAnimationPre.duration = animationDuration
         
-        var arcAnimationLow: CABasicAnimation = CABasicAnimation(keyPath: "path")
+        let arcAnimationLow: CABasicAnimation = CABasicAnimation(keyPath: "path")
         arcAnimationLow.fromValue = arcPathStarting.CGPath
         arcAnimationLow.toValue = arcPathLow.CGPath
         arcAnimationLow.beginTime = arcAnimationPre.beginTime + arcAnimationPre.duration
         arcAnimationLow.duration = animationDuration
         
-        var arcAnimationMid: CABasicAnimation = CABasicAnimation(keyPath: "path")
+        let arcAnimationMid: CABasicAnimation = CABasicAnimation(keyPath: "path")
         arcAnimationMid.fromValue = arcPathLow.CGPath
         arcAnimationMid.toValue = arcPathMid.CGPath
         arcAnimationMid.beginTime = arcAnimationLow.beginTime + arcAnimationLow.duration
         arcAnimationMid.duration = animationDuration
         
-        var arcAnimationHigh: CABasicAnimation = CABasicAnimation(keyPath: "path")
+        let arcAnimationHigh: CABasicAnimation = CABasicAnimation(keyPath: "path")
         arcAnimationHigh.fromValue = arcPathMid.CGPath
         arcAnimationHigh.toValue = arcPathHigh.CGPath
         arcAnimationHigh.beginTime = arcAnimationMid.beginTime + arcAnimationMid.duration
         arcAnimationHigh.duration = animationDuration
         
-        var arcAnimationComplete: CABasicAnimation = CABasicAnimation(keyPath: "path")
+        let arcAnimationComplete: CABasicAnimation = CABasicAnimation(keyPath: "path")
         arcAnimationComplete.fromValue = arcPathHigh.CGPath
         arcAnimationComplete.toValue = arcPathComplete.CGPath
         arcAnimationComplete.beginTime = arcAnimationHigh.beginTime + arcAnimationHigh.duration
         arcAnimationComplete.duration = animationDuration
         
-        var arcAnimationGroup: CAAnimationGroup = CAAnimationGroup()
+        let arcAnimationGroup: CAAnimationGroup = CAAnimationGroup()
         arcAnimationGroup.animations = [arcAnimationPre, arcAnimationLow, arcAnimationMid,
             arcAnimationHigh, arcAnimationComplete]
         arcAnimationGroup.duration = arcAnimationComplete.beginTime + arcAnimationComplete.duration

@@ -40,41 +40,6 @@ class HostTableViewController: UITableViewController, NSFetchedResultsController
             self.tableView.tableHeaderView = controllerSearch.searchBar
             return controllerSearch
         })()
-        
-        let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
-        let context = appDel.managedObjectContext
-        let coord = appDel.persistentStoreCoordinator
-        
-        var fetchRequest = NSFetchRequest(entityName: "Event")
-        var deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
-        
-        do {
-            try coord.executeRequest(deleteRequest, withContext: context)
-        } catch let error as NSError {
-            debugPrint(error)
-        }
-        
-        fetchRequest = NSFetchRequest(entityName: "Host")
-        deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
-        
-        do {
-            try coord.executeRequest(deleteRequest, withContext: context)
-        } catch let error as NSError {
-            debugPrint(error)
-        }
-        
-        fetchRequest = NSFetchRequest(entityName: "Category")
-        deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
-        
-        do {
-            try coord.executeRequest(deleteRequest, withContext: context)
-        } catch let error as NSError {
-            debugPrint(error)
-        }
-
-
-        
-        
     }
 
     override func didReceiveMemoryWarning() {

@@ -60,92 +60,15 @@ class EventTableViewController: UITableViewController, NSFetchedResultsControlle
                 self.navigationItem.leftBarButtonItem?.enabled = false
                 self.navigationItem.rightBarButtonItem?.title = "Log out"
                 self.navigationItem.rightBarButtonItem?.enabled = true
-                let triggerTime = (Int64(NSEC_PER_SEC) * 2)
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, triggerTime), dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0), { () -> Void in
-                    do {
-                        try currentUser?.fetch()
-                    } catch _ {
-                        print ("can't refrest user's data")
-                        self.logout()
-                    }
-                    Config.RSVPList = currentUser!["eventRSVPs"] as? [String]
-                    print(Config.RSVPList)
+                if (Config.RSVPList != nil) {
                     self.navigationItem.leftBarButtonItem!.title = "RSVPs"
                     dispatch_async(dispatch_get_main_queue()) {
                         self.navigationItem.leftBarButtonItem!.tintColor = nil
                     }
                     self.navigationItem.leftBarButtonItem?.enabled = true
-                })
+                }
             }
         }
-        
-        //Deletes core data stored
-        let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
-        let context = appDel.managedObjectContext
-        let coord = appDel.persistentStoreCoordinator
-        
-        var fetchRequest = NSFetchRequest(entityName: "Event")
-        var deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
-        
-        do {
-            try coord.executeRequest(deleteRequest, withContext: context)
-        } catch let error as NSError {
-            debugPrint(error)
-        }
-        
-        fetchRequest = NSFetchRequest(entityName: "Host")
-        deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
-        
-        do {
-            try coord.executeRequest(deleteRequest, withContext: context)
-        } catch let error as NSError {
-            debugPrint(error)
-        }
-        
-        fetchRequest = NSFetchRequest(entityName: "Category")
-        deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
-        
-        do {
-            try coord.executeRequest(deleteRequest, withContext: context)
-        } catch let error as NSError {
-            debugPrint(error)
-        }
-        
-        
-        // Configure the Search Controller
-        searchController = ({
-            let controllerSearch = UISearchController(searchResultsController: nil)
-            controllerSearch.delegate = self
-            controllerSearch.searchBar.delegate = self
-            controllerSearch.hidesNavigationBarDuringPresentation = true
-            controllerSearch.definesPresentationContext = false
-            controllerSearch.dimsBackgroundDuringPresentation = false
-            controllerSearch.searchBar.sizeToFit()
-            controllerSearch.searchResultsUpdater = self
-            controllerSearch.searchBar.placeholder = "Search by name of event"
-            self.tableView.tableHeaderView = controllerSearch.searchBar
-            return controllerSearch
-        })()
-        
-        // pulling data
-        let queue:dispatch_queue_t = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
-        let group:dispatch_group_t = dispatch_group_create()
-        
-        dispatch_group_async(group, queue, {
-            self.addHosts()
-            print("host")
-            });
-        
-        dispatch_group_async(group, queue, {
-            self.addCats()
-            print("cat")
-        });
-        
-        dispatch_group_notify(group, queue, {
-            self.addEvents()
-            print("event")
-        })
-        
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -154,134 +77,6 @@ class EventTableViewController: UITableViewController, NSFetchedResultsControlle
         filteredData = nil
         self.tableView.reloadData()
 
-    }
-    
-    func addHosts() {
-        let query = PFQuery(className: "Hosts")
-        do {
-            if let objects = try query.findObjects() as [PFObject]? {
-                print("Number of host objects:" + String(objects.count))
-                for object in objects {
-                    print((object.objectForKey("name") as? String)!)
-                    let host = NSEntityDescription.insertNewObjectForEntityForName("Host", inManagedObjectContext: self.managedObjectContext!) as! Host
-                    host.name = (object.objectForKey("name") as? String)!
-                    host.email = (object.objectForKey("email") as? String)!
-                    host.info = (object.objectForKey("info") as? String)!
-                    host.id = object.objectId
-                }
-            }
-        } catch _ {
-            print("Error when pulling host' data")
-            abort()
-        }
-
-        print("Successfully pulling hosts' data")
-    }
-    
-    func addCats() {
-        let query = PFQuery(className: "Categories")
-        do {
-            if let objects = try query.findObjects() as [PFObject]? {
-                print("Number of cat objects:" + String(objects.count))
-                for object in objects {
-                    print((object.objectForKey("name") as? String)!)
-                    let cat = NSEntityDescription.insertNewObjectForEntityForName("Category", inManagedObjectContext: self.managedObjectContext!) as! Category
-                    cat.name = (object.objectForKey("name") as? String)!
-                    cat.id = object.objectId
-                }
-            }
-
-        } catch _ {
-            print("Error when pulling cats' data")
-            abort()
-        }
-        print("Successfully pulling hosts' data")
-    }
-    
-    func addEvents() {
-        let query = PFQuery(className: "Events")
-        query.findObjectsInBackgroundWithBlock {
-            
-            (objects:[PFObject]?, error: NSError?) -> Void in
-            
-            if error == nil {
-                // success
-                if let objects = objects! as [PFObject]? {
-                    print("Number of event objects:" + String(objects.count))
-                    for object in objects {
-                        print((object.objectForKey("title") as? String)!)
-                        let event = NSEntityDescription.insertNewObjectForEntityForName("Event", inManagedObjectContext: self.managedObjectContext!) as! Event
-                        //print(event.objectForKey("host")!)
-                        event.title = (object.objectForKey("title") as? String)!
-                        event.date = (object.objectForKey("date") as? String)!
-                        event.from = (object.objectForKey("from") as? String)!
-                        event.to = (object.objectForKey("to") as? String)!
-                        event.location = (object.objectForKey("location") as? String)!
-                        event.desc = (object.objectForKey("desc") as? String)!
-                        event.capacity = (object.objectForKey("capacity") as? Int)!
-                        event.eventID = object.objectId
-                        
-                        let host = self.getHostById(object.objectForKey("host")!.objectId!!)
-                        host.addEvent(event)
-                        event.host = host
-                        
-                        let cat = self.getCategoryById(object.objectForKey("cat")!.objectId!!)
-                        cat.addEvent(event)
-                        event.category = cat
-                    }
-                }
-                
-//                do {
-//                    try self.managedObjectContext!.save()
-//                } catch {
-//                    fatalError("Failure to save context: \(error)")
-//                }
-                
-            } else {
-                print("Error when pulling events' data")
-                print("Error: \(error!) \(error!.userInfo)")
-                abort()
-            }
-        }
-        print("Successfully pulling events' data")
-    }
-    
-    private func getHostById(id: String) -> Host {
-        
-        let fetchRequest = NSFetchRequest(entityName:"Host")
-        fetchRequest.predicate = NSPredicate(format: "id = %@", id)
-        
-        var fetchedResults:[Host]? = nil
-        
-        do {
-            fetchedResults = try managedObjectContext!.executeFetchRequest(fetchRequest) as? [Host]
-        } catch {
-            // what to do if an error occurs?
-            let nserror = error as NSError
-            NSLog("Unresolved error \(nserror), \(nserror.userInfo)")
-            abort()
-        }
-        
-        return fetchedResults![0]
-    }
-    
-    private func getCategoryById(id: String) -> Category {
-        
-        let fetchRequest = NSFetchRequest(entityName:"Category")
-        fetchRequest.predicate = NSPredicate(format: "id = %@", id)
-        
-        var fetchedResults:[Category]? = nil
-        
-        do {
-            fetchedResults = try managedObjectContext!.executeFetchRequest(fetchRequest) as? [Category]
-        } catch {
-            // what to do if an error occurs?
-            let nserror = error as NSError
-            NSLog("Unresolved error \(nserror), \(nserror.userInfo)")
-            abort()
-        }
-        
-        return fetchedResults![0]
     }
 
     override func didReceiveMemoryWarning() {
