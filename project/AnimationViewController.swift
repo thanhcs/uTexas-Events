@@ -42,7 +42,7 @@ class AnimationViewController: UIViewController, HolderViewDelegate {
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateNotificationHandler:", name: "updateCoreData", object: nil)
         
-//        updateData()
+        updateData()
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -102,6 +102,13 @@ class AnimationViewController: UIViewController, HolderViewDelegate {
             try coord.executeRequest(deleteRequest, withContext: context)
         } catch let error as NSError {
             debugPrint(error)
+        }
+        
+        do {
+            print("here ------------")
+            try self.managedObjectContext!.save()
+        } catch {
+            abort()
         }
         
         // pulling data
