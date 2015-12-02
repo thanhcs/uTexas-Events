@@ -90,20 +90,6 @@ class EventTableViewController: UITableViewController, NSFetchedResultsControlle
             self.tableView.tableHeaderView = controllerSearch.searchBar
             return controllerSearch
         })()
-        
-        // Refreshing
-        let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: Selector("update"), forControlEvents: UIControlEvents.ValueChanged)
-        self.refreshControl = refreshControl
-    }
-    
-    func update() {
-        NSFetchedResultsController.deleteCacheWithName(nil)
-        NSNotificationCenter.defaultCenter().postNotificationName("updateCoreData", object: nil, userInfo: nil)
-        dispatch_async(dispatch_get_main_queue()) {
-            self.tableView.reloadData()
-        }
-        refreshControl?.endRefreshing()
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -177,12 +163,14 @@ class EventTableViewController: UITableViewController, NSFetchedResultsControlle
         let cell = tableView.dequeueReusableCellWithIdentifier("EventCell", forIndexPath: indexPath)
         cell.backgroundColor = UIColor.orangeColor()
         cell.textLabel?.textColor = UIColor.whiteColor()
+        cell.detailTextLabel?.textColor = UIColor.whiteColor()
         if searchPredicate == nil {
             self.configureCell(cell, atIndexPath: indexPath)
             
         } else {
             if let filteredSearch = filteredData?[indexPath.row] {
                 cell.textLabel?.text = filteredSearch.title
+                cell.detailTextLabel!.text = filteredSearch.host?.name
             }
         }
         return cell
@@ -192,7 +180,6 @@ class EventTableViewController: UITableViewController, NSFetchedResultsControlle
         let event = self.fetchedResultsController.objectAtIndexPath(indexPath) as! Event
         cell.textLabel!.text = event.title
         cell.detailTextLabel!.text = event.host?.name
-        cell.detailTextLabel?.textColor = UIColor.whiteColor()
     }
     
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {

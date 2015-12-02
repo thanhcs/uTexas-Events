@@ -40,8 +40,6 @@ class AnimationViewController: UIViewController, HolderViewDelegate {
             }
         }
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateNotificationHandler:", name: "updateCoreData", object: nil)
-        
         updateData()
     }
     
