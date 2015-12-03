@@ -136,7 +136,6 @@ class EventTableViewController: UITableViewController, NSFetchedResultsControlle
         self.navigationItem.leftBarButtonItem?.enabled = true
         self.navigationItem.rightBarButtonItem?.title = ""
         self.navigationItem.rightBarButtonItem?.enabled = false
-        self.navigationItem.leftBarButtonItem!.tintColor = nil
     }
 
     // MARK: - Table view data source
@@ -420,6 +419,7 @@ class EventTableViewController: UITableViewController, NSFetchedResultsControlle
         let backItem = UIBarButtonItem()
         backItem.title = "Back"
         navigationItem.backBarButtonItem = backItem
+        navigationItem.backBarButtonItem?.tintColor = UIColor.whiteColor()
     }
     
     func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {

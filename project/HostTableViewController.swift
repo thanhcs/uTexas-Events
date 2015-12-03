@@ -234,6 +234,7 @@ class HostTableViewController: UITableViewController, NSFetchedResultsController
         // Set up the Back button
         let backItem = UIBarButtonItem()
         backItem.title = "Back"
+        backItem.tintColor = UIColor.whiteColor()
         navigationItem.backBarButtonItem = backItem
     }
 

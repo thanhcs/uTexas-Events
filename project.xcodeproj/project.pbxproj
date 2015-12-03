@@ -149,6 +149,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B201DFB71C10ABD400A9A81A /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				CD27BC681C0E4C790035BC8B /* album-simple-7.png */,
+				CD27BC691C0E4C790035BC8B /* calendar-7.png */,
+				CD27BC6A1C0E4C790035BC8B /* woman-man-7.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
 		B24716FB1BE9BAC2001D3F07 = {
 			isa = PBXGroup;
 			children = (
@@ -184,9 +194,7 @@
 				B247172C1BE9C3A2001D3F07 /* CoreData */,
 				B24717071BE9BAC2001D3F07 /* AppDelegate.swift */,
 				CD4AA64C1C02CDA8009ED80D /* Connection.swift */,
-				CD27BC681C0E4C790035BC8B /* album-simple-7.png */,
-				CD27BC691C0E4C790035BC8B /* calendar-7.png */,
-				CD27BC6A1C0E4C790035BC8B /* woman-man-7.png */,
+				B201DFB71C10ABD400A9A81A /* Images */,
 				B247170B1BE9BAC2001D3F07 /* Main.storyboard */,
 				CD0A09601C0CB51A005CDE0A /* AnimationViewController.swift */,
 				B247171C1BE9BDA9001D3F07 /* MainTabBarController.swift */,

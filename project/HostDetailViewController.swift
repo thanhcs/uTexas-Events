@@ -59,6 +59,7 @@ class HostDetailViewController: UIViewController {
     
     @IBAction func emailAction(sender: AnyObject) {
         let url = NSURL(string: (host?.email)!)
+        print("email")
         UIApplication.sharedApplication().openURL(url!)
     }
 }

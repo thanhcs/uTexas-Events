@@ -16,6 +16,7 @@ class RSVPListTableViewController: UITableViewController, NSFetchedResultsContro
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.title = "RSVPs List"
 
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         managedObjectContext = appDelegate.managedObjectContext
@@ -78,23 +79,6 @@ class RSVPListTableViewController: UITableViewController, NSFetchedResultsContro
         
         return [delete]
     }
-    
-    // Override to support editing the table view.
-//    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-//        
-//        
-//        if editingStyle == .Delete {
-//            // Delete the row from the data source
-//            let event = events![indexPath.row]
-//            let id = event.eventID!
-//            Config.delEventToRSVPList(eventID: id)
-//            events?.removeAtIndex(indexPath.row)
-//            
-//            
-//            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-//        }
-//    }
-    
 
     // MARK: - Navigation
 

@@ -27,6 +27,9 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var resetPasswordButton: UIButton!
+    @IBOutlet weak var registerViewButton: UIButton!
+    @IBOutlet weak var forgotViewButton: UIButton!
+    
     
     var eventView:UIViewController? = nil
 
@@ -43,6 +46,15 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         passwordTextField.delegate = self
         responseLabel.textColor = UIColor.redColor()
         resetPasswordButton.hidden = true
+        forgotViewButton.layer.cornerRadius = 5
+        
+        // Buttons
+        logInButton.layer.cornerRadius = 5
+        registerButton.layer.cornerRadius = 5
+        resetPasswordButton.layer.cornerRadius = 5
+        logInViewButton.layer.cornerRadius = 5
+        registerViewButton.layer.cornerRadius = 5
+        
         
     }
 
@@ -99,8 +111,12 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
                     }
                     
                 } else {
-                    let errorString = error!.userInfo["error"] as? NSString
-                    self.responseLabel.text = errorString as? String
+                    if (error!.code == 101) {
+                        self.responseLabel.text = "Wrong username/password"
+                    } else {
+                        let errorString = error!.userInfo["error"] as? NSString
+                        self.responseLabel.text = errorString as? String
+                    }
                 }
             }
         }
@@ -135,6 +151,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func recoveringPasswordAction (sender: AnyObject) {
+        
         if (emailTextField.text == "") {
             responseLabel.text = "Please input your email"
             
@@ -173,8 +190,12 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
             user.signUpInBackgroundWithBlock {
                 (succeeded: Bool, error: NSError?) -> Void in
                 if let error = error {
-                    let errorString = error.userInfo["error"] as? NSString
-                    self.responseLabel.text = errorString as? String
+                    if (error.code == 203) {
+                        self.responseLabel.text = "Email has already used"
+                    } else {
+                        let errorString = error.userInfo["error"] as? NSString
+                        self.responseLabel.text = errorString as? String
+                    }
                 } else {
                     Config.didLogIn = true
                     self.dismissViewControllerAnimated(true, completion: nil)

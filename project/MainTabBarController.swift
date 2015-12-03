@@ -27,13 +27,6 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
     func tabBarController(tabBarController: UITabBarController, didSelectViewController viewController: UIViewController) {
         let nav = viewController as! UINavigationController
         nav.popToRootViewControllerAnimated(false)
-        
-        // Try to fix the bug when the search bar active, move back from the other tab will cause black screen
-//        if (tabBarController.selectedIndex == 0) {
-//            let eventNav = viewController as! UINavigationController
-//            let eventView = eventNav.viewControllers[0] as! EventTableViewController
-//            eventView.searchController.active = false
-//        }
     }
     
     override func prefersStatusBarHidden() -> Bool {

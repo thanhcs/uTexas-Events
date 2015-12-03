@@ -15,6 +15,7 @@ class AddNewCategoryViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var alertLabel: UILabel!
     @IBOutlet weak var cancelButton: UIButton!
+    @IBOutlet weak var saveButton: UIButton!
     
     var managedObjectContext:NSManagedObjectContext? = nil
     var addEventView: AddNewEventViewController? = nil
@@ -27,6 +28,18 @@ class AddNewCategoryViewController: UIViewController, UITextFieldDelegate {
         if (!fromEventForm) {
             cancelButton.hidden = true
         }
+        
+        // Cancel button
+        cancelButton.backgroundColor = UIColor.clearColor()
+        cancelButton.layer.cornerRadius = 5
+        cancelButton.layer.borderWidth = 1
+        cancelButton.layer.borderColor = UIColor.whiteColor().CGColor
+        
+        // Save Button
+        saveButton.backgroundColor = UIColor.clearColor()
+        saveButton.layer.cornerRadius = 5
+        saveButton.layer.borderWidth = 1
+        saveButton.layer.borderColor = UIColor.whiteColor().CGColor
     }
 
     override func didReceiveMemoryWarning() {

@@ -50,6 +50,13 @@ class EventDetailViewController: UIViewController {
         addCalendarButton.layer.borderWidth = 1
         addCalendarButton.layer.borderColor = UIColor.whiteColor().CGColor
         
+        // Change the "Add to Calendar" button
+        RSVPButton.backgroundColor = UIColor.clearColor()
+        RSVPButton.layer.cornerRadius = 5
+        RSVPButton.layer.borderWidth = 1
+        RSVPButton.layer.borderColor = UIColor.whiteColor().CGColor
+        
+        
         // control appearance of RSVP
         if (Config.didLogIn && !Config.isAdmin && !Config.isRSVPed((self.event?.eventID)!)) {
             self.RSVPButton.hidden = false

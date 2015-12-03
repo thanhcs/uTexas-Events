@@ -36,6 +36,7 @@ class AddNewEventViewController: UIViewController, UITextFieldDelegate, UIPicker
     @IBOutlet weak var alertEmpty: UILabel!
     @IBOutlet weak var hostPicker: UIPickerView!
     @IBOutlet weak var catPicker: UIPickerView!
+    @IBOutlet weak var saveButton: UIButton!
     
     var date: String = ""
     var to: String = ""
@@ -48,7 +49,7 @@ class AddNewEventViewController: UIViewController, UITextFieldDelegate, UIPicker
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+                
         hostPicker.tag = 1
         catPicker.tag = 2
         hostTextField.tag = 1
@@ -56,20 +57,35 @@ class AddNewEventViewController: UIViewController, UITextFieldDelegate, UIPicker
         
         self.navigationItem.title = "Add New Event"
         
-        // set up default date and time
-        let todaysDate:NSDate = NSDate()
-        let dateFormatter:NSDateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "MM-dd-yyyy"
-        date = dateFormatter.stringFromDate(todaysDate)
-        dateFormatter.dateFormat = "hh:mm a"
-        from = dateFormatter.stringFromDate(todaysDate)
-        to = dateFormatter.stringFromDate(todaysDate)
+        dispatch_sync(dispatch_get_global_queue(Int(QOS_CLASS_USER_INITIATED.rawValue), 0)) {
+            // set up default date and time
+            let todaysDate:NSDate = NSDate()
+            let dateFormatter:NSDateFormatter = NSDateFormatter()
+            dateFormatter.dateFormat = "MM-dd-yyyy"
+            self.date = dateFormatter.stringFromDate(todaysDate)
+            dateFormatter.dateFormat = "hh:mm a"
+            self.from = dateFormatter.stringFromDate(todaysDate)
+            self.to = dateFormatter.stringFromDate(todaysDate)
+            
+            self.refreshCatsList()
+            self.refreshHostsList()
+        }
+        
+        // save button 
+        saveButton.backgroundColor = UIColor.clearColor()
+        saveButton.layer.cornerRadius = 5
+        saveButton.layer.borderWidth = 1
+        saveButton.layer.borderColor = UIColor.whiteColor().CGColor
+        
 
         // Do any additional setup after loading the view.
         self.titleTextField.delegate = self
         myDatePicker.datePickerMode = UIDatePickerMode.Date
+        myDatePicker.setValue(UIColor.whiteColor(), forKey: "textColor")
         fromTimePicker.datePickerMode = UIDatePickerMode.Time
+        fromTimePicker.setValue(UIColor.whiteColor(), forKey: "textColor")
         toTimePicker.datePickerMode = UIDatePickerMode.Time
+        toTimePicker.setValue(UIColor.whiteColor(), forKey: "textColor")
         locationTextField.delegate = self
         hostTextField.delegate = self
         descriptionTextField.delegate = self
@@ -78,20 +94,6 @@ class AddNewEventViewController: UIViewController, UITextFieldDelegate, UIPicker
         
         hostPicker.hidden = true
         catPicker.hidden = true
-        
-        refreshCatsList()
-        refreshHostsList()
-        
-        // create categories array
-        let fetchRequest2 = NSFetchRequest(entityName:"Category")
-        do {
-            cats = try managedObjectContext!.executeFetchRequest(fetchRequest2) as? [Category]
-        } catch {
-            // what to do if an error occurs?
-            let nserror = error as NSError
-            NSLog("Unresolved error \(nserror), \(nserror.userInfo)")
-            abort()
-        }
     }
 
     override func didReceiveMemoryWarning() {

@@ -139,11 +139,6 @@ class AnimationViewController: UIViewController, HolderViewDelegate {
                     host.email = (object.objectForKey("email") as? String)!
                     host.info = (object.objectForKey("info") as? String)!
                     host.id = object.objectId
-                    do {
-                        try self.managedObjectContext!.save()
-                    } catch {
-                        abort()
-                    }
                 }
             }
         } catch _ {
@@ -164,11 +159,6 @@ class AnimationViewController: UIViewController, HolderViewDelegate {
                     let cat = NSEntityDescription.insertNewObjectForEntityForName("Category", inManagedObjectContext: self.managedObjectContext!) as! Category
                     cat.name = (object.objectForKey("name") as? String)!
                     cat.id = object.objectId
-                    do {
-                        try self.managedObjectContext!.save()
-                    } catch {
-                        abort()
-                    }
                 }
             }
             
@@ -214,11 +204,6 @@ class AnimationViewController: UIViewController, HolderViewDelegate {
                         let cat = self.getCategoryById(object.objectForKey("cat")!.objectId!!)
                         cat.addEvent(event)
                         event.category = cat
-                        do {
-                            try self.managedObjectContext!.save()
-                        } catch {
-                            abort()
-                        }
                     }
                 }
             } else {
