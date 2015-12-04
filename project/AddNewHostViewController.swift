@@ -16,6 +16,7 @@ class AddNewHostViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var infoTextView: UITextView!
     @IBOutlet weak var alertLabel: UILabel!
+    @IBOutlet weak var addHostLabel: UILabel!
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var doneButton: UIButton!
     @IBOutlet weak var saveButton: UIButton!
@@ -33,6 +34,7 @@ class AddNewHostViewController: UIViewController, UITextFieldDelegate {
         
         if (!fromEventForm) {
             cancelButton.hidden = true
+            addHostLabel.hidden = true
         }
         
         // Cancel button

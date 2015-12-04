@@ -14,6 +14,7 @@ class AddNewCategoryViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var alertLabel: UILabel!
+    @IBOutlet weak var addCatLabel: UILabel!
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var saveButton: UIButton!
     
@@ -24,9 +25,11 @@ class AddNewCategoryViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         nameTextField.delegate = self
+        navigationItem.title = "Add New Category"
         
         if (!fromEventForm) {
             cancelButton.hidden = true
+            addCatLabel.hidden = true
         }
         
         // Cancel button

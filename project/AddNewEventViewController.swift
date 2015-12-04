@@ -160,11 +160,13 @@ class AddNewEventViewController: UIViewController, UITextFieldDelegate, UIPicker
         self.view.endEditing(true)
         catPicker.hidden = true
         hostPicker.hidden = true
+        saveButton.hidden = false
     }
     
     // dismiss the keyboard when touching the return key
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
+        saveButton.hidden = false
         return true
     }
     
@@ -244,16 +246,19 @@ class AddNewEventViewController: UIViewController, UITextFieldDelegate, UIPicker
                 catPicker.hidden = true
             }
         }
+        saveButton.hidden = false
     }
     
     // Control the keyboard and picker appearance
     func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
         if (textField.tag == 1) {
+            saveButton.hidden = true
             hostPicker.hidden = false
             catPicker.hidden = true
             view.endEditing(true)
             return false
         } else if (textField.tag == 2) {
+            saveButton.hidden = true
             catPicker.hidden = false
             hostPicker.hidden = true
             view.endEditing(true)
@@ -261,6 +266,7 @@ class AddNewEventViewController: UIViewController, UITextFieldDelegate, UIPicker
         } else {
             catPicker.hidden = true
             hostPicker.hidden = true
+            saveButton.hidden = false
             return true
         }
     }
@@ -269,6 +275,7 @@ class AddNewEventViewController: UIViewController, UITextFieldDelegate, UIPicker
         dispatch_async(dispatch_get_main_queue()) {
             self.hostPicker.hidden = true
             self.catPicker.hidden = true
+            self.saveButton.hidden = false
         }
         
         if (segue.identifier == "addHostNewEvent") {
