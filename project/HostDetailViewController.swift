@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import MessageUI
 
-class HostDetailViewController: UIViewController {
+class HostDetailViewController: UIViewController, MFMailComposeViewControllerDelegate {
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var infoLabel: UILabel!
@@ -57,8 +58,36 @@ class HostDetailViewController: UIViewController {
     }
     
     @IBAction func emailAction(sender: AnyObject) {
-        let url = NSURL(string: (host?.email)!)
-        print("email")
-        UIApplication.sharedApplication().openURL(url!)
+        
+        if (MFMailComposeViewController.canSendMail()) {
+            let emailTitle = "information regarding:" + (host?.name)!
+            let messageBody = "Hi, I had a question regarding..."
+            let toRecipents = ["\(host!.email)"]
+            let mc: MFMailComposeViewController = MFMailComposeViewController()
+            mc.mailComposeDelegate = self
+            mc.setSubject(emailTitle)
+            mc.setMessageBody(messageBody, isHTML: false)
+            mc.setToRecipients(toRecipents)
+            self.presentViewController(mc, animated: true, completion: nil)
+        }else {
+            print("No email account found")
+        }
     }
-}
+    
+    // Email Delegate
+    func mailComposeController(controller:MFMailComposeViewController, didFinishWithResult result:MFMailComposeResult, error:NSError?) {
+        
+        switch result.rawValue {
+        case MFMailComposeResultCancelled.rawValue:
+            print("Mail cancelled")
+        case MFMailComposeResultSaved.rawValue:
+            print("Mail saved")
+        case MFMailComposeResultSent.rawValue:
+            print("Mail sent")
+        case MFMailComposeResultFailed.rawValue:
+            print("Mail sent failure: \(error?.localizedDescription)")
+        default:
+            break
+        }
+        self.dismissViewControllerAnimated(false, completion: nil)
+    }}
