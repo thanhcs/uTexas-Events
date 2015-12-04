@@ -33,7 +33,8 @@ Differences:
 - Animation when opening the app
 - Connect Parse with Core Data
 - Reorder the sections when grouping events
-- Fixed bugs previously not found in such as e-mail and in calendar functionality
+- Fixed bugs previously not found in such as Email button in HostDetailViewController
+- Fixed bugs of "Add to Calendar" in event detail (add the wrong date)
 - Improved synchronization between App and Server
 - Load data from server while opening animation shows the beginning of the APP
 
