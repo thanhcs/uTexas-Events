@@ -40,6 +40,7 @@ class AnimationViewController: UIViewController, HolderViewDelegate {
             }
         }
         
+        // pulling the data
         updateData()
     }
     

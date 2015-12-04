@@ -21,6 +21,7 @@ class RSVPListTableViewController: UITableViewController, NSFetchedResultsContro
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         managedObjectContext = appDelegate.managedObjectContext
         
+        // getting the RSVPed events
         let fetchRequest = NSFetchRequest(entityName:"Event")
         fetchRequest.predicate = NSPredicate(format: "eventID IN %@", Config.RSVPList!)
         do {
@@ -31,7 +32,6 @@ class RSVPListTableViewController: UITableViewController, NSFetchedResultsContro
             NSLog("Unresolved error \(nserror), \(nserror.userInfo)")
             abort()
         }
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -76,11 +76,8 @@ class RSVPListTableViewController: UITableViewController, NSFetchedResultsContro
             
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         }
-        
         return [delete]
     }
-
-    // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

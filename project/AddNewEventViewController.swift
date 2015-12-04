@@ -76,7 +76,6 @@ class AddNewEventViewController: UIViewController, UITextFieldDelegate, UIPicker
         saveButton.layer.cornerRadius = 5
         saveButton.layer.borderWidth = 1
         saveButton.layer.borderColor = UIColor.whiteColor().CGColor
-        
 
         // Do any additional setup after loading the view.
         self.titleTextField.delegate = self
@@ -266,7 +265,6 @@ class AddNewEventViewController: UIViewController, UITextFieldDelegate, UIPicker
         }
     }
     
-
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         dispatch_async(dispatch_get_main_queue()) {
             self.hostPicker.hidden = true

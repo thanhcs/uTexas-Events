@@ -73,7 +73,6 @@ class EventDetailViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
     }
     
-    
     @IBAction func addRSVP() {
         Config.addEventToRSVPList(eventID: (event?.eventID)!)
         RSVPButton.setTitle("RSVPed", forState: .Normal)
@@ -100,6 +99,8 @@ class EventDetailViewController: UIViewController {
                 let endDate = self.event!.date! + " " + self.event!.to!
                 print(beganDate)
                 print(endDate)
+                print(dateFormat.dateFromString(beganDate))
+                print(dateFormat.dateFromString(endDate))
                 
                 eventCal.title = (self.event?.title)!
                 eventCal.startDate = dateFormat.dateFromString(beganDate)!

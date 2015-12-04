@@ -41,7 +41,6 @@ class HostDetailViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
 
     // MARK: - Navigation
 

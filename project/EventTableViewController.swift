@@ -24,9 +24,8 @@ class EventTableViewController: UITableViewController, NSFetchedResultsControlle
         // setting up the navigation bar
         navigationItem.title = "uTexas Events"
         navigationController!.navigationBar.barTintColor = UIColor.orangeColor()
-    
+        
         definesPresentationContext = true
-
         NSFetchedResultsController.deleteCacheWithName(nil)
         
         //checks internet connection
@@ -126,7 +125,7 @@ class EventTableViewController: UITableViewController, NSFetchedResultsControlle
         }
     }
     
-    func logout() {
+    private func logout() {
         PFUser.logOut()
         Config.RSVPList = nil
         Config.isAdmin = false
@@ -250,8 +249,6 @@ class EventTableViewController: UITableViewController, NSFetchedResultsControlle
         do {
             try _fetchedResultsController!.performFetch()
         } catch {
-            // Replace this implementation with code to handle the error appropriately.
-            // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
             //print("Unresolved error \(error), \(error.userInfo)")
             abort()
         }
@@ -333,9 +330,7 @@ class EventTableViewController: UITableViewController, NSFetchedResultsControlle
             }
         }
 
-        
         // add event to host and category
-        
         //host
         host.addEvent(event)
         //cat
@@ -354,7 +349,6 @@ class EventTableViewController: UITableViewController, NSFetchedResultsControlle
     }
     
     private func getHost(name: String) -> Host {
-        
         let fetchRequest = NSFetchRequest(entityName:"Host")
         fetchRequest.predicate = NSPredicate(format: "name = %@", name)
         

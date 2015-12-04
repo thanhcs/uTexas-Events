@@ -184,7 +184,6 @@ class HostTableViewController: UITableViewController, NSFetchedResultsController
     }
     var _fetchedResultsController: NSFetchedResultsController? = nil
     
-    
     func controllerWillChangeContent(controller: NSFetchedResultsController) {
         self.tableView.beginUpdates()
     }

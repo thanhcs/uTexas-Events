@@ -1298,7 +1298,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Ac0-Fl-BR1">
                                 <rect key="frame" x="36" y="264" width="303" height="30"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MQa-BL-6Is">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MQa-BL-6Is">
                                         <rect key="frame" x="0.0" y="0.0" width="147" height="30"/>
                                         <animations/>
                                         <state key="normal" title="Cancel">
@@ -1308,7 +1308,7 @@
                                             <action selector="cancel:" destination="Bai-sd-gLQ" eventType="touchUpInside" id="aDu-Wo-6qN"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3gZ-vB-GVi">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3gZ-vB-GVi">
                                         <rect key="frame" x="157" y="0.0" width="147" height="30"/>
                                         <animations/>
                                         <state key="normal" title="Save">

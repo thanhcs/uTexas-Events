@@ -116,7 +116,6 @@ class EventsOfCategoryTableViewController: UITableViewController, NSFetchedResul
     }
     var _fetchedResultsController: NSFetchedResultsController? = nil
     
-    
     func controllerWillChangeContent(controller: NSFetchedResultsController) {
         self.tableView.beginUpdates()
     }
