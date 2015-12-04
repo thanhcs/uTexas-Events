@@ -230,13 +230,9 @@
                                     <action selector="emailAction:" destination="uJC-fX-ZP7" eventType="touchUpInside" id="4ka-aD-bzt"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aQH-so-T1b">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aQH-so-T1b">
                                 <rect key="frame" x="209" y="405" width="150" height="30"/>
                                 <animations/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="150" id="5VR-Vi-lxL"/>
-                                    <constraint firstAttribute="height" constant="30" id="6mh-tI-jNb"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="Events">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -1098,8 +1094,8 @@
                                     <action selector="toPickerAction:" destination="dsp-Nl-Xwd" eventType="valueChanged" id="6yq-Po-Oji"/>
                                 </connections>
                             </datePicker>
-                            <pickerView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kKH-29-jxK">
-                                <rect key="frame" x="-4" y="519" width="383" height="128"/>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kKH-29-jxK">
+                                <rect key="frame" x="-4" y="431" width="383" height="216"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
@@ -1107,8 +1103,8 @@
                                     <outlet property="delegate" destination="dsp-Nl-Xwd" id="egv-aG-Jn1"/>
                                 </connections>
                             </pickerView>
-                            <pickerView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ku2-YH-5NW">
-                                <rect key="frame" x="-4" y="519" width="383" height="128"/>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ku2-YH-5NW">
+                                <rect key="frame" x="-4" y="431" width="383" height="216"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
@@ -1295,8 +1291,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Ac0-Fl-BR1">
-                                <rect key="frame" x="36" y="264" width="303" height="30"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Ac0-Fl-BR1">
+                                <rect key="frame" x="36" y="313" width="303" height="30"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MQa-BL-6Is">
                                         <rect key="frame" x="0.0" y="0.0" width="147" height="30"/>

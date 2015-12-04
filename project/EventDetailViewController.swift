@@ -93,15 +93,11 @@ class EventDetailViewController: UIViewController {
                 let eventCal:EKEvent = EKEvent(eventStore: eventStore)
                 // configure date
                 let dateFormat = NSDateFormatter()
-                dateFormat.dateFormat = "MM-dd-yyyy HH:mm a"
+                dateFormat.locale = NSLocale.currentLocale()
+                dateFormat.dateFormat = "MM-dd-yyyy h:mm aaa"
                 let beganDate = self.event!.date! + " " + self.event!.from!
-                
                 let endDate = self.event!.date! + " " + self.event!.to!
-                print(beganDate)
-                print(endDate)
-                print(dateFormat.dateFromString(beganDate))
-                print(dateFormat.dateFromString(endDate))
-                
+
                 eventCal.title = (self.event?.title)!
                 eventCal.startDate = dateFormat.dateFromString(beganDate)!
                 eventCal.endDate = dateFormat.dateFromString(endDate)!
