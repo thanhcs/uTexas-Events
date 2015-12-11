@@ -3,6 +3,10 @@ CS 378 - Fall 2015 - Final release
 This is the big improvement comparing to the beta release. We implemented app to make it have a back end server (Parse). We didn't intent to do this at the beginning. We only figured out we didn't have a partner doing the UI (he gave up a week before the final day), so we had to do our work including the UI.'
 The Email function for host have to be run on the actual phone.
 
+Admin:
+Account: thanhcs
+password: 1234
+
 Contributions:
 
 Thanh

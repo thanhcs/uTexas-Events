@@ -98,10 +98,9 @@ class EventsOfHostTableViewController: UITableViewController, NSFetchedResultsCo
         fetchRequest.fetchBatchSize = 20
         
         // Edit the sort key as appropriate.
-        let dateSort = NSSortDescriptor(key: "date", ascending: true)
-        let fromSort = NSSortDescriptor(key: "from", ascending: true)
+        let dateSort = NSSortDescriptor(key: "dateSort", ascending: true)
         
-        fetchRequest.sortDescriptors = [dateSort, fromSort]
+        fetchRequest.sortDescriptors = [dateSort]
         
         // Edit the section name key path and cache name if appropriate.
         // nil for section name key path means "no sections".
